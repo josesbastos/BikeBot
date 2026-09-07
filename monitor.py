@@ -72,11 +72,13 @@ PRICE_PATTERNS = [
 class Offer:
     model: str
     size: str
+    year: int
     price: float
     title: str
     url: str
     domain: str
     availability: str
+    seller_type: str
     source: str
 
 
@@ -151,10 +153,13 @@ def canonicalize_url(url: str) -> str:
         for key, value in parse_qsl(parsed.query, keep_blank_values=True)
         if not key.lower().startswith("utm_") and key.lower() not in tracking_names
     ]
+    netloc = parsed.netloc.lower()
+    if netloc == "m.olx.pt":
+        netloc = "www.olx.pt"
     return urlunparse(
         (
             parsed.scheme.lower(),
-            parsed.netloc.lower(),
+            netloc,
             parsed.path,
             parsed.params,
             urlencode(query, doseq=True),
@@ -389,6 +394,67 @@ def alias_present(text: str, aliases: list[str]) -> bool:
     return any(alias.lower() in low for alias in aliases)
 
 
+def extract_model_year(
+    identity_text: str,
+    page_text: str,
+    current_year: int | None = None,
+) -> int | None:
+    """Find a model year without confusing it with the advert publication date."""
+    if current_year is None:
+        current_year = datetime.now(timezone.utc).year
+
+    def valid_years(values: list[str]) -> list[int]:
+        return [
+            int(value)
+            for value in values
+            if 1990 <= int(value) <= current_year + 2
+        ]
+
+    # Product titles normally contain the model year and are stronger evidence
+    # than dates elsewhere on a marketplace page.
+    identity_years = valid_years(re.findall(r"\b(20\d{2})\b", identity_text))
+    if identity_years:
+        return max(identity_years)
+
+    patterns = (
+        re.compile(
+            r"(?:ano|modelo(?:\s+de)?|model(?:\s+year)?|vers[aã]o)"
+            r"\s*[:\-]?\s*(20\d{2})\b",
+            re.I,
+        ),
+        re.compile(r"\b(20\d{2})\s*(?:model|modelo)\b", re.I),
+    )
+    contextual_years: list[int] = []
+    for pattern in patterns:
+        contextual_years.extend(valid_years(pattern.findall(page_text)))
+    return max(contextual_years) if contextual_years else None
+
+
+def classify_seller(
+    domain: str,
+    page_text: str,
+    marketplace_domains: list[str],
+) -> str:
+    if not domain_allowed(domain, marketplace_domains):
+        return "store"
+
+    labels: list[tuple[int, str]] = []
+    for label, seller_type in (("Profissional", "professional"), ("Particular", "private")):
+        match = re.search(rf"\b{label}\b", page_text, re.I)
+        if match:
+            labels.append((match.start(), seller_type))
+    return min(labels)[1] if labels else "unknown"
+
+
+def seller_label(seller_type: str) -> str:
+    return {
+        "store": "Loja",
+        "professional": "Vendedor profissional",
+        "private": "Vendedor particular",
+        "unknown": "Tipo de vendedor não identificado",
+    }.get(seller_type, "Tipo de vendedor não identificado")
+
+
 def product_identity_text(soup: BeautifulSoup | None) -> str:
     """Return product-name fields, excluding recommendations and general body copy."""
     if soup is None:
@@ -581,8 +647,11 @@ def search_model(model_cfg: dict[str, Any], cfg: dict[str, Any]) -> list[Offer]:
     aliases = model_cfg["aliases"]
     sizes = [str(s) for s in model_cfg["sizes"]]
     allowed = cfg["allowed_domains"]
+    marketplace_domains = [str(value) for value in cfg.get("marketplace_domains", [])]
     out_terms = cfg["out_of_stock_terms"]
     min_price = float(cfg["min_plausible_price_eur"])
+    min_year = int(cfg.get("min_model_year", 2023))
+    require_year = bool(cfg.get("require_model_year", True))
     max_results = int(cfg.get("max_results_per_model", 15))
     search_backends = [str(value) for value in cfg.get("search_backends", ["bing", "yahoo"])]
 
@@ -604,12 +673,55 @@ def search_model(model_cfg: dict[str, Any], cfg: dict[str, Any]) -> list[Offer]:
         # A broad query can fill the result limit with reviews/manufacturer
         # pages. Restricting the retry to approved shops improves recall while
         # keeping the same domain safety check below.
-        sites = " OR ".join(f"site:{domain}" for domain in allowed)
-        fallback_q = f"{aliases[0]} ({sites})"
         print(f"[search] allowlisted-store fallback for {model_name}")
-        results = search_web(fallback_q, max_results, search_backends)
+        store_domains = [
+            domain
+            for domain in allowed
+            if not domain_allowed(domain, marketplace_domains)
+        ]
+        results = []
+        for start in range(0, len(store_domains), 6):
+            domain_chunk = store_domains[start : start + 6]
+            sites = " OR ".join(f"site:{domain}" for domain in domain_chunk)
+            fallback_q = f"{aliases[0]} ({sites})"
+            results.extend(
+                search_web(
+                    fallback_q,
+                    max_results,
+                    search_backends,
+                    warn=False,
+                )
+            )
 
-    for result in results or []:
+    # Marketplaces need a dedicated query; otherwise retailer and review pages
+    # tend to fill the result limit before individual adverts appear.
+    for marketplace_domain in marketplace_domains:
+        current_year = datetime.now(timezone.utc).year
+        years = " OR ".join(
+            str(year) for year in range(min_year, current_year + 3)
+        )
+        sizes_filter = " OR ".join(sizes)
+        marketplace_q = (
+            f'site:{marketplace_domain}/d/anuncio "{aliases[0]}" '
+            f"({sizes_filter}) ({years})"
+        )
+        print(f"[search] marketplace {marketplace_domain} for {model_name}")
+        results.extend(
+            search_web(
+                marketplace_q,
+                max_results,
+                search_backends,
+                warn=False,
+            )
+        )
+
+    unique_results: dict[str, dict[str, Any]] = {}
+    for result in results:
+        result_url = canonicalize_url(result.get("href") or result.get("url") or "")
+        if result_url:
+            unique_results.setdefault(result_url, result)
+
+    for result in unique_results.values():
         url = canonicalize_url(result.get("href") or result.get("url") or "")
         title = result.get("title") or ""
         snippet = result.get("body") or result.get("snippet") or ""
@@ -619,13 +731,31 @@ def search_model(model_cfg: dict[str, Any], cfg: dict[str, Any]) -> list[Offer]:
         domain = normalize_domain(url)
         if not domain_allowed(domain, allowed):
             continue
+        is_marketplace = domain_allowed(domain, marketplace_domains)
+        if is_marketplace:
+            if not urlparse(url).path.startswith("/d/anuncio/"):
+                continue
+            # Search engines occasionally return completely unrelated OLX ads
+            # for a constrained query. Reject them before making a page request.
+            if not alias_present(title, aliases):
+                continue
+            indexed_year = extract_model_year(title, snippet)
+            if indexed_year is not None and indexed_year < min_year:
+                continue
 
         page_html, soup = fetch_page(url)
         page_text = visible_text(soup)
 
         # The model must identify the actual product, not a recommendation on a
         # category page that happens to contain the alias and a cheaper item.
-        if not alias_present(product_identity_text(soup), aliases):
+        identity = product_identity_text(soup)
+        if not alias_present(identity, aliases):
+            continue
+
+        model_year = extract_model_year(identity, page_text)
+        if model_year is None and require_year:
+            continue
+        if model_year is not None and model_year < min_year:
             continue
 
         matched_sizes = target_size_matches(
@@ -640,17 +770,20 @@ def search_model(model_cfg: dict[str, Any], cfg: dict[str, Any]) -> list[Offer]:
         if price is None:
             continue
         availability = page_availability(soup, availability, out_terms)
+        seller_type = classify_seller(domain, page_text, marketplace_domains)
 
         for size in matched_sizes:
             offers.append(
                 Offer(
                     model=model_name,
                     size=size,
+                    year=model_year or min_year,
                     price=price,
                     title=title.strip() or model_name,
                     url=url,
                     domain=domain,
                     availability=availability,
+                    seller_type=seller_type,
                     source=source,
                 )
             )
@@ -699,7 +832,17 @@ def update_state(offer: Offer, state: dict[str, Any], alerted: bool) -> None:
         updated["last_alerted_price"] = offer.price
 
     # Avoid an empty state commit every three hours when nothing changed.
-    material_fields = ("model", "size", "price", "title", "url", "domain", "availability")
+    material_fields = (
+        "model",
+        "size",
+        "year",
+        "price",
+        "title",
+        "url",
+        "domain",
+        "availability",
+        "seller_type",
+    )
     if alerted or any(existing.get(field) != updated.get(field) for field in material_fields):
         updated["updated_at"] = now
     else:
@@ -757,9 +900,11 @@ def send_resend_email(offer: Offer, recipient: str) -> None:
       <h2>🚴 Nova bicicleta dentro do teu orçamento</h2>
       <table style="border-collapse:collapse;width:100%;font-size:15px">
         <tr><td><b>Modelo</b></td><td>{html.escape(offer.model)}</td></tr>
+        <tr><td><b>Ano</b></td><td>{offer.year}</td></tr>
         <tr><td><b>Tamanho</b></td><td>{html.escape(offer.size)}</td></tr>
         <tr><td><b>Preço</b></td><td><b>{format_price_pt(offer.price)} €</b></td></tr>
-        <tr><td><b>Loja</b></td><td>{html.escape(offer.domain)}</td></tr>
+        <tr><td><b>Site</b></td><td>{html.escape(offer.domain)}</td></tr>
+        <tr><td><b>Vendedor</b></td><td>{html.escape(seller_label(offer.seller_type))}</td></tr>
         <tr><td><b>Stock</b></td><td>{html.escape(availability)}</td></tr>
       </table>
       <p style="margin-top:22px">
@@ -783,9 +928,17 @@ def send_resend_email(offer: Offer, recipient: str) -> None:
 
 def summary_rows(offers: list[Offer]) -> list[dict[str, Any]]:
     """Merge size variants so each shop/product price occupies one digest row."""
-    grouped: dict[tuple[str, str, str, float, str], dict[str, Any]] = {}
+    grouped: dict[tuple[str, str, str, int, float, str, str], dict[str, Any]] = {}
     for offer in offers:
-        key = (offer.domain, offer.model, offer.url, offer.price, offer.availability)
+        key = (
+            offer.domain,
+            offer.model,
+            offer.url,
+            offer.year,
+            offer.price,
+            offer.availability,
+            offer.seller_type,
+        )
         row = grouped.setdefault(
             key,
             {
@@ -793,8 +946,10 @@ def summary_rows(offers: list[Offer]) -> list[dict[str, Any]]:
                 "model": offer.model,
                 "title": offer.title,
                 "url": offer.url,
+                "year": offer.year,
                 "price": offer.price,
                 "availability": offer.availability,
+                "seller_type": offer.seller_type,
                 "sizes": set(),
             },
         )
@@ -803,14 +958,40 @@ def summary_rows(offers: list[Offer]) -> list[dict[str, Any]]:
     rows = list(grouped.values())
     for row in rows:
         row["sizes"] = sorted(row["sizes"])
-    return sorted(rows, key=lambda row: (row["domain"], row["price"], row["model"]))
+    seller_order = {"store": 0, "professional": 0, "private": 1, "unknown": 2}
+    return sorted(
+        rows,
+        key=lambda row: (
+            seller_order.get(row["seller_type"], 2),
+            row["domain"],
+            row["price"],
+            row["model"],
+        ),
+    )
 
 
 def send_no_match_email(offers: list[Offer], recipient: str, max_price: float) -> None:
     rows = summary_rows(offers)
     sections: list[str] = []
+    current_group = ""
     current_domain = ""
+    group_labels = {
+        "business": "Lojas e vendedores profissionais",
+        "private": "Vendedores particulares",
+        "unknown": "Tipo de vendedor não identificado",
+    }
     for row in rows:
+        group = (
+            "business"
+            if row["seller_type"] in {"store", "professional"}
+            else row["seller_type"]
+        )
+        if group != current_group:
+            if current_domain:
+                sections.append("</ul>")
+            current_group = group
+            current_domain = ""
+            sections.append(f"<h2>{html.escape(group_labels[group])}</h2>")
         if row["domain"] != current_domain:
             if current_domain:
                 sections.append("</ul>")
@@ -829,7 +1010,8 @@ def send_no_match_email(offers: list[Offer], recipient: str, max_price: float) -
             f"<a href=\"{html.escape(row['url'], quote=True)}\">"
             f"{html.escape(row['model'])}</a> — "
             f"<b>{format_price_pt(row['price'])} €</b><br>"
-            f"Tamanho(s): {html.escape(sizes)} · {html.escape(stock)}"
+            f"Ano: {row['year']} · Tamanho(s): {html.escape(sizes)} · "
+            f"{html.escape(stock)} · {html.escape(seller_label(row['seller_type']))}"
             "</li>"
         )
     if current_domain:

@@ -6,8 +6,10 @@ import monitor
 from monitor import (
     Offer,
     canonicalize_url,
+    classify_seller,
     choose_price,
     extract_prices,
+    extract_model_year,
     load_local_env,
     page_availability,
     parse_price_number,
@@ -84,15 +86,24 @@ def test_canonical_url_removes_tracking_but_keeps_product_options():
     assert canonicalize_url(url) == "https://www.shop.pt/bike?size=L&color=red"
 
 
+def test_canonical_url_normalizes_mobile_olx_links():
+    assert (
+        canonicalize_url("https://m.olx.pt/d/anuncio/bike-ID123.html?utm_source=x")
+        == "https://www.olx.pt/d/anuncio/bike-ID123.html"
+    )
+
+
 def make_offer(price=1699.0, availability="in_stock"):
     return Offer(
         model="Example Bike",
         size="L",
+        year=2025,
         price=price,
         title="Example Bike",
         url="https://shop.pt/bike",
         domain="shop.pt",
         availability=availability,
+        seller_type="store",
         source="structured_data",
     )
 
@@ -216,3 +227,39 @@ def test_no_match_email_contains_grouped_prices(monkeypatch):
     assert "Sem ofertas até 1800 €" in payload["subject"]
     assert "shop.pt" in payload["html"]
     assert "2.200,00 €" in payload["html"]
+    assert "Ano: 2025" in payload["html"]
+    assert "Lojas e vendedores profissionais" in payload["html"]
+
+
+def test_model_year_prefers_product_identity_and_ignores_publication_date():
+    assert extract_model_year("Trek Domane 2024", "Publicado em 2026", 2026) == 2024
+    assert (
+        extract_model_year(
+            "Giant Defy Advanced",
+            "Publicado em 2026. Bicicleta modelo de 2021.",
+            2026,
+        )
+        == 2021
+    )
+    assert extract_model_year("Giant Defy Advanced", "Publicado em 2026", 2026) is None
+
+
+def test_marketplace_sellers_are_split_between_private_and_professional():
+    assert classify_seller("olx.pt", "Particular Estado: Usado", ["olx.pt"]) == "private"
+    assert (
+        classify_seller("olx.pt", "Profissional Estado: Novo", ["olx.pt"])
+        == "professional"
+    )
+    assert classify_seller("bikezone.pt", "", ["olx.pt"]) == "store"
+
+
+def test_summary_separates_private_sellers():
+    store_offer = make_offer(2200)
+    private_offer = make_offer(1600)
+    private_offer.domain = "olx.pt"
+    private_offer.url = "https://olx.pt/d/anuncio/bike-ID123.html"
+    private_offer.seller_type = "private"
+
+    rows = summary_rows([private_offer, store_offer])
+
+    assert [row["seller_type"] for row in rows] == ["store", "private"]

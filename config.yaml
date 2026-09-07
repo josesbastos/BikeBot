@@ -5,6 +5,9 @@ max_results_per_model: 15
 max_alerts_per_run: 10
 search_backends: ["bing", "yahoo"]
 send_no_match_summary: true
+min_model_year: 2023
+require_model_year: true
+marketplace_domains: ["olx.pt"]
 
 # Modelos endurance / all-round que queres vigiar.
 # Os tamanhos são equivalentes aproximados a L para ~1,91 m.
@@ -23,6 +26,7 @@ models:
   - name: "Giant Defy Advanced"
     aliases:
       - "Giant Defy Advanced"
+      - "Giant Advanced Defy"
     sizes: ["L", "XL"]
 
   - name: "Merida Scultura Endurance"
@@ -74,6 +78,9 @@ allowed_domains:
   - "lordgun.com"
   - "mantel.com"
   - "canyon.com"
+
+  # Marketplace português; apenas páginas individuais de anúncios são aceites.
+  - "olx.pt"
 
 # Termos usados para rejeitar uma variante de tamanho quando o texto próximo
 # indica explicitamente que está esgotada.

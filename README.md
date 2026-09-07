@@ -19,10 +19,14 @@ O bot **não liga ao Gmail**, não lê emails e não pede password do Gmail.
 
 Tudo pode ser alterado em `config.yaml`.
 
-## Lojas
+## Lojas e OLX
 
 O bot filtra resultados para uma lista de lojas portuguesas e lojas europeias com mercado/envio para Portugal.
 A lista está em `config.yaml` e é fácil acrescentar novos domínios.
+
+Também pesquisa anúncios individuais do `olx.pt`. Nos emails, os resultados ficam
+separados entre **lojas/vendedores profissionais** e **vendedores particulares**.
+Páginas gerais de pesquisa do OLX não são tratadas como anúncios.
 
 ## Como funciona
 
@@ -33,6 +37,7 @@ A lista está em `config.yaml` e é fácil acrescentar novos domínios.
 5. Só alerta quando:
    - preço <= 1.800 €;
    - aparece um tamanho pretendido;
+   - o ano do modelo é 2023 ou mais recente;
    - a página não está marcada globalmente como esgotada.
 6. Guarda as ofertas já notificadas em `data/seen_offers.json`.
 7. Não volta a avisar da mesma oferta, exceto se o preço baixar ou voltar a stock.
@@ -162,6 +167,17 @@ send_no_match_summary: true
 ```
 
 Altera para `false` se quiseres receber apenas alertas de ofertas válidas.
+
+## Ano mínimo
+
+Só aparecem bicicletas cujo ano de modelo seja identificado e cumpra:
+
+```yaml
+min_model_year: 2023
+require_model_year: true
+```
+
+Assim, bicicletas anteriores a 2023 e anúncios sem ano identificável são excluídos.
 
 ## Adicionar uma bicicleta
 
