@@ -4,6 +4,7 @@ min_plausible_price_eur: 900
 max_results_per_model: 15
 max_alerts_per_run: 10
 search_backends: ["bing", "yahoo"]
+send_no_match_summary: true
 
 # Modelos endurance / all-round que queres vigiar.
 # Os tamanhos são equivalentes aproximados a L para ~1,91 m.

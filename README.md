@@ -36,6 +36,8 @@ A lista está em `config.yaml` e é fácil acrescentar novos domínios.
    - a página não está marcada globalmente como esgotada.
 6. Guarda as ofertas já notificadas em `data/seen_offers.json`.
 7. Não volta a avisar da mesma oferta, exceto se o preço baixar ou voltar a stock.
+8. Se nenhuma bicicleta cumprir todos os critérios, envia um resumo agrupado por
+   loja com os preços, tamanhos, stock e links que conseguiu confirmar.
 
 > O stock por tamanho nem sempre é exposto de forma estruturada pelos sites.
 > Por isso, o email inclui sempre o link para confirmares a variante antes da compra.
@@ -149,6 +151,17 @@ Em `config.yaml`:
 ```yaml
 max_price_eur: 1800
 ```
+
+## Email quando não existem ofertas válidas
+
+O resumo de preços está ativo por defeito e é enviado sempre que uma execução
+não encontra nenhuma bicicleta dentro do orçamento:
+
+```yaml
+send_no_match_summary: true
+```
+
+Altera para `false` se quiseres receber apenas alertas de ofertas válidas.
 
 ## Adicionar uma bicicleta
 

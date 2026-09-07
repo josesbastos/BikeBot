@@ -13,7 +13,9 @@ from monitor import (
     parse_price_number,
     product_identity_text,
     should_alert,
+    send_no_match_email,
     size_evidence_text,
+    summary_rows,
     target_size_matches,
     update_state,
     visible_text,
@@ -179,3 +181,38 @@ def test_search_uses_second_backend_when_first_fails(monkeypatch):
 
     assert calls == ["bing", "yahoo"]
     assert results[0]["title"] == "Bike"
+
+
+def test_summary_merges_sizes_for_the_same_shop_product():
+    offers = [make_offer(2200), make_offer(2200)]
+    offers[1].size = "XL"
+
+    rows = summary_rows(offers)
+
+    assert len(rows) == 1
+    assert rows[0]["domain"] == "shop.pt"
+    assert rows[0]["price"] == 2200
+    assert rows[0]["sizes"] == ["L", "XL"]
+
+
+def test_no_match_email_contains_grouped_prices(monkeypatch):
+    captured = {}
+
+    class SuccessfulResponse:
+        status_code = 200
+        text = "ok"
+
+    def fake_post(url, **kwargs):
+        captured["url"] = url
+        captured.update(kwargs)
+        return SuccessfulResponse()
+
+    monkeypatch.setenv("RESEND_API_KEY", "re_test_key")
+    monkeypatch.setattr(monitor.requests, "post", fake_post)
+    send_no_match_email([make_offer(2200)], "recipient@example.com", 1800)
+
+    payload = captured["json"]
+    assert payload["to"] == ["recipient@example.com"]
+    assert "Sem ofertas até 1800 €" in payload["subject"]
+    assert "shop.pt" in payload["html"]
+    assert "2.200,00 €" in payload["html"]

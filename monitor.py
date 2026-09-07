@@ -707,41 +707,21 @@ def update_state(offer: Offer, state: dict[str, Any], alerted: bool) -> None:
     state["offers"][key] = updated
 
 
-def send_resend_email(offer: Offer, recipient: str) -> None:
+def format_price_pt(price: float) -> str:
+    return f"{price:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
+
+
+def send_resend_message(
+    recipient: str,
+    subject: str,
+    body_html: str,
+    idempotency_key: str,
+) -> None:
     api_key = os.getenv("RESEND_API_KEY", "").strip()
     if not api_key:
         raise RuntimeError("RESEND_API_KEY não está configurada.")
 
     sender = os.getenv("RESEND_FROM", "Bike Alert <onboarding@resend.dev>").strip()
-    subject = f"🚨 {offer.model} por {offer.price:.0f} € — tamanho {offer.size}"
-
-    price_pt = f"{offer.price:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
-    availability = (
-        "Em stock" if offer.availability == "in_stock"
-        else "Disponibilidade indicada na página — confirma a variante antes de pagar"
-    )
-    body_html = f"""
-    <div style="font-family:Arial,sans-serif;max-width:650px;margin:auto">
-      <h2>🚴 Nova bicicleta dentro do teu orçamento</h2>
-      <table style="border-collapse:collapse;width:100%;font-size:15px">
-        <tr><td><b>Modelo</b></td><td>{html.escape(offer.model)}</td></tr>
-        <tr><td><b>Tamanho</b></td><td>{html.escape(offer.size)}</td></tr>
-        <tr><td><b>Preço</b></td><td><b>{price_pt} €</b></td></tr>
-        <tr><td><b>Loja</b></td><td>{html.escape(offer.domain)}</td></tr>
-        <tr><td><b>Stock</b></td><td>{html.escape(availability)}</td></tr>
-      </table>
-      <p style="margin-top:22px">
-        <a href="{html.escape(offer.url)}"
-           style="background:#111;color:white;padding:12px 18px;text-decoration:none;border-radius:6px">
-          Ver oferta
-        </a>
-      </p>
-      <p style="color:#666;font-size:12px">
-        Alerta automático. Confirma sempre tamanho, stock e portes para Portugal na loja.
-      </p>
-    </div>
-    """
-
     payload = {
         "from": sender,
         "to": [recipient],
@@ -751,7 +731,7 @@ def send_resend_email(offer: Offer, recipient: str) -> None:
     headers = {
         "Authorization": f"Bearer {api_key}",
         "Content-Type": "application/json",
-        "Idempotency-Key": f"bike-{offer_key(offer)}-{int(offer.price * 100)}",
+        "Idempotency-Key": idempotency_key,
     }
 
     r = requests.post(
@@ -763,6 +743,126 @@ def send_resend_email(offer: Offer, recipient: str) -> None:
     if r.status_code >= 300:
         raise RuntimeError(f"Resend error {r.status_code}: {r.text}")
     print(f"[email] sent: {subject}")
+
+
+def send_resend_email(offer: Offer, recipient: str) -> None:
+    subject = f"🚨 {offer.model} por {offer.price:.0f} € — tamanho {offer.size}"
+    availability = (
+        "Em stock"
+        if offer.availability == "in_stock"
+        else "Disponibilidade indicada na página — confirma a variante antes de pagar"
+    )
+    body_html = f"""
+    <div style="font-family:Arial,sans-serif;max-width:650px;margin:auto">
+      <h2>🚴 Nova bicicleta dentro do teu orçamento</h2>
+      <table style="border-collapse:collapse;width:100%;font-size:15px">
+        <tr><td><b>Modelo</b></td><td>{html.escape(offer.model)}</td></tr>
+        <tr><td><b>Tamanho</b></td><td>{html.escape(offer.size)}</td></tr>
+        <tr><td><b>Preço</b></td><td><b>{format_price_pt(offer.price)} €</b></td></tr>
+        <tr><td><b>Loja</b></td><td>{html.escape(offer.domain)}</td></tr>
+        <tr><td><b>Stock</b></td><td>{html.escape(availability)}</td></tr>
+      </table>
+      <p style="margin-top:22px">
+        <a href="{html.escape(offer.url, quote=True)}"
+           style="background:#111;color:white;padding:12px 18px;text-decoration:none;border-radius:6px">
+          Ver oferta
+        </a>
+      </p>
+      <p style="color:#666;font-size:12px">
+        Alerta automático. Confirma sempre tamanho, stock e portes para Portugal na loja.
+      </p>
+    </div>
+    """
+    send_resend_message(
+        recipient,
+        subject,
+        body_html,
+        f"bike-{offer_key(offer)}-{int(offer.price * 100)}",
+    )
+
+
+def summary_rows(offers: list[Offer]) -> list[dict[str, Any]]:
+    """Merge size variants so each shop/product price occupies one digest row."""
+    grouped: dict[tuple[str, str, str, float, str], dict[str, Any]] = {}
+    for offer in offers:
+        key = (offer.domain, offer.model, offer.url, offer.price, offer.availability)
+        row = grouped.setdefault(
+            key,
+            {
+                "domain": offer.domain,
+                "model": offer.model,
+                "title": offer.title,
+                "url": offer.url,
+                "price": offer.price,
+                "availability": offer.availability,
+                "sizes": set(),
+            },
+        )
+        row["sizes"].add(offer.size)
+
+    rows = list(grouped.values())
+    for row in rows:
+        row["sizes"] = sorted(row["sizes"])
+    return sorted(rows, key=lambda row: (row["domain"], row["price"], row["model"]))
+
+
+def send_no_match_email(offers: list[Offer], recipient: str, max_price: float) -> None:
+    rows = summary_rows(offers)
+    sections: list[str] = []
+    current_domain = ""
+    for row in rows:
+        if row["domain"] != current_domain:
+            if current_domain:
+                sections.append("</ul>")
+            current_domain = row["domain"]
+            sections.append(f"<h3>{html.escape(current_domain)}</h3><ul>")
+
+        stock_labels = {
+            "in_stock": "Em stock",
+            "out_of_stock": "Esgotada",
+            "unknown": "Confirmar stock",
+        }
+        stock = stock_labels.get(row["availability"], "Confirmar stock")
+        sizes = ", ".join(row["sizes"])
+        sections.append(
+            "<li style=\"margin-bottom:12px\">"
+            f"<a href=\"{html.escape(row['url'], quote=True)}\">"
+            f"{html.escape(row['model'])}</a> — "
+            f"<b>{format_price_pt(row['price'])} €</b><br>"
+            f"Tamanho(s): {html.escape(sizes)} · {html.escape(stock)}"
+            "</li>"
+        )
+    if current_domain:
+        sections.append("</ul>")
+    if not rows:
+        sections.append(
+            "<p>Não foi possível confirmar preços com os tamanhos pretendidos "
+            "nas lojas monitorizadas nesta execução.</p>"
+        )
+
+    subject = f"🚴 Sem ofertas até {max_price:.0f} € — resumo de preços"
+    body_html = f"""
+    <div style="font-family:Arial,sans-serif;max-width:700px;margin:auto">
+      <h2>Nenhuma bicicleta cumpriu todos os critérios</h2>
+      <p>Não foi encontrada uma bicicleta até <b>{format_price_pt(max_price)} €</b>
+         com o tamanho pretendido e disponibilidade aceitável.</p>
+      <p>Estes foram os preços confirmados nas páginas encontradas:</p>
+      {''.join(sections)}
+      <p style="color:#666;font-size:12px">
+        Confirma sempre o tamanho, stock e portes para Portugal diretamente na loja.
+      </p>
+    </div>
+    """
+    digest_data = json.dumps(rows, default=list, ensure_ascii=False, sort_keys=True)
+    digest_hash = hashlib.sha256(digest_data.encode("utf-8")).hexdigest()[:16]
+    now = datetime.now(timezone.utc)
+    three_hour_bucket = now.strftime("%Y%m%d") + f"{(now.hour // 3) * 3:02d}"
+    send_resend_message(
+        recipient,
+        subject,
+        body_html,
+        f"bike-no-match-{three_hour_bucket}-{digest_hash}",
+    )
 
 
 def main() -> int:
@@ -795,6 +895,18 @@ def main() -> int:
     alerts_sent = 0
     alerts_considered = 0
     email_failures = 0
+    if not available_offers and cfg.get("send_no_match_summary", True):
+        print(f"[summary] no match; {len(summary_rows(all_offers))} price rows")
+        if dry_run:
+            print("[dry-run] no-match summary email not sent")
+        else:
+            try:
+                send_no_match_email(all_offers, recipient, max_price)
+                alerts_sent += 1
+            except Exception as exc:
+                print(f"[error] summary email failed: {exc}", file=sys.stderr)
+                email_failures += 1
+
     for offer in all_offers:
         if offer.availability == "out_of_stock" or offer.price > max_price:
             update_state(offer, state, alerted=False)
