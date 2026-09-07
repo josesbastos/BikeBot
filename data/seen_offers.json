@@ -1,3 +1,52 @@
 {
-  "offers": {}
+  "offers": {
+    "0ac7d154f113cff87460d2e6": {
+      "availability": "out_of_stock",
+      "domain": "ibkbike.pt",
+      "last_alerted": null,
+      "model": "Orbea Orca M30",
+      "price": 2070.84,
+      "size": "57",
+      "source": "structured_data",
+      "title": "Bicicleta Orbea Orca M30 2026 Carbon Matt Titan Grey – IBKBike ...",
+      "updated_at": "2026-09-07T12:10:38.636463+00:00",
+      "url": "https://ibkbike.pt/products/bikes-road-orbea-orca-m30-2026-diamond-carbon-view-matt-titan-grey-gloss"
+    },
+    "2ef20ba05ddabb296e5610cb": {
+      "availability": "unknown",
+      "domain": "bikezone.pt",
+      "last_alerted": null,
+      "model": "Giant Defy Advanced",
+      "price": 2299.0,
+      "size": "XL",
+      "source": "structured_data",
+      "title": "GIANT DEFY ADVANCED 2 - BIKE ZONE",
+      "updated_at": "2026-09-07T12:10:38.636596+00:00",
+      "url": "https://bikezone.pt/-endurance/20076-GIANT-DEFY-ADVANCED-2.html"
+    },
+    "52b319a152ebacbaaac991ba": {
+      "availability": "in_stock",
+      "domain": "lisbonbike.pt",
+      "last_alerted": null,
+      "model": "Orbea Orca M30",
+      "price": 2279.99,
+      "size": "57",
+      "source": "structured_data",
+      "title": "Bicicleta Orbea ORCA M30 Iris White - LisbonBike Shop",
+      "updated_at": "2026-09-07T12:10:38.636567+00:00",
+      "url": "https://lisbonbike.pt/produto/bicicleta-orbea-orca-m30-iris-white/"
+    },
+    "8f56ae13a7d46e156283ea7d": {
+      "availability": "unknown",
+      "domain": "bikezone.pt",
+      "last_alerted": null,
+      "model": "Giant Defy Advanced",
+      "price": 2299.0,
+      "size": "L",
+      "source": "structured_data",
+      "title": "GIANT DEFY ADVANCED 2 - BIKE ZONE",
+      "updated_at": "2026-09-07T12:10:38.636585+00:00",
+      "url": "https://bikezone.pt/-endurance/20076-GIANT-DEFY-ADVANCED-2.html"
+    }
+  }
 }
