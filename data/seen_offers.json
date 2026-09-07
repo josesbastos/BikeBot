@@ -5,12 +5,28 @@
       "domain": "ibkbike.pt",
       "last_alerted": null,
       "model": "Orbea Orca M30",
-      "price": 2070.84,
+      "price": 2069.46,
+      "seller_type": "store",
       "size": "57",
       "source": "structured_data",
       "title": "Bicicleta Orbea Orca M30 2026 Carbon Matt Titan Grey – IBKBike ...",
-      "updated_at": "2026-09-07T12:10:38.636463+00:00",
-      "url": "https://ibkbike.pt/products/bikes-road-orbea-orca-m30-2026-diamond-carbon-view-matt-titan-grey-gloss"
+      "updated_at": "2026-09-07T14:58:27.465156+00:00",
+      "url": "https://ibkbike.pt/products/bikes-road-orbea-orca-m30-2026-diamond-carbon-view-matt-titan-grey-gloss",
+      "year": 2026
+    },
+    "1f8bcc41637e460d8eddf513": {
+      "availability": "out_of_stock",
+      "domain": "alltricks.pt",
+      "last_alerted": null,
+      "model": "Orbea Orca M30",
+      "price": 2632.0,
+      "seller_type": "store",
+      "size": "57",
+      "source": "structured_data",
+      "title": "Orbea Orca M30 Road Bike Shimano 105 12S 700 mm ...",
+      "updated_at": "2026-09-07T14:58:27.465173+00:00",
+      "url": "https://www.alltricks.pt/F-41505-velos-route-_-cyclocross-_-triathlon/P-2756036-orbea_orca_m30_road_bike_shimano_105_12s_700_mm_vulcano_grey_black_2024",
+      "year": 2024
     },
     "2ef20ba05ddabb296e5610cb": {
       "availability": "unknown",
@@ -35,6 +51,20 @@
       "title": "Bicicleta Orbea ORCA M30 Iris White - LisbonBike Shop",
       "updated_at": "2026-09-07T12:10:38.636567+00:00",
       "url": "https://lisbonbike.pt/produto/bicicleta-orbea-orca-m30-iris-white/"
+    },
+    "6c7b7b9709b2657d9bdefa50": {
+      "availability": "out_of_stock",
+      "domain": "alltricks.pt",
+      "last_alerted": null,
+      "model": "CUBE Attain C:62",
+      "price": 1799.0,
+      "seller_type": "store",
+      "size": "60",
+      "source": "structured_data",
+      "title": "Cube Attain C:62 Race Road Bike Shimano 105 12S 700 mm Sky Light Blue 2026 a partir de1 799,00 €",
+      "updated_at": "2026-09-07T14:58:27.465104+00:00",
+      "url": "https://www.alltricks.pt/F-41505-velos-route-_-cyclocross-_-triathlon/P-3146776-cube_attain_c_62_race_road_bike_shimano_105_12s_700_mm_sky_light_blue_2026",
+      "year": 2026
     },
     "8f56ae13a7d46e156283ea7d": {
       "availability": "unknown",
