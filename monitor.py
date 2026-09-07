@@ -21,6 +21,7 @@ from ddgs import DDGS
 ROOT = Path(__file__).resolve().parent
 CONFIG_PATH = ROOT / "config.yaml"
 STATE_PATH = ROOT / "data" / "seen_offers.json"
+ENV_PATH = ROOT / ".env"
 
 HEADERS = {
     "User-Agent": (
@@ -56,6 +57,30 @@ class Offer:
     domain: str
     availability: str
     source: str
+
+
+def load_local_env(path: Path = ENV_PATH) -> None:
+    """Load simple KEY=VALUE entries without overriding shell/GitHub variables."""
+    if not path.exists():
+        return
+
+    for raw_line in path.read_text(encoding="utf-8").splitlines():
+        line = raw_line.strip()
+        if not line or line.startswith("#"):
+            continue
+        if line.startswith("export "):
+            line = line[7:].lstrip()
+        if "=" not in line:
+            continue
+
+        key, value = line.split("=", 1)
+        key = key.strip()
+        value = value.strip()
+        if not re.fullmatch(r"[A-Za-z_][A-Za-z0-9_]*", key):
+            continue
+        if len(value) >= 2 and value[0] == value[-1] and value[0] in {'"', "'"}:
+            value = value[1:-1]
+        os.environ.setdefault(key, value)
 
 
 def load_config() -> dict[str, Any]:
@@ -639,6 +664,7 @@ def send_resend_email(offer: Offer, recipient: str) -> None:
 
 
 def main() -> int:
+    load_local_env()
     cfg = load_config()
     state = load_state()
     recipient = cfg["recipient"]

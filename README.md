@@ -123,6 +123,18 @@ python monitor.py
 
 O modo `DRY_RUN` não envia emails nem marca ofertas como já notificadas.
 
+## Credenciais locais
+
+Preenche o ficheiro `.env` na raiz do projeto:
+
+```dotenv
+RESEND_API_KEY=re_COLOCA_A_TUA_CHAVE_AQUI
+RESEND_FROM="Bike Alert <onboarding@resend.dev>"
+```
+
+O `.env` é carregado automaticamente e está no `.gitignore`, portanto não é
+enviado para o GitHub. O ficheiro `.env.example` contém apenas um modelo seguro.
+
 Para testar envio:
 
 ```bash

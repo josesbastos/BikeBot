@@ -1,3 +1,5 @@
+import os
+
 from bs4 import BeautifulSoup
 
 from monitor import (
@@ -5,6 +7,7 @@ from monitor import (
     canonicalize_url,
     choose_price,
     extract_prices,
+    load_local_env,
     page_availability,
     parse_price_number,
     product_identity_text,
@@ -112,3 +115,18 @@ def test_return_to_stock_alerts_again():
     update_state(make_offer(), state, alerted=True)
     update_state(make_offer(availability="out_of_stock"), state, alerted=False)
     assert should_alert(make_offer(availability="in_stock"), state)
+
+
+def test_local_env_loads_values_without_overriding_environment(tmp_path, monkeypatch):
+    env_file = tmp_path / ".env"
+    env_file.write_text(
+        'RESEND_API_KEY="from-file"\nRESEND_FROM=Bike Alert <test@example.com>\n',
+        encoding="utf-8",
+    )
+    monkeypatch.setenv("RESEND_API_KEY", "from-shell")
+    monkeypatch.delenv("RESEND_FROM", raising=False)
+
+    load_local_env(env_file)
+
+    assert os.environ["RESEND_API_KEY"] == "from-shell"
+    assert os.environ["RESEND_FROM"] == "Bike Alert <test@example.com>"
