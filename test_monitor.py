@@ -1,6 +1,7 @@
 import os
 
 from bs4 import BeautifulSoup
+import monitor
 
 from monitor import (
     Offer,
@@ -130,3 +131,51 @@ def test_local_env_loads_values_without_overriding_environment(tmp_path, monkeyp
 
     assert os.environ["RESEND_API_KEY"] == "from-shell"
     assert os.environ["RESEND_FROM"] == "Bike Alert <test@example.com>"
+
+
+class FakeResponse:
+    def __init__(self, status_code, text, content_type="text/html; charset=UTF-8"):
+        self.status_code = status_code
+        self.text = text
+        self.headers = {"content-type": content_type}
+
+
+def test_fetch_page_uses_browser_fallback_after_403(monkeypatch):
+    denied = FakeResponse(403, "<html><h1>Denied</h1></html>")
+    product = FakeResponse(200, "<html><title>Bike</title><h1>Bike</h1></html>")
+
+    monkeypatch.setattr(monitor.HTTP_SESSION, "get", lambda *args, **kwargs: denied)
+
+    class FakeBrowserClient:
+        def __init__(self, **kwargs):
+            self.urls = []
+
+        def get(self, url):
+            self.urls.append(url)
+            return product
+
+    monkeypatch.setattr(monitor.primp, "Client", FakeBrowserClient)
+    text, soup = monitor.fetch_page("https://shop.example/bike")
+
+    assert "<h1>Bike</h1>" in text
+    assert soup.h1.get_text() == "Bike"
+
+
+def test_search_uses_second_backend_when_first_fails(monkeypatch):
+    calls = []
+
+    class FakeSearchClient:
+        def __init__(self, **kwargs):
+            pass
+
+        def text(self, query, **kwargs):
+            calls.append(kwargs["backend"])
+            if kwargs["backend"] == "bing":
+                raise RuntimeError("temporary failure")
+            return [{"title": "Bike", "href": "https://shop.example/bike"}]
+
+    monkeypatch.setattr(monitor, "DDGS", FakeSearchClient)
+    results = monitor.search_web("bike", 10, ["bing", "yahoo"])
+
+    assert calls == ["bing", "yahoo"]
+    assert results[0]["title"] == "Bike"

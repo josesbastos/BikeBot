@@ -1,4 +1,5 @@
 beautifulsoup4==4.12.3
 ddgs==9.16.0
+primp==2.0.0
 PyYAML==6.0.2
 requests==2.32.5

@@ -17,6 +17,9 @@ import requests
 import yaml
 from bs4 import BeautifulSoup
 from ddgs import DDGS
+import primp
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 
 ROOT = Path(__file__).resolve().parent
 CONFIG_PATH = ROOT / "config.yaml"
@@ -25,11 +28,29 @@ ENV_PATH = ROOT / ".env"
 
 HEADERS = {
     "User-Agent": (
-        "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
-        "(KHTML, like Gecko) Chrome/127.0 Safari/537.36 BikePriceAlert/1.0"
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+        "(KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+    ),
+    "Accept": (
+        "text/html,application/xhtml+xml,application/xml;q=0.9,"
+        "image/avif,image/webp,*/*;q=0.8"
     ),
     "Accept-Language": "pt-PT,pt;q=0.9,en;q=0.8,es;q=0.7",
 }
+
+RETRY_POLICY = Retry(
+    total=2,
+    connect=2,
+    read=2,
+    status=2,
+    backoff_factor=0.6,
+    status_forcelist=(429, 500, 502, 503, 504),
+    allowed_methods=frozenset({"GET"}),
+    raise_on_status=False,
+)
+HTTP_SESSION = requests.Session()
+HTTP_SESSION.mount("http://", HTTPAdapter(max_retries=RETRY_POLICY))
+HTTP_SESSION.mount("https://", HTTPAdapter(max_retries=RETRY_POLICY))
 
 PRICE_PATTERNS = [
     # 1.699,00 € / 1699,00 EUR / 1,699.00 EUR
@@ -259,20 +280,96 @@ def jsonld_offer_data(
     return sorted(set(prices)), availability
 
 
+def response_page(
+    response: Any,
+    url: str,
+    *,
+    accept_valid_server_error: bool = False,
+) -> tuple[str, BeautifulSoup]:
+    content_type = str(response.headers.get("content-type", ""))
+    if "text/html" not in content_type and "application/xhtml" not in content_type:
+        raise RuntimeError(f"non-HTML response ({content_type or 'unknown type'})")
+
+    text = response.text[:2_000_000]
+    soup = BeautifulSoup(text, "html.parser")
+    status = int(response.status_code)
+    valid_product_html = bool(soup.title and soup.find("h1") and len(text) >= 20_000)
+    if status >= 400 and not (
+        accept_valid_server_error and status >= 500 and valid_product_html
+    ):
+        raise RuntimeError(f"HTTP {status}")
+    if status >= 500:
+        print(f"[warn] using valid HTML despite HTTP {status}: {url}", file=sys.stderr)
+    return text, soup
+
+
 def fetch_page(url: str) -> tuple[str, BeautifulSoup | None]:
+    errors: list[str] = []
     try:
-        r = requests.get(url, headers=HEADERS, timeout=18, allow_redirects=True)
-        r.raise_for_status()
-        # Avoid huge/binary responses.
-        content_type = r.headers.get("content-type", "")
-        if "text/html" not in content_type and "application/xhtml" not in content_type:
-            return "", None
-        text = r.text[:2_000_000]
-        soup = BeautifulSoup(text, "html.parser")
-        return text, soup
+        response = HTTP_SESSION.get(
+            url,
+            headers=HEADERS,
+            timeout=18,
+            allow_redirects=True,
+        )
+        return response_page(response, url)
     except Exception as exc:
-        print(f"[warn] fetch failed {url}: {exc}", file=sys.stderr)
-        return "", None
+        errors.append(f"requests: {exc}")
+
+    # Some European stores reject conventional HTTP clients even with browser
+    # headers. A browser-protocol client is a lightweight fallback; it does not
+    # solve CAPTCHAs or attempt to bypass authentication.
+    try:
+        client = primp.Client(
+            impersonate="chrome_146",
+            impersonate_os="windows",
+            timeout=18,
+            follow_redirects=True,
+        )
+        parsed = urlparse(url)
+        # Establish the same basic cookies a normal visitor receives on the
+        # storefront before opening a product URL directly.
+        client.get(f"{parsed.scheme}://{parsed.netloc}/")
+        response = client.get(url)
+        page = response_page(response, url, accept_valid_server_error=True)
+        print(f"[fetch] browser fallback succeeded: {normalize_domain(url)}")
+        return page
+    except Exception as exc:
+        errors.append(f"browser fallback: {exc}")
+
+    print(f"[warn] fetch failed {url}: {'; '.join(errors)}", file=sys.stderr)
+    return "", None
+
+
+def search_web(
+    query: str,
+    max_results: int,
+    backends: list[str],
+    *,
+    warn: bool = True,
+) -> list[dict[str, Any]]:
+    errors: list[str] = []
+    for backend in backends:
+        try:
+            results = DDGS(timeout=15).text(
+                query,
+                region="pt-pt",
+                safesearch="off",
+                max_results=max_results,
+                backend=backend,
+            )
+            if results:
+                return list(results)
+            errors.append(f"{backend}: no results")
+        except Exception as exc:
+            errors.append(f"{backend}: {exc}")
+
+    if warn:
+        print(
+            f"[warn] all search backends failed for {query}: {'; '.join(errors)}",
+            file=sys.stderr,
+        )
+    return []
 
 
 def visible_text(soup: BeautifulSoup | None) -> str:
@@ -487,6 +584,7 @@ def search_model(model_cfg: dict[str, Any], cfg: dict[str, Any]) -> list[Offer]:
     out_terms = cfg["out_of_stock_terms"]
     min_price = float(cfg["min_plausible_price_eur"])
     max_results = int(cfg.get("max_results_per_model", 15))
+    search_backends = [str(value) for value in cfg.get("search_backends", ["bing", "yahoo"])]
 
     # Use the first alias as the main search phrase; size and Portugal terms improve relevance.
     size_query = " ".join(sizes[:4])
@@ -494,18 +592,22 @@ def search_model(model_cfg: dict[str, Any], cfg: dict[str, Any]) -> list[Offer]:
     print(f"[search] {q}")
 
     offers: list[Offer] = []
-    try:
-        results = list(
-            DDGS().text(
-                q,
-                region="pt-pt",
-                safesearch="off",
-                max_results=max_results,
-            )
+    results = search_web(q, max_results, search_backends, warn=False)
+    has_allowed_result = any(
+        domain_allowed(
+            normalize_domain(result.get("href") or result.get("url") or ""),
+            allowed,
         )
-    except Exception as exc:
-        print(f"[warn] search failed for {model_name}: {exc}", file=sys.stderr)
-        return offers
+        for result in results
+    )
+    if not has_allowed_result:
+        # A broad query can fill the result limit with reviews/manufacturer
+        # pages. Restricting the retry to approved shops improves recall while
+        # keeping the same domain safety check below.
+        sites = " OR ".join(f"site:{domain}" for domain in allowed)
+        fallback_q = f"{aliases[0]} ({sites})"
+        print(f"[search] allowlisted-store fallback for {model_name}")
+        results = search_web(fallback_q, max_results, search_backends)
 
     for result in results or []:
         url = canonicalize_url(result.get("href") or result.get("url") or "")
