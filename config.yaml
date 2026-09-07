@@ -1,0 +1,88 @@
+recipient: "josesampaio2@gmail.com"
+max_price_eur: 1800
+min_plausible_price_eur: 900
+max_results_per_model: 15
+max_alerts_per_run: 10
+
+# Modelos endurance / all-round que queres vigiar.
+# Os tamanhos são equivalentes aproximados a L para ~1,91 m.
+models:
+  - name: "Orbea Orca M30"
+    aliases:
+      - "Orbea Orca M30"
+    sizes: ["57"]
+
+  - name: "CUBE Attain C:62"
+    aliases:
+      - "Cube Attain C:62"
+      - "CUBE Attain C:62"
+    sizes: ["60"]
+
+  - name: "Giant Defy Advanced"
+    aliases:
+      - "Giant Defy Advanced"
+    sizes: ["L", "XL"]
+
+  - name: "Merida Scultura Endurance"
+    aliases:
+      - "Merida Scultura Endurance 4000"
+      - "Merida Scultura Endurance"
+    sizes: ["L", "XL", "58", "59"]
+
+  - name: "Trek Domane"
+    aliases:
+      - "Trek Domane SL"
+      - "Trek Domane"
+    sizes: ["58", "60"]
+
+  - name: "Cannondale Synapse Carbon"
+    aliases:
+      - "Cannondale Synapse Carbon"
+    sizes: ["58", "61"]
+
+  - name: "Scott Addict"
+    aliases:
+      - "Scott Addict"
+    sizes: ["58", "XL"]
+
+  - name: "Canyon Endurace CF"
+    aliases:
+      - "Canyon Endurace CF"
+    sizes: ["L", "XL"]
+
+# Lojas portuguesas + lojas europeias conhecidas por vender para Portugal.
+# Podes acrescentar/remover domínios sem alterar o código.
+allowed_domains:
+  # Portugal
+  - "afacycles.pt"
+  - "bikezone.pt"
+  - "lisbonbike.pt"
+  - "sobikes.pt"
+  - "ibkbike.pt"
+
+  # Espanha / UE com mercado ou envio para Portugal
+  - "biciescapa.com"
+  - "sanferbike.com"
+  - "deporvillage.pt"
+  - "deporvillage.net"
+  - "alltricks.pt"
+  - "ibkbike.com"
+  - "bike-discount.de"
+  - "bike24.com"
+  - "lordgun.com"
+  - "mantel.com"
+  - "canyon.com"
+
+# Termos usados para rejeitar uma variante de tamanho quando o texto próximo
+# indica explicitamente que está esgotada.
+out_of_stock_terms:
+  - "out of stock"
+  - "sold out"
+  - "sem stock"
+  - "esgotado"
+  - "esgotada"
+  - "indisponível"
+  - "indisponivel"
+  - "sin stock"
+  - "agotado"
+  - "agotada"

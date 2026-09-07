@@ -1,0 +1,53 @@
+name: Bike price alert
+
+on:
+  workflow_dispatch:
+  schedule:
+    # De 3 em 3 horas, aos 17 minutos para evitar o pico do minuto 00.
+    - cron: "17 */3 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: bike-price-alert
+  cancel-in-progress: false
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run monitor
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          # Para enviar para o mesmo email usado na conta Resend,
+          # onboarding@resend.dev é suficiente.
+          RESEND_FROM: "Bike Alert <onboarding@resend.dev>"
+        run: python monitor.py
+
+      - name: Persist alert state
+        if: always()
+        run: |
+          if git diff --quiet -- data/seen_offers.json; then
+            echo "No state change"
+            exit 0
+          fi
+          git config user.name "bike-alert-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/seen_offers.json
+          git commit -m "chore: update bike alert state"
+          git push
