@@ -1,35 +1,5 @@
 {
   "offers": {
-    "061afe416035069b26126e57": {
-      "availability": "in_stock",
-      "domain": "olx.pt",
-      "last_alerted": null,
-      "model": "Scott Addict",
-      "price": 2099.0,
-      "seller_type": "private",
-      "size": "S",
-      "source": "structured_data",
-      "target_size_match": false,
-      "title": "Scott Addict RC 40 2023 S Ajuda • OLX.pt - OLX Portugal",
-      "updated_at": "2026-09-08T06:55:37.234222+00:00",
-      "url": "https://www.olx.pt/d/anuncio/scott-addict-rc-40-2023-s-IDJwWSb.html",
-      "year": 2023
-    },
-    "08c78bf24a41c72fa3aad9cf": {
-      "availability": "in_stock",
-      "domain": "olx.pt",
-      "last_alerted": null,
-      "model": "Scott Addict",
-      "price": 2099.0,
-      "seller_type": "private",
-      "size": "52",
-      "source": "structured_data",
-      "target_size_match": false,
-      "title": "Scott Addict RC 40 2023 S Ajuda • OLX.pt - OLX Portugal",
-      "updated_at": "2026-09-08T06:55:37.234213+00:00",
-      "url": "https://www.olx.pt/d/anuncio/scott-addict-rc-40-2023-s-IDJwWSb.html",
-      "year": 2023
-    },
     "098b72fd5a5785999420ca24": {
       "availability": "out_of_stock",
       "domain": "alltricks.pt",
@@ -44,6 +14,21 @@
       "updated_at": "2026-09-08T06:55:37.234185+00:00",
       "url": "https://www.alltricks.pt/F-41505-velos-route-_-cyclocross-_-triathlon/P-3041385-cube_attain_c_62_race_road_bike_shimano_105_12s_700_mm_blackline_black_2025",
       "year": 2025
+    },
+    "098c8a28f215674e2c0aac0f": {
+      "availability": "out_of_stock",
+      "domain": "deporvillage.com",
+      "last_alerted": null,
+      "model": "Orbea Orca M30",
+      "price": 2309.0,
+      "seller_type": "store",
+      "size": "57",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Bicicleta Carretera Orbea Orca M30 - Shimano 105 | Deporvillage",
+      "updated_at": "2026-09-08T18:57:23.436367+00:00",
+      "url": "https://www.deporvillage.com/bicicleta-carretera-orbea-orca-m30-negro-gris",
+      "year": 2026
     },
     "0ac7d154f113cff87460d2e6": {
       "availability": "out_of_stock",
@@ -70,8 +55,8 @@
       "size": "60",
       "source": "structured_data",
       "target_size_match": true,
-      "title": "Cube Attain C:62 SLX Road Bike Shimano 105 Di2 12S 700 ...",
-      "updated_at": "2026-09-08T06:55:37.234254+00:00",
+      "title": "Cube Attain C:62 SLX Road Bike Shimano 105 Di2 12S 700 mm ...",
+      "updated_at": "2026-09-08T18:57:23.436421+00:00",
       "url": "https://www.alltricks.pt/F-41505-velos-route-_-cyclocross-_-triathlon/P-3146777-cube_attain_c_62_slx_road_bike_shimano_105_di2_12s_700_mm_sleek_grey_2026",
       "year": 2026
     },
@@ -90,21 +75,6 @@
       "url": "https://ibkbike.pt/products/bikes-road-synapse-carbon-4-cannondale-2025-chalk",
       "year": 2025
     },
-    "13d2e5565ab7200af40ace63": {
-      "availability": "in_stock",
-      "domain": "olx.pt",
-      "last_alerted": null,
-      "model": "Giant Defy Advanced",
-      "price": 1500.0,
-      "seller_type": "private",
-      "size": "M",
-      "source": "structured_data",
-      "target_size_match": false,
-      "title": "GIANT Advanced Defy 3 Carbono 2025 (BEM NEGOCIAVEL) Sintra ...",
-      "updated_at": "2026-09-08T06:48:12.336286+00:00",
-      "url": "https://www.olx.pt/d/anuncio/giant-advanced-defy-3-carbono-2025-bem-negociavel-IDJoCfN.html",
-      "year": 2025
-    },
     "1e1bb1406dacb7384ec90c47": {
       "availability": "unknown",
       "domain": "biciescapa.com",
@@ -115,8 +85,8 @@
       "size": "60",
       "source": "structured_data",
       "target_size_match": true,
-      "title": "Acheter Cube Attain C:62 SLT 2026 | Route",
-      "updated_at": "2026-09-08T06:48:12.336523+00:00",
+      "title": "Acheter Cube Attain C:62 SLT 2026 | Route - biciescapa.com",
+      "updated_at": "2026-09-08T18:57:23.436455+00:00",
       "url": "https://www.biciescapa.com/fr/velos/route/cube-attain-c-62-slt-2026-90196",
       "year": 2026
     },
@@ -163,6 +133,21 @@
       "title": "Comprar Bicicleta Orbea Orca M30 2026 | Carretera",
       "updated_at": "2026-09-08T06:55:37.234195+00:00",
       "url": "https://www.biciescapa.com/es/bicicletas/carretera/bicicleta-orbea-orca-m30-26-89051",
+      "year": 2026
+    },
+    "2deb3c9524795702b8d39ce0": {
+      "availability": "out_of_stock",
+      "domain": "sanferbike.com",
+      "last_alerted": null,
+      "model": "Giant Defy Advanced",
+      "price": 2799.3,
+      "seller_type": "store",
+      "size": "XL",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Bicicleta GIANT Defy Advanced 0 2026 - sanferbike.com",
+      "updated_at": "2026-09-08T18:57:23.436437+00:00",
+      "url": "https://www.sanferbike.com/pt/bicicletas-de-estrada/bicicletas-endurance/124750-bicicleta-giant-defy-advanced-0-2026.html",
       "year": 2026
     },
     "2ef20ba05ddabb296e5610cb": {
@@ -250,6 +235,51 @@
       "url": "https://www.biciescapa.com/fr/velos/route/cube-attain-c-62-race-2027-93156",
       "year": 2027
     },
+    "6a21de8ff1b810268ec51566": {
+      "availability": "out_of_stock",
+      "domain": "sanferbike.com",
+      "last_alerted": null,
+      "model": "Giant Defy Advanced",
+      "price": 2799.3,
+      "seller_type": "store",
+      "size": "L",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Bicicleta GIANT Defy Advanced 0 2026 - sanferbike.com",
+      "updated_at": "2026-09-08T18:57:23.436432+00:00",
+      "url": "https://www.sanferbike.com/pt/bicicletas-de-estrada/bicicletas-endurance/124750-bicicleta-giant-defy-advanced-0-2026.html",
+      "year": 2026
+    },
+    "6ac99bff0a736b0df26a6528": {
+      "availability": "in_stock",
+      "domain": "bike-discount.de",
+      "last_alerted": null,
+      "model": "CUBE Attain C:62",
+      "price": 2999.0,
+      "seller_type": "store",
+      "size": "60",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Cube Attain C:62 SLT carbon'n'blue Road Bike Carbon | Bike ...",
+      "updated_at": "2026-09-08T18:57:23.436449+00:00",
+      "url": "https://www.bike-discount.de/en/cube-attain-c-62-slt-carbon-n-blue",
+      "year": 2027
+    },
+    "6bb9c0f889dc49282e013153": {
+      "availability": "out_of_stock",
+      "domain": "biciescapa.com",
+      "last_alerted": null,
+      "model": "CUBE Attain C:62",
+      "price": 1699.0,
+      "seller_type": "store",
+      "size": "60",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Comprar Bicicleta Cube Attain C:62 Race 2027 | Carretera",
+      "updated_at": "2026-09-08T18:57:23.436276+00:00",
+      "url": "https://www.biciescapa.com/es/bicicletas/carretera/bicicleta-cube-cube-attain-c-62-race-2027-93156",
+      "year": 2027
+    },
     "6c7b7b9709b2657d9bdefa50": {
       "availability": "out_of_stock",
       "domain": "alltricks.pt",
@@ -260,10 +290,70 @@
       "size": "60",
       "source": "structured_data",
       "target_size_match": true,
-      "title": "Cube Attain C:62 Race Road Bike Shimano 105 12S 700 mm ...",
-      "updated_at": "2026-09-08T06:55:37.234162+00:00",
+      "title": "Cube Attain C:62 Race Road Bike Shimano 105 12S 700 mm Sky Light Blue ...",
+      "updated_at": "2026-09-08T19:01:45.255126+00:00",
       "url": "https://www.alltricks.pt/F-41505-velos-route-_-cyclocross-_-triathlon/P-3146776-cube_attain_c_62_race_road_bike_shimano_105_12s_700_mm_sky_light_blue_2026",
       "year": 2026
+    },
+    "6fc01f4bd4c72b0c207fefa3": {
+      "availability": "out_of_stock",
+      "domain": "biciescapa.com",
+      "last_alerted": null,
+      "model": "CUBE Attain C:62",
+      "price": 1749.0,
+      "seller_type": "store",
+      "size": "60",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Comprar Bicicleta Cube Attain C:62 Race 2026 | Carretera",
+      "updated_at": "2026-09-08T18:57:23.436351+00:00",
+      "url": "https://www.biciescapa.com/es/bicicletas/carretera/bicicleta-cube-attain-c-62-race-2026-90194",
+      "year": 2026
+    },
+    "7153b67ae79b134903eec436": {
+      "availability": "out_of_stock",
+      "domain": "deporvillage.pt",
+      "last_alerted": null,
+      "model": "Orbea Orca M30",
+      "price": 2599.0,
+      "seller_type": "store",
+      "size": "57",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Bicicleta de Estrada Orbea Orca M30 | Deporvillage",
+      "updated_at": "2026-09-08T18:57:23.436427+00:00",
+      "url": "https://www.deporvillage.pt/bicicleta-estrada-orbea-orca-m30-branco",
+      "year": 2024
+    },
+    "83c0189dd60feb7ec50671a4": {
+      "availability": "out_of_stock",
+      "domain": "biciescapa.com",
+      "last_alerted": null,
+      "model": "CUBE Attain C:62",
+      "price": 2549.0,
+      "seller_type": "store",
+      "size": "60",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Comprar Bicicleta Cube Attain C:62 SLX 2026 | Carretera",
+      "updated_at": "2026-09-08T18:57:23.436404+00:00",
+      "url": "https://www.biciescapa.com/es/bicicletas/carretera/bicicleta-cube-attain-c-62-slx-2026-90195",
+      "year": 2026
+    },
+    "84993cca1eb3961d986f12b4": {
+      "availability": "in_stock",
+      "domain": "sanferbike.com",
+      "last_alerted": null,
+      "model": "CUBE Attain C:62",
+      "price": 2499.0,
+      "seller_type": "store",
+      "size": "60",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "CUBE Attain C:62 SLX 2027 Bicycle - sanferbike.com",
+      "updated_at": "2026-09-08T18:57:23.436373+00:00",
+      "url": "https://www.sanferbike.com/en/road-bikes/endurance-bikes/128932-cube-attain-c62-slx-2027-bicycle.html",
+      "year": 2027
     },
     "8f56ae13a7d46e156283ea7d": {
       "availability": "unknown",
@@ -277,21 +367,6 @@
       "updated_at": "2026-09-07T12:10:38.636585+00:00",
       "url": "https://bikezone.pt/-endurance/20076-GIANT-DEFY-ADVANCED-2.html"
     },
-    "954a2180778d0270440d43ae": {
-      "availability": "in_stock",
-      "domain": "olx.pt",
-      "last_alerted": null,
-      "model": "Trek Domane",
-      "price": 5400.0,
-      "seller_type": "private",
-      "size": "52",
-      "source": "structured_data",
-      "target_size_match": false,
-      "title": "Vendo Bicicleta TREK DOMANE+SLR7 Paredes • OLX.pt",
-      "updated_at": "2026-09-08T06:48:12.336552+00:00",
-      "url": "https://www.olx.pt/d/anuncio/vendo-bicicleta-trek-domane-slr7-IDJy5i5.html",
-      "year": 2024
-    },
     "96656f95506d97b20e0fcdbf": {
       "availability": "out_of_stock",
       "domain": "biciescapa.com",
@@ -302,8 +377,8 @@
       "size": "60",
       "source": "structured_data",
       "target_size_match": true,
-      "title": "Acheter Cube Attain C:62 Race 2026 | Route",
-      "updated_at": "2026-09-08T06:48:12.336413+00:00",
+      "title": "Acheter Cube Attain C:62 Race 2026 | Route - biciescapa.com",
+      "updated_at": "2026-09-08T18:57:23.436342+00:00",
       "url": "https://www.biciescapa.com/fr/velos/route/cube-attain-c-62-race-2026-90194",
       "year": 2026
     },
@@ -367,6 +442,21 @@
       "url": "https://www.biciescapa.com/fr/velos/route/cube-attain-c-62-slx-2027-93157",
       "year": 2027
     },
+    "a50ee132ee4bb82c0a818e75": {
+      "availability": "unknown",
+      "domain": "deporvillage.pt",
+      "last_alerted": null,
+      "model": "Merida Scultura Endurance",
+      "price": 2499.0,
+      "seller_type": "store",
+      "size": "L",
+      "source": "page_text",
+      "target_size_match": true,
+      "title": "Bicicleta de estrada Merida Scultura Endurance 4000 2024 ...Bicicleta de estrada Merida Scultura Endurance 4000 ...Bicicleta de estrada Merida Scultura Endurance 4000 à vendaComprar 2025 Merida Scultura Endurance 4000 - Bicicleta de ...Bicicleta Merida Scultura Endurance 4000 2027 - benebike.pt",
+      "updated_at": "2026-09-08T18:57:23.436378+00:00",
+      "url": "https://www.deporvillage.pt/bicicleta-de-estrada-merida-scultura-4000-2024-cinzento",
+      "year": 2024
+    },
     "ac140bbbd308a0e5b5940185": {
       "availability": "out_of_stock",
       "domain": "biciescapa.com",
@@ -413,6 +503,36 @@
       "url": "https://www.bike-discount.de/en/cube-attain-c-62-race-frostymint-n-mint",
       "year": 2027
     },
+    "b57e98c8391c8429ca18aaf9": {
+      "availability": "unknown",
+      "domain": "deporvillage.pt",
+      "last_alerted": null,
+      "model": "Merida Scultura Endurance",
+      "price": 2499.0,
+      "seller_type": "store",
+      "size": "XL",
+      "source": "page_text",
+      "target_size_match": true,
+      "title": "Bicicleta de estrada Merida Scultura Endurance 4000 2024 ...Bicicleta de estrada Merida Scultura Endurance 4000 ...Bicicleta de estrada Merida Scultura Endurance 4000 à vendaComprar 2025 Merida Scultura Endurance 4000 - Bicicleta de ...Bicicleta Merida Scultura Endurance 4000 2027 - benebike.pt",
+      "updated_at": "2026-09-08T18:57:23.436392+00:00",
+      "url": "https://www.deporvillage.pt/bicicleta-de-estrada-merida-scultura-4000-2024-cinzento",
+      "year": 2024
+    },
+    "ba70ed6ec1855daa7b57949e": {
+      "availability": "out_of_stock",
+      "domain": "alltricks.pt",
+      "last_alerted": null,
+      "model": "CUBE Attain C:62",
+      "price": 3199.0,
+      "seller_type": "store",
+      "size": "60",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Cube Attain C:62 SLT Road Bike Shimano Ultegra Di2 12S 700 mm ...",
+      "updated_at": "2026-09-08T18:57:23.436466+00:00",
+      "url": "https://www.alltricks.pt/F-41505-velos-route-_-cyclocross-_-triathlon/P-3147157-cube_attain_c_62_slt_road_bike_shimano_ultegra_di2_12s_700_mm_carbon_grey_black_2026",
+      "year": 2026
+    },
     "bb11117d925f885b01b094b0": {
       "availability": "in_stock",
       "domain": "bike-discount.de",
@@ -442,21 +562,6 @@
       "updated_at": "2026-09-08T06:48:12.336539+00:00",
       "url": "https://ibkbike.pt/products/bikes-road-synapse-carbon-2-cannondale-2025-grey",
       "year": 2025
-    },
-    "c302bd2d13439e559b026e9d": {
-      "availability": "in_stock",
-      "domain": "olx.pt",
-      "last_alerted": null,
-      "model": "Trek Domane",
-      "price": 3600.0,
-      "seller_type": "private",
-      "size": "L",
-      "source": "structured_data",
-      "target_size_match": false,
-      "title": "Trek Domane SL7 T:54 Assafarge E Antanhol • OLX.pt",
-      "updated_at": "2026-09-08T06:48:12.336531+00:00",
-      "url": "https://www.olx.pt/d/anuncio/trek-domane-sl7-t54-IDIHprQ.html",
-      "year": 2024
     },
     "c49e51360b72ed518effbdda": {
       "availability": "in_stock",
@@ -488,21 +593,6 @@
       "url": "https://www.deporvillage.com/bicicleta-carretera-merida-scultura-endurance-4000-2024-verde",
       "year": 2024
     },
-    "d0007197bee506b0a7115304": {
-      "availability": "in_stock",
-      "domain": "olx.pt",
-      "last_alerted": null,
-      "model": "Trek Domane",
-      "price": 5400.0,
-      "seller_type": "private",
-      "size": "S",
-      "source": "structured_data",
-      "target_size_match": false,
-      "title": "Vendo Bicicleta TREK DOMANE+SLR7 Paredes • OLX.pt",
-      "updated_at": "2026-09-08T06:48:12.336559+00:00",
-      "url": "https://www.olx.pt/d/anuncio/vendo-bicicleta-trek-domane-slr7-IDJy5i5.html",
-      "year": 2024
-    },
     "d0c29de9b5deab0b3ae2d1fc": {
       "availability": "out_of_stock",
       "domain": "deporvillage.com",
@@ -517,6 +607,21 @@
       "updated_at": "2026-09-08T06:55:37.234237+00:00",
       "url": "https://www.deporvillage.com/bicicleta-carretera-merida-scultura-endurance-4000-2024-verde",
       "year": 2024
+    },
+    "dac528d8557d4f8d19cc2118": {
+      "availability": "out_of_stock",
+      "domain": "biciescapa.com",
+      "last_alerted": null,
+      "model": "CUBE Attain C:62",
+      "price": 3099.0,
+      "seller_type": "store",
+      "size": "60",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Comprar Bicicleta Cube Attain C:62 SLT 2026 | Carretera",
+      "updated_at": "2026-09-08T18:57:23.436461+00:00",
+      "url": "https://www.biciescapa.com/es/bicicletas/carretera/bicicleta-cube-attain-c-62-slt-2026-90196",
+      "year": 2026
     },
     "dfe09459c188627881e0762d": {
       "availability": "out_of_stock",
@@ -533,6 +638,21 @@
       "url": "https://www.alltricks.pt/F-41505-velos-route-_-cyclocross-_-triathlon/P-3146773-cube_attain_c_62_race_road_bike_shimano_105_12s_700_mm_blackline_black_2026",
       "year": 2026
     },
+    "e3ff8fec29a500b5400adb02": {
+      "availability": "out_of_stock",
+      "domain": "biciescapa.com",
+      "last_alerted": null,
+      "model": "CUBE Attain C:62",
+      "price": 2599.0,
+      "seller_type": "store",
+      "size": "60",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Comprar Bicicleta Cube Attain C:62 SLX 2027 | Carretera",
+      "updated_at": "2026-09-08T18:57:23.436409+00:00",
+      "url": "https://www.biciescapa.com/es/bicicletas/carretera/bicicleta-cube-cube-attain-c-62-slx-2027-93157",
+      "year": 2027
+    },
     "e780003ff2f2b7389357a0d3": {
       "availability": "out_of_stock",
       "domain": "alltricks.pt",
@@ -543,8 +663,8 @@
       "size": "60",
       "source": "structured_data",
       "target_size_match": true,
-      "title": "Cube Attain C:62 SLT Road Bike Shimano Ultegra Di2 12S 700 ...",
-      "updated_at": "2026-09-08T06:55:37.234297+00:00",
+      "title": "Cube Attain C:62 SLT Road Bike Shimano Ultegra Di2 12S 700 mm ...",
+      "updated_at": "2026-09-08T18:57:23.436471+00:00",
       "url": "https://www.alltricks.pt/F-41505-velos-route-_-cyclocross-_-triathlon/P-3147172-cube_attain_c_62_slt_road_bike_shimano_ultegra_di2_12s_700_mm_shift_mint_blue_2026",
       "year": 2026
     },
@@ -562,21 +682,6 @@
       "updated_at": "2026-09-08T06:48:12.336496+00:00",
       "url": "https://www.bike-discount.de/en/cube-attain-c-62-slt-shiftmint-n-white",
       "year": 2026
-    },
-    "ee8c2a3d08b3af46058fe07a": {
-      "availability": "in_stock",
-      "domain": "olx.pt",
-      "last_alerted": null,
-      "model": "Orbea Orca M30",
-      "price": 1950.0,
-      "seller_type": "private",
-      "size": "M",
-      "source": "structured_data",
-      "target_size_match": false,
-      "title": "Orbea Orca M30 2023 Seixal, Arrentela E Aldeia De Paio Pires ...",
-      "updated_at": "2026-09-08T06:48:12.336423+00:00",
-      "url": "https://www.olx.pt/d/anuncio/orbea-orca-m30-2023-IDJi7h0.html",
-      "year": 2023
     },
     "f28aa07e7ed9e0bbd340ec63": {
       "availability": "out_of_stock",

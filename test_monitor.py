@@ -13,8 +13,10 @@ from monitor import (
     extract_model_year,
     is_qualifying_offer,
     load_local_env,
+    olx_advert_offers,
     page_availability,
     parse_price_number,
+    prune_non_target_marketplace_state,
     product_identity_text,
     should_alert,
     send_no_match_email,
@@ -237,6 +239,7 @@ def test_no_match_email_contains_grouped_prices(monkeypatch):
     assert "2.200,00 €" in payload["html"]
     assert "Ano: 2025" in payload["html"]
     assert "Lojas e vendedores profissionais" in payload["html"]
+    assert "Nenhum anúncio ativo" in payload["html"]
 
 
 def test_model_year_prefers_product_identity_and_ignores_publication_date():
@@ -269,7 +272,7 @@ def test_marketplace_sellers_are_split_between_private_and_professional():
     assert classify_seller("bikezone.pt", "", ["olx.pt"]) == "store"
 
 
-def test_summary_separates_private_sellers():
+def test_summary_excludes_non_target_private_sellers():
     store_offer = make_offer(2200)
     private_offer = make_offer(1600)
     private_offer.domain = "olx.pt"
@@ -279,15 +282,79 @@ def test_summary_separates_private_sellers():
 
     rows = summary_rows([private_offer, store_offer])
 
-    assert [row["seller_type"] for row in rows] == ["store", "private"]
-    assert rows[1]["target_size_match"] is False
+    assert [row["seller_type"] for row in rows] == ["store"]
 
 
-def test_non_target_marketplace_offer_is_reported_but_never_qualifies():
+def test_non_target_marketplace_offer_is_not_reported_or_qualified():
     offer = make_offer(1500)
     offer.domain = "olx.pt"
     offer.seller_type = "private"
     offer.target_size_match = False
 
-    assert summary_rows([offer])[0]["price"] == 1500
+    assert summary_rows([offer]) == []
     assert not is_qualifying_offer(offer, 1800)
+
+
+def make_olx_advert(size="L", year=2025, business=False):
+    return {
+        "id": 123,
+        "status": "active",
+        "url": "https://www.olx.pt/d/anuncio/giant-defy-ID123.html",
+        "title": f"Giant Defy Advanced 2 {year}",
+        "description": f"Bicicleta tamanho {size}, como nova",
+        "business": business,
+        "params": [
+            {
+                "key": "price",
+                "value": {"value": 1599, "currency": "EUR"},
+            },
+            {"key": "size", "value": {"key": size.lower(), "label": size}},
+        ],
+    }
+
+
+def test_olx_api_advert_is_converted_when_all_rules_match():
+    offers = olx_advert_offers(
+        make_olx_advert(),
+        "Giant Defy Advanced",
+        ["Giant Defy Advanced"],
+        ["L", "XL"],
+        2023,
+        300,
+    )
+
+    assert len(offers) == 1
+    assert offers[0].size == "L"
+    assert offers[0].year == 2025
+    assert offers[0].price == 1599
+    assert offers[0].source == "olx_api"
+    assert offers[0].seller_type == "private"
+
+
+def test_olx_api_advert_is_rejected_for_wrong_size_or_old_year():
+    common = (
+        "Giant Defy Advanced",
+        ["Giant Defy Advanced"],
+        ["L", "XL"],
+        2023,
+        300,
+    )
+    assert olx_advert_offers(make_olx_advert(size="M"), *common) == []
+    assert olx_advert_offers(make_olx_advert(year=2022), *common) == []
+
+
+def test_compact_olx_frame_size_notation_is_supported():
+    assert extract_listed_sizes("T:58 Quadro(60)") == ["58", "60"]
+
+
+def test_old_non_target_olx_state_is_removed():
+    state = {
+        "offers": {
+            "wrong": {"domain": "olx.pt", "target_size_match": False},
+            "right": {"domain": "olx.pt", "target_size_match": True},
+            "shop": {"domain": "shop.pt", "target_size_match": False},
+        }
+    }
+
+    assert prune_non_target_marketplace_state(state, ["olx.pt"]) == 1
+    assert set(state["offers"]) == {"right", "shop"}

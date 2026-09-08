@@ -28,10 +28,11 @@ Também pesquisa anúncios individuais do `olx.pt`. Nos emails, os resultados fi
 separados entre **lojas/vendedores profissionais** e **vendedores particulares**.
 Páginas gerais de pesquisa do OLX não são tratadas como anúncios.
 
-O resumo inclui anúncios OLX de 2023 ou mais recentes mesmo quando o tamanho não
-é o pretendido. Esses anúncios aparecem marcados como **Fora do tamanho
-pretendido** e nunca geram um alerta de compra. Como anúncios usados podem ter
-preços inferiores aos das lojas, o limite mínimo de leitura do OLX é 300 €.
+O OLX é consultado diretamente e com pesquisas adicionais para cada tamanho,
+evitando depender apenas de links antigos dos motores de busca. Só aparecem
+anúncios OLX cujo modelo, ano (2023 ou mais recente) e tamanho correspondem às
+regras. Como anúncios usados podem ter preços inferiores aos das lojas, o limite
+mínimo de leitura do OLX é 300 €.
 
 ## Como funciona
 

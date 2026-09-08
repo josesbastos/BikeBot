@@ -127,6 +127,22 @@ def load_state() -> dict[str, Any]:
         return {"offers": {}}
 
 
+def prune_non_target_marketplace_state(
+    state: dict[str, Any], marketplace_domains: list[str]
+) -> int:
+    """Remove incompatible marketplace rows saved by older bot versions."""
+    offers = state.setdefault("offers", {})
+    stale_keys = [
+        key
+        for key, offer in offers.items()
+        if domain_allowed(str(offer.get("domain") or ""), marketplace_domains)
+        and offer.get("target_size_match") is False
+    ]
+    for key in stale_keys:
+        del offers[key]
+    return len(stale_keys)
+
+
 def save_state(state: dict[str, Any]) -> None:
     STATE_PATH.parent.mkdir(parents=True, exist_ok=True)
     STATE_PATH.write_text(
@@ -395,6 +411,60 @@ def search_web(
     return []
 
 
+def search_olx_api(query: str, max_results: int) -> list[dict[str, Any]]:
+    """Return current OLX adverts directly instead of stale search-engine links."""
+    if max_results <= 0:
+        return []
+
+    errors: list[str] = []
+    page_size = min(40, max_results)
+    for profile in ("chrome_146", "random"):
+        try:
+            client = primp.Client(
+                impersonate=profile,
+                impersonate_os="windows",
+                timeout=20,
+                follow_redirects=True,
+            )
+            adverts: dict[str, dict[str, Any]] = {}
+            offset = 0
+            while len(adverts) < max_results:
+                params = urlencode(
+                    {"offset": offset, "limit": page_size, "query": query}
+                )
+                response = client.get(f"https://www.olx.pt/api/v1/offers/?{params}")
+                if response.status_code >= 400:
+                    raise PageFetchError(
+                        f"HTTP {response.status_code}", response.status_code
+                    )
+                payload = json.loads(response.text)
+                batch = payload.get("data") or []
+                if not isinstance(batch, list) or not batch:
+                    break
+                for advert in batch:
+                    if not isinstance(advert, dict):
+                        continue
+                    advert_id = str(advert.get("id") or advert.get("url") or "")
+                    if advert_id:
+                        adverts.setdefault(advert_id, advert)
+                    if len(adverts) >= max_results:
+                        break
+                offset += page_size
+                total = int(payload.get("metadata", {}).get("total_elements") or 0)
+                if len(batch) < page_size or (total and offset >= total):
+                    break
+            print(f"[search] OLX API returned {len(adverts)} adverts for {query}")
+            return list(adverts.values())
+        except Exception as exc:
+            errors.append(f"{profile}: {exc}")
+
+    print(
+        f"[warn] OLX API failed for {query}: {'; '.join(errors)}",
+        file=sys.stderr,
+    )
+    return []
+
+
 def visible_text(soup: BeautifulSoup | None) -> str:
     if soup is None:
         return ""
@@ -409,7 +479,12 @@ def visible_text(soup: BeautifulSoup | None) -> str:
 
 def alias_present(text: str, aliases: list[str]) -> bool:
     low = text.lower()
-    return any(alias.lower() in low for alias in aliases)
+    compact = re.sub(r"[^a-z0-9]", "", low)
+    return any(
+        alias.lower() in low
+        or re.sub(r"[^a-z0-9]", "", alias.lower()) in compact
+        for alias in aliases
+    )
 
 
 def extract_model_year(
@@ -529,7 +604,7 @@ def extract_listed_sizes(text: str) -> list[str]:
     flat = re.sub(r"\s+", " ", html.unescape(text))
     size_value = r"(?:XXL|XL|XS|L|M|S|(?:4[6-9]|5\d|6[0-4]))"
     pattern = re.compile(
-        r"(?:tamanho(?!\s+de\s+roda)(?:\s+do\s+quadro)?|tam\.?|"
+        r"(?:tamanho(?!\s+de\s+roda)(?:\s+do\s+quadro)?|tam\.?|t\.?|"
         r"frame\s+size|size)\s*[:\-]?\s*"
         rf"({size_value}(?:\s*/\s*{size_value})?)\b",
         re.I,
@@ -540,7 +615,91 @@ def extract_listed_sizes(text: str) -> list[str]:
             size = raw_size.strip().upper()
             if size not in sizes:
                 sizes.append(size)
+
+    # OLX descriptions often use compact forms such as "Quadro(58)".
+    for match in re.finditer(
+        rf"(?:quadro|frame)\s*[(:\-]\s*({size_value})\b", flat, re.I
+    ):
+        size = match.group(1).upper()
+        if size not in sizes:
+            sizes.append(size)
     return sizes
+
+
+def olx_param(advert: dict[str, Any], key: str) -> Any:
+    for param in advert.get("params") or []:
+        if isinstance(param, dict) and param.get("key") == key:
+            return param.get("value")
+    return None
+
+
+def olx_advert_offers(
+    advert: dict[str, Any],
+    model_name: str,
+    aliases: list[str],
+    target_sizes: list[str],
+    min_year: int,
+    min_price: float,
+) -> list[Offer]:
+    """Validate and convert one active OLX API advert into matching offers."""
+    if advert.get("status") not in {None, "active"}:
+        return []
+
+    title = str(advert.get("title") or "").strip()
+    raw_description = str(advert.get("description") or "")
+    description = (
+        BeautifulSoup(raw_description, "html.parser").get_text(" ", strip=True)
+        if "<" in raw_description
+        else html.unescape(raw_description)
+    )
+    identity_text = f"{title} {description}"
+    if not alias_present(identity_text, aliases):
+        return []
+
+    year = extract_model_year(title, description)
+    if year is None or year < min_year:
+        return []
+
+    listed_sizes = extract_listed_sizes(identity_text)
+    size_param = olx_param(advert, "size")
+    if isinstance(size_param, dict):
+        label = str(size_param.get("label") or "").strip().upper()
+        if label and label not in listed_sizes:
+            listed_sizes.append(label)
+    normalized_targets = {str(size).strip().upper() for size in target_sizes}
+    matched_sizes = [size for size in listed_sizes if size in normalized_targets]
+    if not matched_sizes:
+        return []
+
+    price_param = olx_param(advert, "price")
+    raw_price = price_param.get("value") if isinstance(price_param, dict) else None
+    try:
+        price = float(raw_price)
+    except (TypeError, ValueError):
+        return []
+    if price < min_price:
+        return []
+
+    url = canonicalize_url(str(advert.get("url") or ""))
+    if not url.startswith(("http://", "https://")):
+        return []
+    seller_type = "professional" if bool(advert.get("business")) else "private"
+    return [
+        Offer(
+            model=model_name,
+            size=size,
+            year=year,
+            price=price,
+            title=title or model_name,
+            url=url,
+            domain="olx.pt",
+            availability="in_stock",
+            seller_type=seller_type,
+            target_size_match=True,
+            source="olx_api",
+        )
+        for size in matched_sizes
+    ]
 
 
 def target_size_matches(text: str, sizes: list[str], out_terms: list[str]) -> list[str]:
@@ -739,26 +898,56 @@ def search_model(model_cfg: dict[str, Any], cfg: dict[str, Any]) -> list[Offer]:
                 )
             )
 
-    # Marketplaces need a dedicated query; otherwise retailer and review pages
-    # tend to fill the result limit before individual adverts appear.
+    # Read OLX's live advert feed first. Search engines remain a fallback for
+    # marketplaces without a supported feed or if the direct request is blocked.
     for marketplace_domain in marketplace_domains:
-        current_year = datetime.now(timezone.utc).year
-        years = " OR ".join(
-            str(year) for year in range(min_year, current_year + 3)
-        )
-        alias_filter = " OR ".join(f'"{alias}"' for alias in aliases)
-        marketplace_q = (
-            f"site:{marketplace_domain}/d/anuncio ({alias_filter}) ({years})"
-        )
-        print(f"[search] marketplace {marketplace_domain} for {model_name}")
-        results.extend(
-            search_web(
-                marketplace_q,
-                max_marketplace_results,
-                search_backends,
-                warn=False,
+        api_adverts: dict[str, dict[str, Any]] = {}
+        olx_offer_count = 0
+        if domain_allowed("olx.pt", [marketplace_domain]):
+            for alias in aliases:
+                queries = [alias, *(f"{alias} tamanho {size}" for size in sizes)]
+                for index, query in enumerate(queries):
+                    query_limit = max_marketplace_results if index == 0 else min(
+                        40, max_marketplace_results
+                    )
+                    for advert in search_olx_api(query, query_limit):
+                        key = str(advert.get("id") or advert.get("url") or "")
+                        if key:
+                            api_adverts.setdefault(key, advert)
+            for advert in api_adverts.values():
+                advert_offers = olx_advert_offers(
+                    advert,
+                    model_name,
+                    aliases,
+                    sizes,
+                    min_year,
+                    marketplace_min_price,
+                )
+                offers.extend(advert_offers)
+                olx_offer_count += len(advert_offers)
+            print(
+                f"[result] OLX {model_name}: {olx_offer_count} adverts match "
+                f"model, year and target size"
             )
-        )
+
+        if not api_adverts:
+            current_year = datetime.now(timezone.utc).year
+            years = " OR ".join(
+                str(year) for year in range(min_year, current_year + 3)
+            )
+            alias_filter = " OR ".join(f'"{alias}"' for alias in aliases)
+            marketplace_q = (
+                f"site:{marketplace_domain}/d/anuncio ({alias_filter}) ({years})"
+            )
+            print(f"[search] marketplace fallback {marketplace_domain} for {model_name}")
+            results.extend(
+                search_web(
+                    marketplace_q,
+                    max_marketplace_results,
+                    search_backends,
+                    warn=False,
+                )
+            )
 
     # Query alternate official storefronts for retailers whose localized site
     # is frequently blocked from GitHub-hosted runners.
@@ -821,15 +1010,9 @@ def search_model(model_cfg: dict[str, Any], cfg: dict[str, Any]) -> list[Offer]:
 
         size_evidence = size_evidence_text(soup, page_text, title, snippet)
         matched_sizes = target_size_matches(size_evidence, sizes, out_terms)
-        listed_sizes = extract_listed_sizes(f"{title} {page_text}")
-        if matched_sizes:
-            result_sizes = matched_sizes
-        elif is_marketplace:
-            # Keep recent OLX bikes in the report even when their frame size is
-            # not a target. They must never become qualifying alerts below.
-            result_sizes = listed_sizes or ["Não indicado"]
-        else:
+        if not matched_sizes:
             continue
+        result_sizes = matched_sizes
 
         price, source, availability = choose_price(
             page_html,
@@ -1012,6 +1195,8 @@ def summary_rows(offers: list[Offer]) -> list[dict[str, Any]]:
     """Merge size variants so each shop/product price occupies one digest row."""
     grouped: dict[tuple[str, str, str, int, float, str, str], dict[str, Any]] = {}
     for offer in offers:
+        if not offer.target_size_match:
+            continue
         key = (
             offer.domain,
             offer.model,
@@ -1106,6 +1291,12 @@ def send_no_match_email(offers: list[Offer], recipient: str, max_price: float) -
         )
     if current_domain:
         sections.append("</ul>")
+    if not any(row["domain"] == "olx.pt" for row in rows):
+        sections.append(
+            "<h2>OLX</h2>"
+            "<p>Nenhum anúncio ativo correspondeu simultaneamente ao modelo, "
+            "ano mínimo e tamanho pretendido nesta pesquisa.</p>"
+        )
     if not rows:
         sections.append(
             "<p>Não foi possível confirmar preços com os tamanhos pretendidos "
@@ -1141,6 +1332,13 @@ def main() -> int:
     load_local_env()
     cfg = load_config()
     state = load_state()
+    removed_state_rows = prune_non_target_marketplace_state(
+        state, [str(value) for value in cfg.get("marketplace_domains", [])]
+    )
+    if removed_state_rows:
+        print(
+            f"[state] removed {removed_state_rows} old non-target marketplace rows"
+        )
     recipient = cfg["recipient"]
     max_alerts = int(cfg.get("max_alerts_per_run", 10))
     max_price = float(cfg["max_price_eur"])

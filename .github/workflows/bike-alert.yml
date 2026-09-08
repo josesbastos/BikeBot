@@ -50,4 +50,12 @@ jobs:
           git config user.email "actions@users.noreply.github.com"
           git add data/seen_offers.json
           git commit -m "chore: update bike alert state"
-          git push
+          for attempt in 1 2 3; do
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            echo "Push attempt ${attempt} failed; synchronizing with main"
+            git pull --rebase origin main
+          done
+          echo "Unable to persist state after 3 attempts" >&2
+          exit 1
