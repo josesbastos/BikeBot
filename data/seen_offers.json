@@ -296,6 +296,21 @@
       "url": "https://www.bike-discount.de/en/cube-attain-c-62-slt-carbon-n-blue",
       "year": 2027
     },
+    "6b786cb045a923ffaed353c4": {
+      "availability": "out_of_stock",
+      "domain": "deporvillage.com",
+      "last_alerted": null,
+      "model": "Orbea Orca M30",
+      "price": 2312.0,
+      "seller_type": "store",
+      "size": "57",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Bicicleta Carretera Orbea Orca M30 - Shimano 105 | Deporvillage",
+      "updated_at": "2026-09-08T21:08:02.728432+00:00",
+      "url": "https://www.deporvillage.com/bicicleta-carretera-orbea-orca-m30-1",
+      "year": 2026
+    },
     "6bb9c0f889dc49282e013153": {
       "availability": "out_of_stock",
       "domain": "biciescapa.com",
