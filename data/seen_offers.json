@@ -90,6 +90,22 @@
       "url": "https://www.biciescapa.com/fr/velos/route/cube-attain-c-62-slt-2026-90196",
       "year": 2026
     },
+    "1eafa6f67e6983f2932f999a": {
+      "availability": "in_stock",
+      "domain": "bike-discount.de",
+      "last_alerted": "2026-09-08T19:05:33.512881+00:00",
+      "last_alerted_price": 1799.0,
+      "model": "Giant Defy Advanced",
+      "price": 1799.0,
+      "seller_type": "store",
+      "size": "L",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Giant Defy Advanced 3 Road Bike Carbon | Bike-Discount",
+      "updated_at": "2026-09-08T19:05:33.512881+00:00",
+      "url": "https://www.bike-discount.de/en/giant-defy-advanced-3",
+      "year": 2026
+    },
     "1f5602cbc5145eeae0efdc14": {
       "availability": "out_of_stock",
       "domain": "alltricks.pt",
@@ -133,6 +149,21 @@
       "title": "Comprar Bicicleta Orbea Orca M30 2026 | Carretera",
       "updated_at": "2026-09-08T06:55:37.234195+00:00",
       "url": "https://www.biciescapa.com/es/bicicletas/carretera/bicicleta-orbea-orca-m30-26-89051",
+      "year": 2026
+    },
+    "28bc94c591fa038fc054d81a": {
+      "availability": "unknown",
+      "domain": "biciescapa.com",
+      "last_alerted": null,
+      "model": "CUBE Attain C:62",
+      "price": 3099.0,
+      "seller_type": "store",
+      "size": "60",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Compra Bicicletta Cube Attain C:62 SLT 2026 | Corsa Strada",
+      "updated_at": "2026-09-08T19:05:33.729585+00:00",
+      "url": "https://www.biciescapa.com/it/biciclette/corsa-strada/bicicletta-cube-attain-c-62-slt-2026-90196",
       "year": 2026
     },
     "2deb3c9524795702b8d39ce0": {
@@ -367,6 +398,21 @@
       "updated_at": "2026-09-07T12:10:38.636585+00:00",
       "url": "https://bikezone.pt/-endurance/20076-GIANT-DEFY-ADVANCED-2.html"
     },
+    "91b21ad84b6754874719223f": {
+      "availability": "out_of_stock",
+      "domain": "biciescapa.com",
+      "last_alerted": null,
+      "model": "CUBE Attain C:62",
+      "price": 2549.0,
+      "seller_type": "store",
+      "size": "60",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Acheter Cube Attain C:62 SLX 2026 | Route - biciescapa.com",
+      "updated_at": "2026-09-08T19:05:33.729504+00:00",
+      "url": "https://www.biciescapa.com/fr/velos/route/cube-attain-c-62-slx-2026-90195",
+      "year": 2026
+    },
     "96656f95506d97b20e0fcdbf": {
       "availability": "out_of_stock",
       "domain": "biciescapa.com",
@@ -456,6 +502,21 @@
       "updated_at": "2026-09-08T18:57:23.436378+00:00",
       "url": "https://www.deporvillage.pt/bicicleta-de-estrada-merida-scultura-4000-2024-cinzento",
       "year": 2024
+    },
+    "ab2bf61fa204b330cc5186b4": {
+      "availability": "out_of_stock",
+      "domain": "biciescapa.com",
+      "last_alerted": null,
+      "model": "CUBE Attain C:62",
+      "price": 1749.0,
+      "seller_type": "store",
+      "size": "60",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Compra Cube Attain C:62 Race 2026 | Corsa Strada",
+      "updated_at": "2026-09-08T19:05:33.137124+00:00",
+      "url": "https://www.biciescapa.com/it/biciclette/corsa-strada/cube-attain-c-62-race-2026-90194",
+      "year": 2026
     },
     "ac140bbbd308a0e5b5940185": {
       "availability": "out_of_stock",
@@ -607,6 +668,22 @@
       "updated_at": "2026-09-08T06:55:37.234237+00:00",
       "url": "https://www.deporvillage.com/bicicleta-carretera-merida-scultura-endurance-4000-2024-verde",
       "year": 2024
+    },
+    "d1df9780d89d43f1ad0dea43": {
+      "availability": "in_stock",
+      "domain": "bike-discount.de",
+      "last_alerted": "2026-09-08T19:05:33.729392+00:00",
+      "last_alerted_price": 1799.0,
+      "model": "Giant Defy Advanced",
+      "price": 1799.0,
+      "seller_type": "store",
+      "size": "XL",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Giant Defy Advanced 3 Road Bike Carbon | Bike-Discount",
+      "updated_at": "2026-09-08T19:05:33.729392+00:00",
+      "url": "https://www.bike-discount.de/en/giant-defy-advanced-3",
+      "year": 2026
     },
     "dac528d8557d4f8d19cc2118": {
       "availability": "out_of_stock",
