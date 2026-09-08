@@ -1,5 +1,19 @@
 {
   "offers": {
+    "098b72fd5a5785999420ca24": {
+      "availability": "out_of_stock",
+      "domain": "alltricks.pt",
+      "last_alerted": null,
+      "model": "CUBE Attain C:62",
+      "price": 1899.0,
+      "seller_type": "store",
+      "size": "60",
+      "source": "structured_data",
+      "title": "Cube Attain C:62 Race Road Bike Shimano 105 12S 700 mm ...",
+      "updated_at": "2026-09-08T06:35:24.933959+00:00",
+      "url": "https://www.alltricks.pt/F-41505-velos-route-_-cyclocross-_-triathlon/P-3041385-cube_attain_c_62_race_road_bike_shimano_105_12s_700_mm_blackline_black_2025",
+      "year": 2025
+    },
     "0ac7d154f113cff87460d2e6": {
       "availability": "out_of_stock",
       "domain": "ibkbike.pt",
@@ -12,6 +26,20 @@
       "title": "Bicicleta Orbea Orca M30 2026 Carbon Matt Titan Grey – IBKBike ...",
       "updated_at": "2026-09-07T21:29:55.859948+00:00",
       "url": "https://ibkbike.pt/products/bikes-road-orbea-orca-m30-2026-diamond-carbon-view-matt-titan-grey-gloss",
+      "year": 2026
+    },
+    "0ec21e1561e66dafd948c3fb": {
+      "availability": "out_of_stock",
+      "domain": "alltricks.pt",
+      "last_alerted": null,
+      "model": "CUBE Attain C:62",
+      "price": 2599.0,
+      "seller_type": "store",
+      "size": "60",
+      "source": "structured_data",
+      "title": "Cube Attain C:62 SLX Road Bike Shimano 105 Di2 12S 700 ...",
+      "updated_at": "2026-09-08T06:35:24.934012+00:00",
+      "url": "https://www.alltricks.pt/F-41505-velos-route-_-cyclocross-_-triathlon/P-3146777-cube_attain_c_62_slx_road_bike_shimano_105_di2_12s_700_mm_sleek_grey_2026",
       "year": 2026
     },
     "10d720807c7a7443ada50f43": {
@@ -41,6 +69,20 @@
       "updated_at": "2026-09-08T04:36:44.889858+00:00",
       "url": "https://www.biciescapa.com/fr/velos/route/cube-attain-c-62-slt-2026-90196",
       "year": 2026
+    },
+    "1f5602cbc5145eeae0efdc14": {
+      "availability": "out_of_stock",
+      "domain": "alltricks.pt",
+      "last_alerted": null,
+      "model": "CUBE Attain C:62",
+      "price": 3199.0,
+      "seller_type": "store",
+      "size": "60",
+      "source": "structured_data",
+      "title": "Cube Attain C:62 SLT Road Bike Shimano Ultegra Di2 12S 700 ...",
+      "updated_at": "2026-09-08T06:35:24.934080+00:00",
+      "url": "https://www.alltricks.pt/F-41505-velos-route-_-cyclocross-_-triathlon/P-2986849-cube_attain_c_62_slt_road_bike_shimano_ultegra_di2_12s_700_mm_carbon_grey_2025",
+      "year": 2025
     },
     "1f8bcc41637e460d8eddf513": {
       "availability": "out_of_stock",
@@ -146,8 +188,8 @@
       "seller_type": "store",
       "size": "60",
       "source": "structured_data",
-      "title": "Cube Attain C:62 Race Road Bike Shimano 105 12S 700 mm Sky Light Blue 2026 a partir de1 799,00 €",
-      "updated_at": "2026-09-07T14:58:27.465104+00:00",
+      "title": "Cube Attain C:62 Race Road Bike Shimano 105 12S 700 mm ...",
+      "updated_at": "2026-09-08T06:35:24.933931+00:00",
       "url": "https://www.alltricks.pt/F-41505-velos-route-_-cyclocross-_-triathlon/P-3146776-cube_attain_c_62_race_road_bike_shimano_105_12s_700_mm_sky_light_blue_2026",
       "year": 2026
     },
@@ -219,6 +261,20 @@
       "url": "https://www.biciescapa.com/ca/bicicletes/carretera/bicicleta-cube-attain-c-62-slx-2026-90195",
       "year": 2026
     },
+    "ade75458dea824cc14bb36e0": {
+      "availability": "in_stock",
+      "domain": "alltricks.pt",
+      "last_alerted": null,
+      "model": "CUBE Attain C:62",
+      "price": 2599.0,
+      "seller_type": "store",
+      "size": "60",
+      "source": "structured_data",
+      "title": "Cube Attain C:62 SLX Road Bike Shimano 105 Di2 12S 700 ...",
+      "updated_at": "2026-09-08T06:35:24.934003+00:00",
+      "url": "https://www.alltricks.pt/F-41505-velos-route-_-cyclocross-_-triathlon/P-3146780-cube_attain_c_62_slx_road_bike_shimano_105_di2_12s_700_mm_lucid_lilac_purple_2026",
+      "year": 2026
+    },
     "aeb58925041a668e12a9ad60": {
       "availability": "in_stock",
       "domain": "bike-discount.de",
@@ -262,6 +318,34 @@
       "url": "https://ibkbike.pt/products/bikes-road-synapse-carbon-4-cannondale-2025-chalk",
       "year": 2025
     },
+    "dfe09459c188627881e0762d": {
+      "availability": "out_of_stock",
+      "domain": "alltricks.pt",
+      "last_alerted": null,
+      "model": "CUBE Attain C:62",
+      "price": 1799.0,
+      "seller_type": "store",
+      "size": "60",
+      "source": "structured_data",
+      "title": "Cube Attain C:62 Race Road Bike Shimano 105 12S 700 mm ...",
+      "updated_at": "2026-09-08T06:35:24.933947+00:00",
+      "url": "https://www.alltricks.pt/F-41505-velos-route-_-cyclocross-_-triathlon/P-3146773-cube_attain_c_62_race_road_bike_shimano_105_12s_700_mm_blackline_black_2026",
+      "year": 2026
+    },
+    "e780003ff2f2b7389357a0d3": {
+      "availability": "out_of_stock",
+      "domain": "alltricks.pt",
+      "last_alerted": null,
+      "model": "CUBE Attain C:62",
+      "price": 3199.0,
+      "seller_type": "store",
+      "size": "60",
+      "source": "structured_data",
+      "title": "Cube Attain C:62 SLT Road Bike Shimano Ultegra Di2 12S 700 ...",
+      "updated_at": "2026-09-08T06:35:24.934070+00:00",
+      "url": "https://www.alltricks.pt/F-41505-velos-route-_-cyclocross-_-triathlon/P-3147172-cube_attain_c_62_slt_road_bike_shimano_ultegra_di2_12s_700_mm_shift_mint_blue_2026",
+      "year": 2026
+    },
     "e8d420525876c0af79a6bba9": {
       "availability": "in_stock",
       "domain": "bike-discount.de",
@@ -275,6 +359,34 @@
       "updated_at": "2026-09-08T04:36:44.889832+00:00",
       "url": "https://www.bike-discount.de/en/cube-attain-c-62-slt-shiftmint-n-white",
       "year": 2026
+    },
+    "f28aa07e7ed9e0bbd340ec63": {
+      "availability": "out_of_stock",
+      "domain": "alltricks.pt",
+      "last_alerted": null,
+      "model": "CUBE Attain C:62",
+      "price": 2599.0,
+      "seller_type": "store",
+      "size": "60",
+      "source": "structured_data",
+      "title": "Cube Attain C:62 SLX Road Bike with Shimano 105 Di2 12 ...",
+      "updated_at": "2026-09-08T06:35:24.934021+00:00",
+      "url": "https://www.alltricks.pt/F-41505-velos-route-_-cyclocross-_-triathlon/P-3354827-cube_attain_c_62_slx_road_bike_with_shimano_105_di2_12_speed_drivetrain__700_mm__metallic_white__2027",
+      "year": 2027
+    },
+    "f527ba31e5ebc0b0e6f2218c": {
+      "availability": "out_of_stock",
+      "domain": "alltricks.pt",
+      "last_alerted": null,
+      "model": "CUBE Attain C:62",
+      "price": 2699.0,
+      "seller_type": "store",
+      "size": "60",
+      "source": "structured_data",
+      "title": "Cube Attain C:62 SLX Road Bike Shimano 105 Di2 12S 700 ...",
+      "updated_at": "2026-09-08T06:35:24.934030+00:00",
+      "url": "https://www.alltricks.pt/F-41505-velos-route-_-cyclocross-_-triathlon/P-2940979-cube_attain_c_62_slx_road_bike_shimano_105_di2_12s_700_mm_lagoon_blue_2025",
+      "year": 2025
     }
   }
 }
