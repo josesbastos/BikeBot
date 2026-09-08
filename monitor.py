@@ -79,7 +79,14 @@ class Offer:
     domain: str
     availability: str
     seller_type: str
+    target_size_match: bool
     source: str
+
+
+class PageFetchError(RuntimeError):
+    def __init__(self, message: str, status_code: int | None = None):
+        super().__init__(message)
+        self.status_code = status_code
 
 
 def load_local_env(path: Path = ENV_PATH) -> None:
@@ -293,7 +300,10 @@ def response_page(
 ) -> tuple[str, BeautifulSoup]:
     content_type = str(response.headers.get("content-type", ""))
     if "text/html" not in content_type and "application/xhtml" not in content_type:
-        raise RuntimeError(f"non-HTML response ({content_type or 'unknown type'})")
+        raise PageFetchError(
+            f"non-HTML response ({content_type or 'unknown type'})",
+            int(response.status_code),
+        )
 
     text = response.text[:2_000_000]
     soup = BeautifulSoup(text, "html.parser")
@@ -302,7 +312,7 @@ def response_page(
     if status >= 400 and not (
         accept_valid_server_error and status >= 500 and valid_product_html
     ):
-        raise RuntimeError(f"HTTP {status}")
+        raise PageFetchError(f"HTTP {status}", status)
     if status >= 500:
         print(f"[warn] using valid HTML despite HTTP {status}: {url}", file=sys.stderr)
     return text, soup
@@ -318,29 +328,37 @@ def fetch_page(url: str) -> tuple[str, BeautifulSoup | None]:
             allow_redirects=True,
         )
         return response_page(response, url)
+    except PageFetchError as exc:
+        errors.append(f"requests: {exc}")
     except Exception as exc:
         errors.append(f"requests: {exc}")
 
     # Some European stores reject conventional HTTP clients even with browser
     # headers. A browser-protocol client is a lightweight fallback; it does not
     # solve CAPTCHAs or attempt to bypass authentication.
-    try:
-        client = primp.Client(
-            impersonate="chrome_146",
-            impersonate_os="windows",
-            timeout=18,
-            follow_redirects=True,
-        )
-        parsed = urlparse(url)
-        # Establish the same basic cookies a normal visitor receives on the
-        # storefront before opening a product URL directly.
-        client.get(f"{parsed.scheme}://{parsed.netloc}/")
-        response = client.get(url)
-        page = response_page(response, url, accept_valid_server_error=True)
-        print(f"[fetch] browser fallback succeeded: {normalize_domain(url)}")
-        return page
-    except Exception as exc:
-        errors.append(f"browser fallback: {exc}")
+    parsed = urlparse(url)
+    for profile in ("chrome_146", "random"):
+        try:
+            client = primp.Client(
+                impersonate=profile,
+                impersonate_os="windows",
+                timeout=18,
+                follow_redirects=True,
+            )
+            # Establish the same basic cookies a normal visitor receives on the
+            # storefront before opening a product URL directly.
+            client.get(f"{parsed.scheme}://{parsed.netloc}/")
+            response = client.get(url)
+            page = response_page(response, url, accept_valid_server_error=True)
+            print(f"[fetch] browser fallback succeeded: {normalize_domain(url)}")
+            return page
+        except PageFetchError as exc:
+            if exc.status_code in {404, 410}:
+                print(f"[skip] expired or removed page: {url}")
+                return "", None
+            errors.append(f"browser {profile}: {exc}")
+        except Exception as exc:
+            errors.append(f"browser {profile}: {exc}")
 
     print(f"[warn] fetch failed {url}: {'; '.join(errors)}", file=sys.stderr)
     return "", None
@@ -502,6 +520,25 @@ def size_evidence_text(
     return " ".join(values)
 
 
+def extract_listed_sizes(text: str) -> list[str]:
+    """Extract frame-size fields for marketplace summary rows."""
+    flat = re.sub(r"\s+", " ", html.unescape(text))
+    size_value = r"(?:XXL|XL|XS|L|M|S|(?:4[6-9]|5\d|6[0-4]))"
+    pattern = re.compile(
+        r"(?:tamanho(?!\s+de\s+roda)(?:\s+do\s+quadro)?|tam\.?|"
+        r"frame\s+size|size)\s*[:\-]?\s*"
+        rf"({size_value}(?:\s*/\s*{size_value})?)\b",
+        re.I,
+    )
+    sizes: list[str] = []
+    for match in pattern.finditer(flat):
+        for raw_size in match.group(1).split("/"):
+            size = raw_size.strip().upper()
+            if size not in sizes:
+                sizes.append(size)
+    return sizes
+
+
 def target_size_matches(text: str, sizes: list[str], out_terms: list[str]) -> list[str]:
     """
     Conservative size detection:
@@ -650,9 +687,11 @@ def search_model(model_cfg: dict[str, Any], cfg: dict[str, Any]) -> list[Offer]:
     marketplace_domains = [str(value) for value in cfg.get("marketplace_domains", [])]
     out_terms = cfg["out_of_stock_terms"]
     min_price = float(cfg["min_plausible_price_eur"])
+    marketplace_min_price = float(cfg.get("marketplace_min_price_eur", 300))
     min_year = int(cfg.get("min_model_year", 2023))
     require_year = bool(cfg.get("require_model_year", True))
     max_results = int(cfg.get("max_results_per_model", 15))
+    max_marketplace_results = int(cfg.get("max_marketplace_results_per_model", 20))
     search_backends = [str(value) for value in cfg.get("search_backends", ["bing", "yahoo"])]
 
     # Use the first alias as the main search phrase; size and Portugal terms improve relevance.
@@ -700,16 +739,15 @@ def search_model(model_cfg: dict[str, Any], cfg: dict[str, Any]) -> list[Offer]:
         years = " OR ".join(
             str(year) for year in range(min_year, current_year + 3)
         )
-        sizes_filter = " OR ".join(sizes)
+        alias_filter = " OR ".join(f'"{alias}"' for alias in aliases)
         marketplace_q = (
-            f'site:{marketplace_domain}/d/anuncio "{aliases[0]}" '
-            f"({sizes_filter}) ({years})"
+            f"site:{marketplace_domain}/d/anuncio ({alias_filter}) ({years})"
         )
         print(f"[search] marketplace {marketplace_domain} for {model_name}")
         results.extend(
             search_web(
                 marketplace_q,
-                max_results,
+                max_marketplace_results,
                 search_backends,
                 warn=False,
             )
@@ -730,6 +768,8 @@ def search_model(model_cfg: dict[str, Any], cfg: dict[str, Any]) -> list[Offer]:
 
         domain = normalize_domain(url)
         if not domain_allowed(domain, allowed):
+            continue
+        if not alias_present(title, aliases):
             continue
         is_marketplace = domain_allowed(domain, marketplace_domains)
         if is_marketplace:
@@ -758,21 +798,32 @@ def search_model(model_cfg: dict[str, Any], cfg: dict[str, Any]) -> list[Offer]:
         if model_year is not None and model_year < min_year:
             continue
 
-        matched_sizes = target_size_matches(
-            size_evidence_text(soup, page_text, title, snippet), sizes, out_terms
-        )
-        if not matched_sizes:
+        size_evidence = size_evidence_text(soup, page_text, title, snippet)
+        matched_sizes = target_size_matches(size_evidence, sizes, out_terms)
+        listed_sizes = extract_listed_sizes(f"{title} {page_text}")
+        if matched_sizes:
+            result_sizes = matched_sizes
+        elif is_marketplace:
+            # Keep recent OLX bikes in the report even when their frame size is
+            # not a target. They must never become qualifying alerts below.
+            result_sizes = listed_sizes or ["Não indicado"]
+        else:
             continue
 
         price, source, availability = choose_price(
-            page_html, page_text, snippet, soup, min_price, aliases
+            page_html,
+            page_text,
+            snippet,
+            soup,
+            marketplace_min_price if is_marketplace else min_price,
+            aliases,
         )
         if price is None:
             continue
         availability = page_availability(soup, availability, out_terms)
         seller_type = classify_seller(domain, page_text, marketplace_domains)
 
-        for size in matched_sizes:
+        for size in result_sizes:
             offers.append(
                 Offer(
                     model=model_name,
@@ -784,6 +835,7 @@ def search_model(model_cfg: dict[str, Any], cfg: dict[str, Any]) -> list[Offer]:
                     domain=domain,
                     availability=availability,
                     seller_type=seller_type,
+                    target_size_match=size in matched_sizes,
                     source=source,
                 )
             )
@@ -819,6 +871,14 @@ def should_alert(offer: Offer, state: dict[str, Any]) -> bool:
     return False
 
 
+def is_qualifying_offer(offer: Offer, max_price: float) -> bool:
+    return (
+        offer.target_size_match
+        and offer.availability != "out_of_stock"
+        and offer.price <= max_price
+    )
+
+
 def update_state(offer: Offer, state: dict[str, Any], alerted: bool) -> None:
     now = datetime.now(timezone.utc).isoformat()
     key = offer_key(offer)
@@ -842,6 +902,7 @@ def update_state(offer: Offer, state: dict[str, Any], alerted: bool) -> None:
         "domain",
         "availability",
         "seller_type",
+        "target_size_match",
     )
     if alerted or any(existing.get(field) != updated.get(field) for field in material_fields):
         updated["updated_at"] = now
@@ -950,10 +1011,12 @@ def summary_rows(offers: list[Offer]) -> list[dict[str, Any]]:
                 "price": offer.price,
                 "availability": offer.availability,
                 "seller_type": offer.seller_type,
+                "target_size_match": False,
                 "sizes": set(),
             },
         )
         row["sizes"].add(offer.size)
+        row["target_size_match"] = row["target_size_match"] or offer.target_size_match
 
     rows = list(grouped.values())
     for row in rows:
@@ -1005,13 +1068,19 @@ def send_no_match_email(offers: list[Offer], recipient: str, max_price: float) -
         }
         stock = stock_labels.get(row["availability"], "Confirmar stock")
         sizes = ", ".join(row["sizes"])
+        size_status = (
+            "Tamanho pretendido"
+            if row["target_size_match"]
+            else "Fora do tamanho pretendido"
+        )
         sections.append(
             "<li style=\"margin-bottom:12px\">"
             f"<a href=\"{html.escape(row['url'], quote=True)}\">"
             f"{html.escape(row['model'])}</a> — "
             f"<b>{format_price_pt(row['price'])} €</b><br>"
             f"Ano: {row['year']} · Tamanho(s): {html.escape(sizes)} · "
-            f"{html.escape(stock)} · {html.escape(seller_label(row['seller_type']))}"
+            f"{html.escape(size_status)} · {html.escape(stock)} · "
+            f"{html.escape(seller_label(row['seller_type']))}"
             "</li>"
         )
     if current_domain:
@@ -1070,7 +1139,7 @@ def main() -> int:
     available_offers = [
         offer
         for offer in all_offers
-        if offer.availability != "out_of_stock" and offer.price <= max_price
+        if is_qualifying_offer(offer, max_price)
     ]
     print(f"[result] {len(available_offers)} qualifying offers found")
 
@@ -1090,7 +1159,11 @@ def main() -> int:
                 email_failures += 1
 
     for offer in all_offers:
-        if offer.availability == "out_of_stock" or offer.price > max_price:
+        if (
+            not offer.target_size_match
+            or offer.availability == "out_of_stock"
+            or offer.price > max_price
+        ):
             update_state(offer, state, alerted=False)
             continue
 

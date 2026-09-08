@@ -28,6 +28,11 @@ Também pesquisa anúncios individuais do `olx.pt`. Nos emails, os resultados fi
 separados entre **lojas/vendedores profissionais** e **vendedores particulares**.
 Páginas gerais de pesquisa do OLX não são tratadas como anúncios.
 
+O resumo inclui anúncios OLX de 2023 ou mais recentes mesmo quando o tamanho não
+é o pretendido. Esses anúncios aparecem marcados como **Fora do tamanho
+pretendido** e nunca geram um alerta de compra. Como anúncios usados podem ter
+preços inferiores aos das lojas, o limite mínimo de leitura do OLX é 300 €.
+
 ## Como funciona
 
 1. De 3 em 3 horas, o GitHub Actions executa `monitor.py`.
@@ -178,6 +183,12 @@ require_model_year: true
 ```
 
 Assim, bicicletas anteriores a 2023 e anúncios sem ano identificável são excluídos.
+
+O limite mínimo específico para marketplaces pode ser alterado em:
+
+```yaml
+marketplace_min_price_eur: 300
+```
 
 ## Adicionar uma bicicleta
 

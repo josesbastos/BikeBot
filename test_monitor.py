@@ -9,7 +9,9 @@ from monitor import (
     classify_seller,
     choose_price,
     extract_prices,
+    extract_listed_sizes,
     extract_model_year,
+    is_qualifying_offer,
     load_local_env,
     page_availability,
     parse_price_number,
@@ -81,6 +83,11 @@ def test_standalone_size_option_gets_variant_context():
     assert target_size_matches(evidence, ["L"], ["out of stock"]) == ["L"]
 
 
+def test_marketplace_frame_size_ignores_wheel_size():
+    text = "Tamanho de roda: 28 Estado: Usado Tamanho: M/L Descrição"
+    assert extract_listed_sizes(text) == ["M", "L"]
+
+
 def test_canonical_url_removes_tracking_but_keeps_product_options():
     url = "https://www.shop.pt/bike?size=L&utm_source=search&color=red#details"
     assert canonicalize_url(url) == "https://www.shop.pt/bike?size=L&color=red"
@@ -104,6 +111,7 @@ def make_offer(price=1699.0, availability="in_stock"):
         domain="shop.pt",
         availability=availability,
         seller_type="store",
+        target_size_match=True,
         source="structured_data",
     )
 
@@ -259,7 +267,19 @@ def test_summary_separates_private_sellers():
     private_offer.domain = "olx.pt"
     private_offer.url = "https://olx.pt/d/anuncio/bike-ID123.html"
     private_offer.seller_type = "private"
+    private_offer.target_size_match = False
 
     rows = summary_rows([private_offer, store_offer])
 
     assert [row["seller_type"] for row in rows] == ["store", "private"]
+    assert rows[1]["target_size_match"] is False
+
+
+def test_non_target_marketplace_offer_is_reported_but_never_qualifies():
+    offer = make_offer(1500)
+    offer.domain = "olx.pt"
+    offer.seller_type = "private"
+    offer.target_size_match = False
+
+    assert summary_rows([offer])[0]["price"] == 1500
+    assert not is_qualifying_offer(offer, 1800)
