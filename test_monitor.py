@@ -250,6 +250,14 @@ def test_model_year_prefers_product_identity_and_ignores_publication_date():
         == 2021
     )
     assert extract_model_year("Giant Defy Advanced", "Publicado em 2026", 2026) is None
+    assert (
+        extract_model_year(
+            "Orbea Orca M30",
+            "Características Cuadro: Orbea Orca carbon OMR 2024 Horquilla carbono",
+            2026,
+        )
+        == 2024
+    )
 
 
 def test_marketplace_sellers_are_split_between_private_and_professional():

@@ -441,6 +441,10 @@ def extract_model_year(
             re.I,
         ),
         re.compile(r"\b(20\d{2})\s*(?:model|modelo)\b", re.I),
+        re.compile(
+            r"(?:quadro|cuadro|frame)\s*:[^.;]{0,100}?\b(20\d{2})\b",
+            re.I,
+        ),
     )
     contextual_years: list[int] = []
     for pattern in patterns:
@@ -693,6 +697,9 @@ def search_model(model_cfg: dict[str, Any], cfg: dict[str, Any]) -> list[Offer]:
     max_results = int(cfg.get("max_results_per_model", 15))
     max_marketplace_results = int(cfg.get("max_marketplace_results_per_model", 20))
     search_backends = [str(value) for value in cfg.get("search_backends", ["bing", "yahoo"])]
+    supplemental_domains = [
+        str(value) for value in cfg.get("supplemental_search_domains", [])
+    ]
 
     # Use the first alias as the main search phrase; size and Portugal terms improve relevance.
     size_query = " ".join(sizes[:4])
@@ -748,6 +755,20 @@ def search_model(model_cfg: dict[str, Any], cfg: dict[str, Any]) -> list[Offer]:
             search_web(
                 marketplace_q,
                 max_marketplace_results,
+                search_backends,
+                warn=False,
+            )
+        )
+
+    # Query alternate official storefronts for retailers whose localized site
+    # is frequently blocked from GitHub-hosted runners.
+    for supplemental_domain in supplemental_domains:
+        supplemental_q = f'site:{supplemental_domain} "{aliases[0]}"'
+        print(f"[search] alternate storefront {supplemental_domain} for {model_name}")
+        results.extend(
+            search_web(
+                supplemental_q,
+                max_results,
                 search_backends,
                 warn=False,
             )

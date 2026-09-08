@@ -10,6 +10,7 @@ send_no_match_summary: true
 min_model_year: 2023
 require_model_year: true
 marketplace_domains: ["olx.pt"]
+supplemental_search_domains: ["deporvillage.com"]
 
 # Modelos endurance / all-round que queres vigiar.
 # Os tamanhos são equivalentes aproximados a L para ~1,91 m.
@@ -73,6 +74,7 @@ allowed_domains:
   - "sanferbike.com"
   - "deporvillage.pt"
   - "deporvillage.net"
+  - "deporvillage.com"
   - "alltricks.pt"
   - "ibkbike.com"
   - "bike-discount.de"
