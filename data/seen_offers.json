@@ -1,5 +1,35 @@
 {
   "offers": {
+    "061afe416035069b26126e57": {
+      "availability": "in_stock",
+      "domain": "olx.pt",
+      "last_alerted": null,
+      "model": "Scott Addict",
+      "price": 2099.0,
+      "seller_type": "private",
+      "size": "S",
+      "source": "structured_data",
+      "target_size_match": false,
+      "title": "Scott Addict RC 40 2023 S Ajuda • OLX.pt - OLX Portugal",
+      "updated_at": "2026-09-08T06:55:37.234222+00:00",
+      "url": "https://www.olx.pt/d/anuncio/scott-addict-rc-40-2023-s-IDJwWSb.html",
+      "year": 2023
+    },
+    "08c78bf24a41c72fa3aad9cf": {
+      "availability": "in_stock",
+      "domain": "olx.pt",
+      "last_alerted": null,
+      "model": "Scott Addict",
+      "price": 2099.0,
+      "seller_type": "private",
+      "size": "52",
+      "source": "structured_data",
+      "target_size_match": false,
+      "title": "Scott Addict RC 40 2023 S Ajuda • OLX.pt - OLX Portugal",
+      "updated_at": "2026-09-08T06:55:37.234213+00:00",
+      "url": "https://www.olx.pt/d/anuncio/scott-addict-rc-40-2023-s-IDJwWSb.html",
+      "year": 2023
+    },
     "098b72fd5a5785999420ca24": {
       "availability": "out_of_stock",
       "domain": "alltricks.pt",
@@ -9,8 +39,9 @@
       "seller_type": "store",
       "size": "60",
       "source": "structured_data",
+      "target_size_match": true,
       "title": "Cube Attain C:62 Race Road Bike Shimano 105 12S 700 mm ...",
-      "updated_at": "2026-09-08T06:35:24.933959+00:00",
+      "updated_at": "2026-09-08T06:55:37.234185+00:00",
       "url": "https://www.alltricks.pt/F-41505-velos-route-_-cyclocross-_-triathlon/P-3041385-cube_attain_c_62_race_road_bike_shimano_105_12s_700_mm_blackline_black_2025",
       "year": 2025
     },
@@ -38,8 +69,9 @@
       "seller_type": "store",
       "size": "60",
       "source": "structured_data",
+      "target_size_match": true,
       "title": "Cube Attain C:62 SLX Road Bike Shimano 105 Di2 12S 700 ...",
-      "updated_at": "2026-09-08T06:35:24.934012+00:00",
+      "updated_at": "2026-09-08T06:55:37.234254+00:00",
       "url": "https://www.alltricks.pt/F-41505-velos-route-_-cyclocross-_-triathlon/P-3146777-cube_attain_c_62_slx_road_bike_shimano_105_di2_12s_700_mm_sleek_grey_2026",
       "year": 2026
     },
@@ -97,8 +129,9 @@
       "seller_type": "store",
       "size": "60",
       "source": "structured_data",
+      "target_size_match": true,
       "title": "Cube Attain C:62 SLT Road Bike Shimano Ultegra Di2 12S 700 ...",
-      "updated_at": "2026-09-08T06:35:24.934080+00:00",
+      "updated_at": "2026-09-08T06:55:37.234305+00:00",
       "url": "https://www.alltricks.pt/F-41505-velos-route-_-cyclocross-_-triathlon/P-2986849-cube_attain_c_62_slt_road_bike_shimano_ultegra_di2_12s_700_mm_carbon_grey_2025",
       "year": 2025
     },
@@ -126,8 +159,9 @@
       "seller_type": "store",
       "size": "57",
       "source": "structured_data",
+      "target_size_match": true,
       "title": "Comprar Bicicleta Orbea Orca M30 2026 | Carretera",
-      "updated_at": "2026-09-08T04:36:44.889774+00:00",
+      "updated_at": "2026-09-08T06:55:37.234195+00:00",
       "url": "https://www.biciescapa.com/es/bicicletas/carretera/bicicleta-orbea-orca-m30-26-89051",
       "year": 2026
     },
@@ -181,8 +215,8 @@
       "size": "60",
       "source": "structured_data",
       "target_size_match": true,
-      "title": "Cube Attain C:62 Race carbon´n´coalchrome Road Bike Carbon | Bike-Discount",
-      "updated_at": "2026-09-08T06:48:12.336387+00:00",
+      "title": "Cube Attain C:62 Race carbon´n´coalchrome Road Bike Carbon ...",
+      "updated_at": "2026-09-08T06:55:37.234146+00:00",
       "url": "https://www.bike-discount.de/en/cube-attain-c-62-race-carbon-n-coalchrome",
       "year": 2027
     },
@@ -210,8 +244,9 @@
       "seller_type": "store",
       "size": "60",
       "source": "structured_data",
+      "target_size_match": true,
       "title": "Cube Attain C:62 Race Road Bike Shimano 105 12S 700 mm ...",
-      "updated_at": "2026-09-08T06:35:24.933931+00:00",
+      "updated_at": "2026-09-08T06:55:37.234162+00:00",
       "url": "https://www.alltricks.pt/F-41505-velos-route-_-cyclocross-_-triathlon/P-3146776-cube_attain_c_62_race_road_bike_shimano_105_12s_700_mm_sky_light_blue_2026",
       "year": 2026
     },
@@ -272,6 +307,21 @@
       "url": "https://www.bike-discount.de/en/cube-attain-c-62-slx-sleekgrey-n-prism",
       "year": 2026
     },
+    "9c562fdda186299a55896901": {
+      "availability": "in_stock",
+      "domain": "bike-discount.de",
+      "last_alerted": null,
+      "model": "Scott Addict",
+      "price": 3999.0,
+      "seller_type": "store",
+      "size": "58",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Scott Addict 20 Road Bike Carbon | Bike-Discount",
+      "updated_at": "2026-09-08T06:55:37.234322+00:00",
+      "url": "https://www.bike-discount.de/en/scott-addict-20-2",
+      "year": 2026
+    },
     "9d36ae7a90923458b4391c46": {
       "availability": "in_stock",
       "domain": "ibkbike.pt",
@@ -326,8 +376,9 @@
       "seller_type": "store",
       "size": "60",
       "source": "structured_data",
+      "target_size_match": true,
       "title": "Cube Attain C:62 SLX Road Bike Shimano 105 Di2 12S 700 ...",
-      "updated_at": "2026-09-08T06:35:24.934003+00:00",
+      "updated_at": "2026-09-08T06:55:37.234244+00:00",
       "url": "https://www.alltricks.pt/F-41505-velos-route-_-cyclocross-_-triathlon/P-3146780-cube_attain_c_62_slx_road_bike_shimano_105_di2_12s_700_mm_lucid_lilac_purple_2026",
       "year": 2026
     },
@@ -357,8 +408,8 @@
       "size": "60",
       "source": "structured_data",
       "target_size_match": true,
-      "title": "Cube Attain C:62 SLT carbon´n´coalchrome Road Bike Carbon | Bike-Discount",
-      "updated_at": "2026-09-08T06:48:12.336488+00:00",
+      "title": "Cube Attain C:62 SLT carbon´n´coalchrome Road Bike Carbon ...",
+      "updated_at": "2026-09-08T06:55:37.234288+00:00",
       "url": "https://www.bike-discount.de/en/cube-attain-c-62-slt-carbon-n-coalchrome",
       "year": 2026
     },
@@ -407,6 +458,21 @@
       "url": "https://ibkbike.pt/products/bikes-road-synapse-carbon-4-cannondale-2025-chalk",
       "year": 2025
     },
+    "ce73e1765e80f86696e3d62d": {
+      "availability": "out_of_stock",
+      "domain": "deporvillage.com",
+      "last_alerted": null,
+      "model": "Merida Scultura Endurance",
+      "price": 2499.0,
+      "seller_type": "store",
+      "size": "L",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Bicicleta Carretera Merida Scultura Endurance 4000 2024 ...Bicicleta Carretera Merida Scultura 4000 | DeporvillageMERIDA | Compra Online las Últimas Novedades - deporvillage",
+      "updated_at": "2026-09-08T06:55:37.234229+00:00",
+      "url": "https://www.deporvillage.com/bicicleta-carretera-merida-scultura-endurance-4000-2024-verde",
+      "year": 2024
+    },
     "d0007197bee506b0a7115304": {
       "availability": "in_stock",
       "domain": "olx.pt",
@@ -422,6 +488,21 @@
       "url": "https://www.olx.pt/d/anuncio/vendo-bicicleta-trek-domane-slr7-IDJy5i5.html",
       "year": 2024
     },
+    "d0c29de9b5deab0b3ae2d1fc": {
+      "availability": "out_of_stock",
+      "domain": "deporvillage.com",
+      "last_alerted": null,
+      "model": "Merida Scultura Endurance",
+      "price": 2499.0,
+      "seller_type": "store",
+      "size": "XL",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Bicicleta Carretera Merida Scultura Endurance 4000 2024 ...Bicicleta Carretera Merida Scultura 4000 | DeporvillageMERIDA | Compra Online las Últimas Novedades - deporvillage",
+      "updated_at": "2026-09-08T06:55:37.234237+00:00",
+      "url": "https://www.deporvillage.com/bicicleta-carretera-merida-scultura-endurance-4000-2024-verde",
+      "year": 2024
+    },
     "dfe09459c188627881e0762d": {
       "availability": "out_of_stock",
       "domain": "alltricks.pt",
@@ -431,8 +512,9 @@
       "seller_type": "store",
       "size": "60",
       "source": "structured_data",
+      "target_size_match": true,
       "title": "Cube Attain C:62 Race Road Bike Shimano 105 12S 700 mm ...",
-      "updated_at": "2026-09-08T06:35:24.933947+00:00",
+      "updated_at": "2026-09-08T06:55:37.234175+00:00",
       "url": "https://www.alltricks.pt/F-41505-velos-route-_-cyclocross-_-triathlon/P-3146773-cube_attain_c_62_race_road_bike_shimano_105_12s_700_mm_blackline_black_2026",
       "year": 2026
     },
@@ -445,8 +527,9 @@
       "seller_type": "store",
       "size": "60",
       "source": "structured_data",
+      "target_size_match": true,
       "title": "Cube Attain C:62 SLT Road Bike Shimano Ultegra Di2 12S 700 ...",
-      "updated_at": "2026-09-08T06:35:24.934070+00:00",
+      "updated_at": "2026-09-08T06:55:37.234297+00:00",
       "url": "https://www.alltricks.pt/F-41505-velos-route-_-cyclocross-_-triathlon/P-3147172-cube_attain_c_62_slt_road_bike_shimano_ultegra_di2_12s_700_mm_shift_mint_blue_2026",
       "year": 2026
     },
@@ -489,8 +572,9 @@
       "seller_type": "store",
       "size": "60",
       "source": "structured_data",
+      "target_size_match": true,
       "title": "Cube Attain C:62 SLX Road Bike with Shimano 105 Di2 12 ...",
-      "updated_at": "2026-09-08T06:35:24.934021+00:00",
+      "updated_at": "2026-09-08T06:55:37.234264+00:00",
       "url": "https://www.alltricks.pt/F-41505-velos-route-_-cyclocross-_-triathlon/P-3354827-cube_attain_c_62_slx_road_bike_with_shimano_105_di2_12_speed_drivetrain__700_mm__metallic_white__2027",
       "year": 2027
     },
@@ -503,10 +587,26 @@
       "seller_type": "store",
       "size": "60",
       "source": "structured_data",
+      "target_size_match": true,
       "title": "Cube Attain C:62 SLX Road Bike Shimano 105 Di2 12S 700 ...",
-      "updated_at": "2026-09-08T06:35:24.934030+00:00",
+      "updated_at": "2026-09-08T06:55:37.234272+00:00",
       "url": "https://www.alltricks.pt/F-41505-velos-route-_-cyclocross-_-triathlon/P-2940979-cube_attain_c_62_slx_road_bike_shimano_105_di2_12s_700_mm_lagoon_blue_2025",
       "year": 2025
+    },
+    "f77169d80613d9bc7d6a37eb": {
+      "availability": "in_stock",
+      "domain": "bike-discount.de",
+      "last_alerted": null,
+      "model": "Scott Addict",
+      "price": 2799.0,
+      "seller_type": "store",
+      "size": "58",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Scott Addict 30 Road Bike Carbon | Bike-Discount",
+      "updated_at": "2026-09-08T06:55:37.234281+00:00",
+      "url": "https://www.bike-discount.de/en/scott-addict-30",
+      "year": 2027
     }
   }
 }
