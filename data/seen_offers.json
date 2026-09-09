@@ -218,8 +218,8 @@
       "size": "57",
       "source": "structured_data",
       "target_size_match": true,
-      "title": "Bicicleta Orbea ORCA M30 Diamond Carbon View - LisbonBike Shop",
-      "updated_at": "2026-09-09T21:05:36.884667+00:00",
+      "title": "Bicicleta Orbea ORCA M30 Diamond Carbon View",
+      "updated_at": "2026-09-09T23:20:07.184979+00:00",
       "url": "https://lisbonbike.pt/produto/bicicleta-orbea-orca-m30-diamond-carbon-view/",
       "year": 2026
     },
@@ -384,8 +384,8 @@
       "size": "60",
       "source": "structured_data",
       "target_size_match": true,
-      "title": "Cube Attain C:62 Race Road Bike Shimano 105 12S 700 mm Sky Light Blue 2026 a partir de1 799,00 €",
-      "updated_at": "2026-09-09T16:37:27.475209+00:00",
+      "title": "Cube Attain C:62 Race Road Bike Shimano 105 12S 700 mm Sky ...",
+      "updated_at": "2026-09-09T23:20:07.184843+00:00",
       "url": "https://www.alltricks.pt/F-41505-velos-route-_-cyclocross-_-triathlon/P-3146776-cube_attain_c_62_race_road_bike_shimano_105_12s_700_mm_sky_light_blue_2026",
       "year": 2026
     },
@@ -591,8 +591,8 @@
       "size": "57",
       "source": "structured_data",
       "target_size_match": true,
-      "title": "Bicicleta Orbea ORCA M30 Cobalt Blue | LisbonBike Shop",
-      "updated_at": "2026-09-09T21:05:36.884679+00:00",
+      "title": "Bicicleta Orbea ORCA M30 Cobalt Blue - LisbonBike Shop",
+      "updated_at": "2026-09-09T23:20:07.184966+00:00",
       "url": "https://lisbonbike.pt/produto/bicicleta-orbea-orca-m30-cobalt-blue/",
       "year": 2026
     },
@@ -639,6 +639,21 @@
       "title": "Comprar Bicicleta Cube Attain C:62 SLX 2026 | Carretera",
       "updated_at": "2026-09-08T06:48:12.336460+00:00",
       "url": "https://www.biciescapa.com/ca/bicicletes/carretera/bicicleta-cube-attain-c-62-slx-2026-90195",
+      "year": 2026
+    },
+    "ad9f276d03b624175d03e44c": {
+      "availability": "in_stock",
+      "domain": "onvelo.pt",
+      "last_alerted": null,
+      "model": "Trek Domane",
+      "price": 3999.0,
+      "seller_type": "store",
+      "size": "60",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Bicicleta de estrada Trek Domane SL6 Gen4 2026",
+      "updated_at": "2026-09-09T23:20:07.185042+00:00",
+      "url": "https://www.onvelo.pt/bicicleta-de-estrada-trek-domane-sl6-g4-b18fe8/",
       "year": 2026
     },
     "ade75458dea824cc14bb36e0": {
@@ -818,8 +833,8 @@
       "size": "60",
       "source": "structured_data",
       "target_size_match": true,
-      "title": "Cube Attain C:62 Race Road Bike Shimano 105 12S 700 mm Blackline Black 2026 a partir de1 799,00 €",
-      "updated_at": "2026-09-09T16:37:27.475233+00:00",
+      "title": "Cube Attain C:62 Race Road Bike Shimano 105 12S 700 mm ...",
+      "updated_at": "2026-09-09T23:20:07.184897+00:00",
       "url": "https://www.alltricks.pt/F-41505-velos-route-_-cyclocross-_-triathlon/P-3146773-cube_attain_c_62_race_road_bike_shimano_105_12s_700_mm_blackline_black_2026",
       "year": 2026
     },
@@ -912,6 +927,21 @@
       "updated_at": "2026-09-08T06:55:37.234281+00:00",
       "url": "https://www.bike-discount.de/en/scott-addict-30",
       "year": 2027
+    },
+    "fa9c7a7fc61f1d7896b4087b": {
+      "availability": "in_stock",
+      "domain": "onvelo.pt",
+      "last_alerted": null,
+      "model": "Trek Domane",
+      "price": 3999.0,
+      "seller_type": "store",
+      "size": "58",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Bicicleta de estrada Trek Domane SL6 Gen4 2026",
+      "updated_at": "2026-09-09T23:20:07.185031+00:00",
+      "url": "https://www.onvelo.pt/bicicleta-de-estrada-trek-domane-sl6-g4-b18fe8/",
+      "year": 2026
     }
   }
 }
