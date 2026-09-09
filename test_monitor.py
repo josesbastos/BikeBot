@@ -358,3 +358,48 @@ def test_old_non_target_olx_state_is_removed():
 
     assert prune_non_target_marketplace_state(state, ["olx.pt"]) == 1
     assert set(state["offers"]) == {"right", "shop"}
+
+
+def test_portuguese_search_covers_each_shop_and_filters_wrong_domains(monkeypatch):
+    calls = []
+
+    def search(query, limit, backends, **kwargs):
+        calls.append((query, limit))
+        domain = query.split()[0].removeprefix("site:")
+        return [
+            {"href": f"https://{domain}/product/bike", "title": "Orbea Orca M30"},
+            {"href": "https://unrelated.example/bike", "title": "Orbea Orca M30"},
+        ]
+
+    monkeypatch.setattr(monitor, "search_web", search)
+    cfg = {
+        "allowed_domains": ["gaiabike.pt", "viabike.pt"],
+        "portuguese_search_domains": ["gaiabike.pt", "viabike.pt", "unapproved.pt"],
+        "max_results_per_store": 10,
+    }
+    hits = monitor.search_portuguese_stores(["Orbea Orca M30"], cfg)
+    assert len(calls) == 2
+    assert {hit["href"] for hit in hits} == {
+        "https://gaiabike.pt/product/bike", "https://viabike.pt/product/bike"
+    }
+    assert all(limit == 10 for _, limit in calls)
+
+
+def test_catalog_discovers_only_same_site_product_pages(monkeypatch):
+    soup = BeautifulSoup('''
+        <a href="/product/bike">Orbea Orca M30</a>
+        <a href="/product/bike">Orbea Orca M30</a>
+        <a href="/cart/add/bike">Orbea Orca M30</a>
+        <a href="https://elsewhere.pt/product/bike">Orbea Orca M30</a>
+        <a href="/product/helmet">Helmet</a>
+    ''', "html.parser")
+    monkeypatch.setattr(monitor, "fetch_page", lambda url: (str(soup), soup))
+    cfg = {
+        "allowed_domains": ["gaiabike.pt"],
+        "catalog_searches": [{
+            "url": "https://www.gaiabike.pt/search?q={query}",
+            "product_path": "/product/",
+        }],
+    }
+    hits = monitor.search_portuguese_stores(["Orbea Orca M30"], cfg)
+    assert [hit["href"] for hit in hits] == ["https://www.gaiabike.pt/product/bike"]

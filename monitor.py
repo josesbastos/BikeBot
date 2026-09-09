@@ -7,11 +7,12 @@ import os
 import re
 import sys
 import time
+from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass, asdict
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
-from urllib.parse import parse_qsl, urlencode, urlparse, urlunparse
+from urllib.parse import parse_qsl, quote_plus, urlencode, urljoin, urlparse, urlunparse
 
 import requests
 import yaml
@@ -842,6 +843,53 @@ def choose_price(
     return None, "none", availability
 
 
+def search_portuguese_stores(
+    aliases: list[str], cfg: dict[str, Any]
+) -> list[dict[str, Any]]:
+    """Search each configured shop even when the broad query already has hits."""
+    domains = list(dict.fromkeys(cfg.get("portuguese_search_domains", [])))
+    domains = [d for d in domains if domain_allowed(d, cfg["allowed_domains"])]
+    aliases = list({a.casefold(): a for a in aliases}.values())
+    phrase = " OR ".join(f'"{a}"' for a in aliases)
+    limit = int(cfg.get("max_results_per_store", 10))
+    backends = cfg.get("search_backends", ["bing", "yahoo"])
+
+    def search_store(domain: str) -> list[dict[str, Any]]:
+        hits = search_web(f"site:{domain} ({phrase})", limit, backends, warn=False)
+        hits = [h for h in hits if domain_allowed(
+            normalize_domain(h.get("href") or h.get("url") or ""), [domain]
+        )]
+        print(f"[search] PT {domain}: {len(hits)} candidate pages")
+        return hits
+
+    workers = max(1, min(4, int(cfg.get("store_search_workers", 3))))
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        results = [hit for hits in pool.map(search_store, domains) for hit in hits]
+
+    for catalog in cfg.get("catalog_searches", []):
+        for alias in aliases:
+            url = catalog["url"].format(query=quote_plus(alias))
+            domain = normalize_domain(url)
+            if not domain_allowed(domain, cfg["allowed_domains"]):
+                continue
+            _, soup = fetch_page(url)
+            if soup is None:
+                continue
+            discovered: dict[str, dict[str, Any]] = {}
+            for anchor in soup.select("a[href]"):
+                href = canonicalize_url(urljoin(url, anchor["href"]))
+                title = anchor.get_text(" ", strip=True)
+                if (
+                    domain_allowed(normalize_domain(href), [domain])
+                    and urlparse(href).path.startswith(catalog["product_path"])
+                    and alias_present(title, aliases)
+                ):
+                    discovered[href] = {"href": href, "title": title}
+            print(f"[search] catalog {domain}: {len(discovered)} matching product links")
+            results.extend(list(discovered.values())[:limit])
+    return results
+
+
 def search_model(model_cfg: dict[str, Any], cfg: dict[str, Any]) -> list[Offer]:
     model_name = model_cfg["name"]
     aliases = model_cfg["aliases"]
@@ -897,6 +945,8 @@ def search_model(model_cfg: dict[str, Any], cfg: dict[str, Any]) -> list[Offer]:
                     warn=False,
                 )
             )
+
+    results.extend(search_portuguese_stores(aliases, cfg))
 
     # Read OLX's live advert feed first. Search engines remain a fallback for
     # marketplaces without a supported feed or if the direct request is blocked.

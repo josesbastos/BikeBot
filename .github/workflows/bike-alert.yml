@@ -16,7 +16,7 @@ concurrency:
 jobs:
   monitor:
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 25
 
     steps:
       - name: Checkout
@@ -37,7 +37,7 @@ jobs:
           # Para enviar para o mesmo email usado na conta Resend,
           # onboarding@resend.dev é suficiente.
           RESEND_FROM: "Bike Alert <onboarding@resend.dev>"
-        run: python monitor.py
+        run: python -u monitor.py
 
       - name: Persist alert state
         if: always()

@@ -2,7 +2,27 @@ recipient: "josesampaio2@gmail.com"
 max_price_eur: 1800
 min_plausible_price_eur: 900
 marketplace_min_price_eur: 300
-max_results_per_model: 15
+max_results_per_model: 30
+max_results_per_store: 10
+store_search_workers: 3
+# Each Portuguese shop is searched separately on every run.
+portuguese_search_domains:
+  - gaiabike.pt
+  - viabike.pt
+  - fitbike.pt
+  - onvelo.pt
+  - lenamotos.pt
+  - westbike.pt
+  - bikeplanet.pt
+  - afacycles.pt
+  - bikezone.pt
+  - lisbonbike.pt
+  - sobikes.pt
+  - ibkbike.pt
+# Also discover current GaiaBike product links through its own search form.
+catalog_searches:
+  - url: "https://www.gaiabike.pt/search?q={query}"
+    product_path: "/product/"
 max_marketplace_results_per_model: 80
 max_alerts_per_run: 10
 search_backends: ["bing", "yahoo"]
@@ -63,6 +83,13 @@ models:
 # Podes acrescentar/remover domínios sem alterar o código.
 allowed_domains:
   # Portugal
+  - "gaiabike.pt"
+  - "viabike.pt"
+  - "fitbike.pt"
+  - "onvelo.pt"
+  - "lenamotos.pt"
+  - "westbike.pt"
+  - "bikeplanet.pt"
   - "afacycles.pt"
   - "bikezone.pt"
   - "lisbonbike.pt"

@@ -24,6 +24,21 @@ Tudo pode ser alterado em `config.yaml`.
 O bot filtra resultados para uma lista de lojas portuguesas e lojas europeias com mercado/envio para Portugal.
 A lista está em `config.yaml` e é fácil acrescentar novos domínios.
 
+São pesquisadas individualmente, em cada execução, 12 lojas portuguesas:
+GaiaBike, ViaBike, Fitbike, onVeló, Lenamotos, Westbike, BikePlanet, AFA Cycles,
+BikeZone, LisbonBike, Só Bikes e IBKbike. A pesquisa geral recolhe até 30 páginas
+por modelo, com até 10 resultados adicionais por loja. A GaiaBike é consultada
+também pelo formulário de pesquisa do seu catálogo.
+
+As opções `portuguese_search_domains`, `max_results_per_store` e
+`catalog_searches` controlam esta cobertura. Um resultado de pesquisa só entra
+no email depois de se confirmar o modelo, ano, tamanho e preço na página.
+Nos logs, `candidate pages` conta páginas encontradas, não ofertas confirmadas.
+
+O repositório ativo é `josesbastos/BikeBot`. O workflow do repositório antigo
+`josesbastos/bike-price-alert` foi desativado: falhava por falta de
+`RESEND_API_KEY` e gerava notificações independentes deste bot.
+
 Também pesquisa anúncios individuais do `olx.pt`. Nos emails, os resultados ficam
 separados entre **lojas/vendedores profissionais** e **vendedores particulares**.
 Páginas gerais de pesquisa do OLX não são tratadas como anúncios.
