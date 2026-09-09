@@ -15,6 +15,7 @@ def main():
         "https://www.gaiabike.pt/search?q=Orbea+Orca+M30",
         "https://www.gaiabike.pt/product/orbe-orca-m30-branco",
     ]
+    failures = 0
     for url in urls:
         print(f"URL: {url}", flush=True)
         for method in ("requests", "primp", "curl-http1", "curl-http2"):
@@ -42,7 +43,10 @@ def main():
             print(f"Elapsed: {time.monotonic() - started:.1f}s", flush=True)
         page, soup = fetch_page(url)
         print("MONITOR", len(page), bool(soup), flush=True)
+        if soup is None or not soup.title or "gaiabike" not in soup.title.get_text().lower():
+            failures += 1
+    return 1 if failures else 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())
