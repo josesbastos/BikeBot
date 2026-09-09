@@ -39,6 +39,22 @@ O repositório ativo é `josesbastos/BikeBot`. O workflow do repositório antigo
 `josesbastos/bike-price-alert` foi desativado: falhava por falta de
 `RESEND_API_KEY` e gerava notificações independentes deste bot.
 
+### Diagnóstico de consultas
+
+O workflow manual `Site connectivity check` testa a GaiaBike em Linux, Windows
+ou macOS e não envia emails. Pode ser iniciado com:
+
+```sh
+gh workflow run site-check.yml -f runner=ubuntu-latest
+```
+
+Em 9 de setembro de 2026, a loja respondeu neste PC, mas fechou as ligações dos
+três tipos de servidor do GitHub testados. O Chrome real também apresentou erro
+de rede. A falha da página inicial já não impede o bot de tentar o produto
+diretamente, mas isso não resolveu esta restrição de acesso. O diagnóstico
+falha explicitamente quando não consegue ler a loja; o monitor continua com as
+outras fontes e não apresenta preços não confirmados da GaiaBike.
+
 Também pesquisa anúncios individuais do `olx.pt`. Nos emails, os resultados ficam
 separados entre **lojas/vendedores profissionais** e **vendedores particulares**.
 Páginas gerais de pesquisa do OLX não são tratadas como anúncios.
