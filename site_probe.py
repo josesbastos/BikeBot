@@ -1,5 +1,6 @@
 """Manual public-page connectivity checks; no credentials or email sending."""
 import platform
+import shutil
 import subprocess
 import time
 
@@ -7,6 +8,7 @@ import primp
 import requests
 
 from monitor import HEADERS, fetch_page
+from bs4 import BeautifulSoup
 
 
 def main():
@@ -43,6 +45,18 @@ def main():
             print(f"Elapsed: {time.monotonic() - started:.1f}s", flush=True)
         page, soup = fetch_page(url)
         print("MONITOR", len(page), bool(soup), flush=True)
+        browser = shutil.which("google-chrome") or shutil.which("chromium")
+        if browser and soup is None:
+            result = subprocess.run(
+                [browser, "--headless", "--no-sandbox", "--disable-gpu",
+                 "--dump-dom", "--timeout=20000", url],
+                capture_output=True, text=True, timeout=40,
+            )
+            browser_soup = BeautifulSoup(result.stdout, "html.parser")
+            title = browser_soup.title.get_text() if browser_soup.title else ""
+            print("CHROME", result.returncode, len(result.stdout), title, flush=True)
+            if "gaiabike" in title.lower():
+                soup = browser_soup
         if soup is None or not soup.title or "gaiabike" not in soup.title.get_text().lower():
             failures += 1
     return 1 if failures else 0
