@@ -184,6 +184,26 @@ def test_fetch_page_uses_browser_fallback_after_403(monkeypatch):
     assert soup.h1.get_text() == "Bike"
 
 
+def test_failed_homepage_does_not_block_product_request(monkeypatch):
+    monkeypatch.setattr(monitor.HTTP_SESSION, "get", lambda *a, **kw: FakeResponse(403, "Denied"))
+    urls = []
+
+    class Browser:
+        def __init__(self, **kwargs):
+            pass
+
+        def get(self, url):
+            urls.append(url)
+            if url.endswith("/"):
+                raise RuntimeError("HTTP/2 stream error")
+            return FakeResponse(200, "<html><h1>Bike</h1></html>")
+
+    monkeypatch.setattr(monitor.primp, "Client", Browser)
+    _, soup = monitor.fetch_page("https://shop.example/product/bike")
+    assert soup.h1.get_text() == "Bike"
+    assert urls == ["https://shop.example/", "https://shop.example/product/bike"]
+
+
 def test_search_uses_second_backend_when_first_fails(monkeypatch):
     calls = []
 

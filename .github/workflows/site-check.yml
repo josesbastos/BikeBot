@@ -1,0 +1,20 @@
+name: Site connectivity check
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  probe:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - run: python -u site_probe.py

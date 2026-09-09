@@ -364,7 +364,11 @@ def fetch_page(url: str) -> tuple[str, BeautifulSoup | None]:
             )
             # Establish the same basic cookies a normal visitor receives on the
             # storefront before opening a product URL directly.
-            client.get(f"{parsed.scheme}://{parsed.netloc}/")
+            try:
+                client.get(f"{parsed.scheme}://{parsed.netloc}/")
+            except Exception:
+                # A failed homepage warm-up must not prevent a direct request.
+                pass
             response = client.get(url)
             page = response_page(response, url, accept_valid_server_error=True)
             print(f"[fetch] browser fallback succeeded: {normalize_domain(url)}")
