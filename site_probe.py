@@ -54,10 +54,13 @@ def main():
             )
             browser_soup = BeautifulSoup(result.stdout, "html.parser")
             title = browser_soup.title.get_text() if browser_soup.title else ""
-            print("CHROME", result.returncode, len(result.stdout), title, flush=True)
-            if "gaiabike" in title.lower():
+            error = browser_soup.select_one("#main-frame-error, .error-code")
+            print("CHROME", result.returncode, len(result.stdout), title,
+                  "ERROR", error.get_text(" ", strip=True)[:500] if error else None,
+                  flush=True)
+            if error is None and "gaiabike -" in title.lower():
                 soup = browser_soup
-        if soup is None or not soup.title or "gaiabike" not in soup.title.get_text().lower():
+        if soup is None or not soup.title or "gaiabike -" not in soup.title.get_text().lower():
             failures += 1
     return 1 if failures else 0
 
