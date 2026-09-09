@@ -35,13 +35,13 @@
       "domain": "ibkbike.pt",
       "last_alerted": null,
       "model": "Orbea Orca M30",
-      "price": 2069.73,
+      "price": 2069.6,
       "seller_type": "store",
       "size": "57",
       "source": "structured_data",
       "target_size_match": true,
       "title": "Bicicleta Orbea Orca M30 2026 Carbon Matt Titan Grey – IBKBike ...",
-      "updated_at": "2026-09-08T06:48:12.336432+00:00",
+      "updated_at": "2026-09-09T11:19:28.835347+00:00",
       "url": "https://ibkbike.pt/products/bikes-road-orbea-orca-m30-2026-diamond-carbon-view-matt-titan-grey-gloss",
       "year": 2026
     },
@@ -131,8 +131,8 @@
       "size": "57",
       "source": "structured_data",
       "target_size_match": true,
-      "title": "Orbea Orca M30 Road Bike Shimano 105 12S 700 mm Vulcano Grey Black 2024 | Alltricks.com",
-      "updated_at": "2026-09-08T11:15:14.771730+00:00",
+      "title": "Orbea Orca M30 Road Bike Shimano 105 12S 700 mm ...",
+      "updated_at": "2026-09-09T11:19:28.835398+00:00",
       "url": "https://www.alltricks.pt/F-41505-velos-route-_-cyclocross-_-triathlon/P-2756036-orbea_orca_m30_road_bike_shimano_105_12s_700_mm_vulcano_grey_black_2024",
       "year": 2024
     },
@@ -229,11 +229,14 @@
       "last_alerted": null,
       "model": "Orbea Orca M30",
       "price": 2279.99,
+      "seller_type": "store",
       "size": "57",
       "source": "structured_data",
+      "target_size_match": true,
       "title": "Bicicleta Orbea ORCA M30 Iris White - LisbonBike Shop",
-      "updated_at": "2026-09-07T12:10:38.636567+00:00",
-      "url": "https://lisbonbike.pt/produto/bicicleta-orbea-orca-m30-iris-white/"
+      "updated_at": "2026-09-09T11:19:28.835364+00:00",
+      "url": "https://lisbonbike.pt/produto/bicicleta-orbea-orca-m30-iris-white/",
+      "year": 2026
     },
     "5cd785c6d951e119062caa2f": {
       "availability": "in_stock",
