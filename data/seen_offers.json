@@ -35,13 +35,13 @@
       "domain": "ibkbike.pt",
       "last_alerted": null,
       "model": "Orbea Orca M30",
-      "price": 2070.01,
+      "price": 2073.03,
       "seller_type": "store",
       "size": "57",
       "source": "structured_data",
       "target_size_match": true,
       "title": "Bicicleta Orbea Orca M30 2026 Carbon Matt Titan Grey – IBKBike ...",
-      "updated_at": "2026-09-10T16:34:21.807191+00:00",
+      "updated_at": "2026-09-10T21:01:48.195671+00:00",
       "url": "https://ibkbike.pt/products/bikes-road-orbea-orca-m30-2026-diamond-carbon-view-matt-titan-grey-gloss",
       "year": 2026
     },
@@ -237,6 +237,21 @@
       "title": "GIANT DEFY ADVANCED 2 - BIKE ZONE",
       "updated_at": "2026-09-07T12:10:38.636596+00:00",
       "url": "https://bikezone.pt/-endurance/20076-GIANT-DEFY-ADVANCED-2.html"
+    },
+    "3a8caf8f1cce636366157f54": {
+      "availability": "in_stock",
+      "domain": "ibkbike.pt",
+      "last_alerted": null,
+      "model": "Orbea Orca M30",
+      "price": 2599.0,
+      "seller_type": "store",
+      "size": "57",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Quadro Orbea Orca M30 2027 Cobalt Blue/Carbon Raw",
+      "updated_at": "2026-09-10T21:01:48.195735+00:00",
+      "url": "https://ibkbike.pt/products/frames-bike-road-orbea-orca-m30-2027-cobalt-blue-carbon-raw-matt",
+      "year": 2027
     },
     "3afdfe0807909961ba14667b": {
       "availability": "in_stock",
@@ -459,8 +474,8 @@
       "size": "57",
       "source": "structured_data",
       "target_size_match": true,
-      "title": "Bicicleta de Estrada Orbea Orca M30 | Deporvillage",
-      "updated_at": "2026-09-08T18:57:23.436427+00:00",
+      "title": "Bicicleta estrada Orbea Orca M30 branco - Deporvillage",
+      "updated_at": "2026-09-10T21:01:48.195723+00:00",
       "url": "https://www.deporvillage.pt/bicicleta-estrada-orbea-orca-m30-branco",
       "year": 2024
     },
