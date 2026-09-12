@@ -1,5 +1,20 @@
 {
   "offers": {
+    "01724f4d3dbf566cdb31b297": {
+      "availability": "in_stock",
+      "domain": "bike-discount.de",
+      "last_alerted": null,
+      "model": "Scott Addict",
+      "price": 2599.0,
+      "seller_type": "store",
+      "size": "58",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Scott Addict 40 | Bike-Discount",
+      "updated_at": "2026-09-12T04:36:15.563407+00:00",
+      "url": "https://www.bike-discount.de/en/scott-addict-40-2",
+      "year": 2026
+    },
     "098b72fd5a5785999420ca24": {
       "availability": "out_of_stock",
       "domain": "alltricks.pt",
@@ -146,8 +161,8 @@
       "size": "57",
       "source": "structured_data",
       "target_size_match": true,
-      "title": "Orbea Orca M30 Road Bike Shimano 105 12S 700 mm ...",
-      "updated_at": "2026-09-11T16:32:52.109896+00:00",
+      "title": "Orbea Orca M30 Road Bike Shimano 105 12S 700 mm Vulcano Grey Black 2024 | Alltricks.com",
+      "updated_at": "2026-09-12T04:36:15.563417+00:00",
       "url": "https://www.alltricks.pt/F-41505-velos-route-_-cyclocross-_-triathlon/P-2756036-orbea_orca_m30_road_bike_shimano_105_12s_700_mm_vulcano_grey_black_2024",
       "year": 2024
     },
@@ -728,8 +743,8 @@
       "size": "L",
       "source": "page_text",
       "target_size_match": true,
-      "title": "Bicicleta de estrada Merida Scultura Endurance 4000 2024 ...merida scultura 4000 - Bicicletas - OLX PortugalBicicleta de estrada Merida Scultura Endurance 4000 ...Bicicleta de estrada Merida Scultura Endurance 4000 à vendaCompre Merida 2025 Scultura Endurance 4000 - Bicicleta de ...Merida SCULTURA ENDURANCE 4000 2024 Price In Portugal ...SCULTURA ENDURANCE 4000 - Merida Bikes",
-      "updated_at": "2026-09-11T21:03:11.043082+00:00",
+      "title": "Bicicleta de estrada Merida Scultura Endurance 4000 2024 ...merida scultura 4000 - Bicicletas - OLX PortugalBicicleta de estrada Merida Scultura Endurance 4000 ...Bicicleta de estrada Merida Scultura Endurance 4000 à vendaCompre Merida 2025 Scultura Endurance 4000 - Bicicleta de ...Comprar 2025 Merida Scultura Endurance 4000 - Bicicleta de ...Merida SCULTURA ENDURANCE 4000 2024 Price In Portugal ...",
+      "updated_at": "2026-09-12T04:36:15.563296+00:00",
       "url": "https://www.deporvillage.pt/bicicleta-de-estrada-merida-scultura-4000-2024-cinzento",
       "year": 2024
     },
@@ -819,8 +834,8 @@
       "size": "XL",
       "source": "page_text",
       "target_size_match": true,
-      "title": "Bicicleta de estrada Merida Scultura Endurance 4000 2024 ...merida scultura 4000 - Bicicletas - OLX PortugalBicicleta de estrada Merida Scultura Endurance 4000 ...Bicicleta de estrada Merida Scultura Endurance 4000 à vendaCompre Merida 2025 Scultura Endurance 4000 - Bicicleta de ...Merida SCULTURA ENDURANCE 4000 2024 Price In Portugal ...SCULTURA ENDURANCE 4000 - Merida Bikes",
-      "updated_at": "2026-09-11T21:03:11.043096+00:00",
+      "title": "Bicicleta de estrada Merida Scultura Endurance 4000 2024 ...merida scultura 4000 - Bicicletas - OLX PortugalBicicleta de estrada Merida Scultura Endurance 4000 ...Bicicleta de estrada Merida Scultura Endurance 4000 à vendaCompre Merida 2025 Scultura Endurance 4000 - Bicicleta de ...Comprar 2025 Merida Scultura Endurance 4000 - Bicicleta de ...Merida SCULTURA ENDURANCE 4000 2024 Price In Portugal ...",
+      "updated_at": "2026-09-12T04:36:15.563372+00:00",
       "url": "https://www.deporvillage.pt/bicicleta-de-estrada-merida-scultura-4000-2024-cinzento",
       "year": 2024
     },
@@ -909,8 +924,8 @@
       "size": "L",
       "source": "structured_data",
       "target_size_match": true,
-      "title": "Bicicleta Carretera Merida Scultura Endurance 4000 2024 ...Bicicleta Carretera Merida Scultura 4000 | DeporvillageMERIDA | Compra Online las Últimas Novedades - deporvillage",
-      "updated_at": "2026-09-08T06:55:37.234229+00:00",
+      "title": "Bicicleta Carretera Merida Scultura Endurance 4000 2024 ...Bicicleta Carretera Merida Scultura 4000 | DeporvillageMERIDA | Compra Online las Últimas Novedades - deporvillageRoad Endurance Bikes - Canyon Bicycles - Official Site",
+      "updated_at": "2026-09-12T04:36:15.563354+00:00",
       "url": "https://www.deporvillage.com/bicicleta-carretera-merida-scultura-endurance-4000-2024-verde",
       "year": 2024
     },
@@ -924,8 +939,8 @@
       "size": "XL",
       "source": "structured_data",
       "target_size_match": true,
-      "title": "Bicicleta Carretera Merida Scultura Endurance 4000 2024 ...Bicicleta Carretera Merida Scultura 4000 | DeporvillageMERIDA | Compra Online las Últimas Novedades - deporvillage",
-      "updated_at": "2026-09-08T06:55:37.234237+00:00",
+      "title": "Bicicleta Carretera Merida Scultura Endurance 4000 2024 ...Bicicleta Carretera Merida Scultura 4000 | DeporvillageMERIDA | Compra Online las Últimas Novedades - deporvillageRoad Endurance Bikes - Canyon Bicycles - Official Site",
+      "updated_at": "2026-09-12T04:36:15.563386+00:00",
       "url": "https://www.deporvillage.com/bicicleta-carretera-merida-scultura-endurance-4000-2024-verde",
       "year": 2024
     },
