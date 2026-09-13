@@ -253,6 +253,21 @@
       "updated_at": "2026-09-07T12:10:38.636596+00:00",
       "url": "https://bikezone.pt/-endurance/20076-GIANT-DEFY-ADVANCED-2.html"
     },
+    "36176c0d1f8bae93fc1e07c5": {
+      "availability": "in_stock",
+      "domain": "alltricks.pt",
+      "last_alerted": null,
+      "model": "Orbea Orca M30",
+      "price": 2599.0,
+      "seller_type": "store",
+      "size": "57",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Orbea Orca M30 Road Bike with Shimano 105 12-speed drivetrain, 700 mm ...",
+      "updated_at": "2026-09-13T11:52:29.546469+00:00",
+      "url": "https://www.alltricks.pt/F-41505-velos-route-_-cyclocross-_-triathlon/P-3344363-orbea_orca_m30_road_bike_with_shimano_105_12_speed_drivetrain__700_mm__black_gray__2027",
+      "year": 2027
+    },
     "3a8caf8f1cce636366157f54": {
       "availability": "in_stock",
       "domain": "ibkbike.pt",
@@ -728,8 +743,8 @@
       "size": "57",
       "source": "structured_data",
       "target_size_match": true,
-      "title": "Bicicleta Orbea ORCA M30 Cobalt Blue - LisbonBike Shop",
-      "updated_at": "2026-09-12T23:08:01.581947+00:00",
+      "title": "Bicicleta Orbea ORCA M30 Cobalt Blue | LisbonBike Shop",
+      "updated_at": "2026-09-13T11:52:29.546354+00:00",
       "url": "https://lisbonbike.pt/produto/bicicleta-orbea-orca-m30-cobalt-blue/",
       "year": 2026
     },
