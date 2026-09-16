@@ -328,6 +328,21 @@
       "url": "https://www.bike-discount.de/en/cube-attain-c-62-slx-metallicwhite-n-black",
       "year": 2027
     },
+    "4787926450814a4d60ba1b21": {
+      "availability": "out_of_stock",
+      "domain": "alltricks.pt",
+      "last_alerted": null,
+      "model": "Cannondale Synapse Carbon",
+      "price": 1899.99,
+      "seller_type": "store",
+      "size": "61",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Cannondale Synapse Carbon 2 RL Shimano Ultegra 11V 700 mm ...",
+      "updated_at": "2026-09-16T11:35:22.619287+00:00",
+      "url": "https://www.alltricks.pt/F-41505-velos-route-_-cyclocross-_-triathlon/P-2927538-cannondale_synapse_carbon_2_rl_shimano_ultegra_11v_700_mm_black_pearl_2023_road_bike",
+      "year": 2023
+    },
     "487cd53433d647cb1432a123": {
       "availability": "unknown",
       "domain": "onvelo.pt",
@@ -969,8 +984,8 @@
       "size": "L",
       "source": "structured_data",
       "target_size_match": true,
-      "title": "Bicicleta Carretera Merida Scultura Endurance 4000 2024 ...Bicicleta Carretera Merida Scultura 4000 | DeporvillageMERIDA | Compra Online las Últimas Novedades - deporvillage",
-      "updated_at": "2026-09-12T10:49:41.747496+00:00",
+      "title": "Bicicleta Carretera Merida Scultura Endurance 4000 2024 ...",
+      "updated_at": "2026-09-16T11:35:22.619294+00:00",
       "url": "https://www.deporvillage.com/bicicleta-carretera-merida-scultura-endurance-4000-2024-verde",
       "year": 2024
     },
@@ -984,8 +999,8 @@
       "size": "XL",
       "source": "structured_data",
       "target_size_match": true,
-      "title": "Bicicleta Carretera Merida Scultura Endurance 4000 2024 ...Bicicleta Carretera Merida Scultura 4000 | DeporvillageMERIDA | Compra Online las Últimas Novedades - deporvillage",
-      "updated_at": "2026-09-12T10:49:41.747512+00:00",
+      "title": "Bicicleta Carretera Merida Scultura Endurance 4000 2024 ...",
+      "updated_at": "2026-09-16T11:35:22.619303+00:00",
       "url": "https://www.deporvillage.com/bicicleta-carretera-merida-scultura-endurance-4000-2024-verde",
       "year": 2024
     },
@@ -1049,6 +1064,21 @@
       "updated_at": "2026-09-09T23:20:07.184897+00:00",
       "url": "https://www.alltricks.pt/F-41505-velos-route-_-cyclocross-_-triathlon/P-3146773-cube_attain_c_62_race_road_bike_shimano_105_12s_700_mm_blackline_black_2026",
       "year": 2026
+    },
+    "e0ef3bdc1054a5149287dafd": {
+      "availability": "out_of_stock",
+      "domain": "alltricks.pt",
+      "last_alerted": null,
+      "model": "Cannondale Synapse Carbon",
+      "price": 1899.99,
+      "seller_type": "store",
+      "size": "58",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Cannondale Synapse Carbon 2 RL Shimano Ultegra 11V 700 mm ...",
+      "updated_at": "2026-09-16T11:35:22.619274+00:00",
+      "url": "https://www.alltricks.pt/F-41505-velos-route-_-cyclocross-_-triathlon/P-2927538-cannondale_synapse_carbon_2_rl_shimano_ultegra_11v_700_mm_black_pearl_2023_road_bike",
+      "year": 2023
     },
     "e294925194217c0a64d4c219": {
       "availability": "in_stock",
