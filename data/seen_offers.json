@@ -115,8 +115,8 @@
       "size": "60",
       "source": "structured_data",
       "target_size_match": true,
-      "title": "Acheter Cube Attain C:62 SLT 2026 | Route - biciescapa.com",
-      "updated_at": "2026-09-08T18:57:23.436455+00:00",
+      "title": "Acheter Cube Attain C:62 SLT 2026 | Route",
+      "updated_at": "2026-09-20T05:07:38.358367+00:00",
       "url": "https://www.biciescapa.com/fr/velos/route/cube-attain-c-62-slt-2026-90196",
       "year": 2026
     },
@@ -742,8 +742,8 @@
       "size": "60",
       "source": "structured_data",
       "target_size_match": true,
-      "title": "Acheter Cube Attain C:62 Race 2026 | Route - biciescapa.com",
-      "updated_at": "2026-09-08T18:57:23.436342+00:00",
+      "title": "Acheter Cube Attain C:62 Race 2026 | Route",
+      "updated_at": "2026-09-20T05:07:38.358289+00:00",
       "url": "https://www.biciescapa.com/fr/velos/route/cube-attain-c-62-race-2026-90194",
       "year": 2026
     },
@@ -793,17 +793,17 @@
       "year": 2025
     },
     "9f3b50620f4105a103660c07": {
-      "availability": "in_stock",
+      "availability": "out_of_stock",
       "domain": "biciescapa.com",
       "last_alerted": null,
       "model": "CUBE Attain C:62",
-      "price": 2599.0,
+      "price": 2499.0,
       "seller_type": "store",
       "size": "60",
       "source": "structured_data",
       "target_size_match": true,
       "title": "Achetez le vélo de route Cube Attain C:62 SLX 2027",
-      "updated_at": "2026-09-09T16:37:27.475471+00:00",
+      "updated_at": "2026-09-20T05:07:38.358330+00:00",
       "url": "https://www.biciescapa.com/fr/velos/route/cube-attain-c-62-slx-2027-93157",
       "year": 2027
     },
