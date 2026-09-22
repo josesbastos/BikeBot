@@ -15,6 +15,21 @@
       "url": "https://www.bike-discount.de/en/scott-addict-40-2",
       "year": 2026
     },
+    "05cd8f60809ad7abb4ee5156": {
+      "availability": "out_of_stock",
+      "domain": "biciescapa.com",
+      "last_alerted": null,
+      "model": "Giant Defy Advanced",
+      "price": 3799.0,
+      "seller_type": "store",
+      "size": "XL",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Comprar Bicicleta Giant Defy Advanced Pro 1 2026 | Carretera",
+      "updated_at": "2026-09-22T21:25:38.030502+00:00",
+      "url": "https://www.biciescapa.com/es/bicicletas/carretera/bicicleta-giant-defy-advanced-pro-1-2026-90405",
+      "year": 2026
+    },
     "098b72fd5a5785999420ca24": {
       "availability": "out_of_stock",
       "domain": "alltricks.pt",
@@ -326,6 +341,21 @@
       "title": "Bicicleta Orbea ORCA M30 Diamond Carbon View | LisbonBike Shop",
       "updated_at": "2026-09-22T17:02:52.958705+00:00",
       "url": "https://lisbonbike.pt/produto/bicicleta-orbea-orca-m30-diamond-carbon-view/",
+      "year": 2026
+    },
+    "4132cd9bf982724985d46e65": {
+      "availability": "out_of_stock",
+      "domain": "biciescapa.com",
+      "last_alerted": null,
+      "model": "Giant Defy Advanced",
+      "price": 3799.0,
+      "seller_type": "store",
+      "size": "L",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Comprar Bicicleta Giant Defy Advanced Pro 1 2026 | Carretera",
+      "updated_at": "2026-09-22T21:25:38.030495+00:00",
+      "url": "https://www.biciescapa.com/es/bicicletas/carretera/bicicleta-giant-defy-advanced-pro-1-2026-90405",
       "year": 2026
     },
     "42296ba34b8633ac0c4e3d18": {
@@ -1077,6 +1107,21 @@
       "title": "Bicicleta de estrada Trek Domane SL5 Gen4 2026",
       "updated_at": "2026-09-11T04:43:31.933055+00:00",
       "url": "https://www.onvelo.pt/bicicleta-de-estrada-trek-domane-sl5-gen4-b18fe4/",
+      "year": 2026
+    },
+    "c9393e2e72268b510aa1b070": {
+      "availability": "in_stock",
+      "domain": "lisbonbike.pt",
+      "last_alerted": null,
+      "model": "Scott Addict",
+      "price": 3499.99,
+      "seller_type": "store",
+      "size": "58",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Bicicleta SCOTT Addict 30 Cumulus White - LisbonBike",
+      "updated_at": "2026-09-22T21:25:38.030486+00:00",
+      "url": "https://lisbonbike.pt/produto/bicicleta-scott-addict-30-cumulus-white/",
       "year": 2026
     },
     "ce73e1765e80f86696e3d62d": {
