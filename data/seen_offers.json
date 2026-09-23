@@ -735,6 +735,21 @@
       "url": "https://ibkbike.pt/products/bikes-road-orbea-orca-m30-2026-cobalt-blue-carbon-raw-matt",
       "year": 2026
     },
+    "87fcb58db195a19036397e73": {
+      "availability": "in_stock",
+      "domain": "lisbonbike.pt",
+      "last_alerted": null,
+      "model": "Orbea Orca M30",
+      "price": 2599.0,
+      "seller_type": "store",
+      "size": "57",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Orbea ORCA M30 2027 White - Lilac | LisbonBike",
+      "updated_at": "2026-09-23T21:35:07.848227+00:00",
+      "url": "https://lisbonbike.pt/produto/bicicleta-orbea-orca-m30-white-lilac/",
+      "year": 2027
+    },
     "8f56ae13a7d46e156283ea7d": {
       "availability": "unknown",
       "domain": "bikezone.pt",
@@ -1034,6 +1049,21 @@
       "url": "https://www.deporvillage.pt/bicicleta-de-estrada-merida-scultura-4000-2024-cinzento",
       "year": 2024
     },
+    "b89e0dbb3f2f5a102732b477": {
+      "availability": "in_stock",
+      "domain": "lisbonbike.pt",
+      "last_alerted": null,
+      "model": "Orbea Orca M30",
+      "price": 2599.0,
+      "seller_type": "store",
+      "size": "57",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Orbea ORCA M30 2027 Blue | LisbonBike",
+      "updated_at": "2026-09-23T21:35:07.848215+00:00",
+      "url": "https://lisbonbike.pt/produto/bicicleta-orbea-orca-m30-blue/",
+      "year": 2027
+    },
     "ba70ed6ec1855daa7b57949e": {
       "availability": "out_of_stock",
       "domain": "alltricks.pt",
@@ -1078,6 +1108,21 @@
       "updated_at": "2026-09-08T06:48:12.336539+00:00",
       "url": "https://ibkbike.pt/products/bikes-road-synapse-carbon-2-cannondale-2025-grey",
       "year": 2025
+    },
+    "be3ab7dc686c8ce2a1269224": {
+      "availability": "in_stock",
+      "domain": "lisbonbike.pt",
+      "last_alerted": null,
+      "model": "Scott Addict",
+      "price": 2499.99,
+      "seller_type": "store",
+      "size": "XL",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Bicicleta SCOTT Addict Gravel 40 Iron Grey 2027 | LisbonBike",
+      "updated_at": "2026-09-23T21:35:07.848181+00:00",
+      "url": "https://lisbonbike.pt/produto/bicicleta-scott-addict-gravel-40-iron-grey-2027/",
+      "year": 2027
     },
     "c49e51360b72ed518effbdda": {
       "availability": "in_stock",
