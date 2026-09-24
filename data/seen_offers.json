@@ -80,15 +80,15 @@
       "domain": "lisbonbike.pt",
       "last_alerted": null,
       "model": "Orbea Orca M30",
-      "price": 2279.99,
+      "price": 2599.0,
       "seller_type": "store",
       "size": "57",
       "source": "structured_data",
       "target_size_match": true,
       "title": "Bicicleta Orbea ORCA M30 Escape Green | LisbonBike Shop",
-      "updated_at": "2026-09-19T23:12:19.830675+00:00",
+      "updated_at": "2026-09-24T17:16:44.988801+00:00",
       "url": "https://lisbonbike.pt/produto/bicicleta-orbea-orca-m30-escape-green/",
-      "year": 2026
+      "year": 2027
     },
     "0ec21e1561e66dafd948c3fb": {
       "availability": "out_of_stock",
@@ -119,6 +119,21 @@
       "updated_at": "2026-09-08T06:48:12.336514+00:00",
       "url": "https://ibkbike.pt/products/bikes-road-synapse-carbon-4-cannondale-2025-chalk",
       "year": 2025
+    },
+    "170c034b2d26bd5aa5ee4251": {
+      "availability": "in_stock",
+      "domain": "alltricks.pt",
+      "last_alerted": null,
+      "model": "Scott Addict",
+      "price": 2899.99,
+      "seller_type": "store",
+      "size": "XL",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Scott Addict 40 Road Bike Shimano 105 Di2 12V 700 mm Black ...",
+      "updated_at": "2026-09-24T17:16:44.988862+00:00",
+      "url": "https://www.alltricks.pt/F-41505-velos-route-_-cyclocross-_-triathlon/P-3217349-scott_addict_40_road_bike_shimano_105_di2_12v_700_mm_black_2026",
+      "year": 2026
     },
     "1e1bb1406dacb7384ec90c47": {
       "availability": "unknown",
@@ -333,15 +348,15 @@
       "domain": "lisbonbike.pt",
       "last_alerted": null,
       "model": "Orbea Orca M30",
-      "price": 2279.99,
+      "price": 2599.0,
       "seller_type": "store",
       "size": "57",
       "source": "structured_data",
       "target_size_match": true,
       "title": "Bicicleta Orbea ORCA M30 Diamond Carbon View | LisbonBike Shop",
-      "updated_at": "2026-09-22T17:02:52.958705+00:00",
+      "updated_at": "2026-09-24T17:16:44.988774+00:00",
       "url": "https://lisbonbike.pt/produto/bicicleta-orbea-orca-m30-diamond-carbon-view/",
-      "year": 2026
+      "year": 2027
     },
     "4132cd9bf982724985d46e65": {
       "availability": "out_of_stock",
@@ -434,6 +449,21 @@
       "url": "https://www.olx.pt/d/anuncio/canyon-endurace-cf-sl-8-di2-2023-size-l-stealth-grey-IDJAdUo.html",
       "year": 2023
     },
+    "4c772c05510b802b2ec82117": {
+      "availability": "in_stock",
+      "domain": "bike-discount.de",
+      "last_alerted": null,
+      "model": "Cannondale Synapse Carbon",
+      "price": 2799.0,
+      "seller_type": "store",
+      "size": "61",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Cannondale Synapse Carbon 4 Chalk Road Bike Carbon | Bike ...",
+      "updated_at": "2026-09-24T17:16:44.988824+00:00",
+      "url": "https://www.bike-discount.de/en/index.php/detail/019c093a5b3b7164baf6ea192d62a5fc",
+      "year": 2025
+    },
     "4cb4629747385a80ec819591": {
       "availability": "out_of_stock",
       "domain": "biciescapa.com",
@@ -484,15 +514,15 @@
       "domain": "lisbonbike.pt",
       "last_alerted": null,
       "model": "Orbea Orca M30",
-      "price": 2279.99,
+      "price": 2599.0,
       "seller_type": "store",
       "size": "57",
       "source": "structured_data",
       "target_size_match": true,
-      "title": "Bicicleta Orbea ORCA M30 Iris White - LisbonBike Shop",
-      "updated_at": "2026-09-09T11:19:28.835364+00:00",
+      "title": "Bicicleta Orbea ORCA M30 Iris White | LisbonBike Shop",
+      "updated_at": "2026-09-24T17:16:44.988759+00:00",
       "url": "https://lisbonbike.pt/produto/bicicleta-orbea-orca-m30-iris-white/",
-      "year": 2026
+      "year": 2027
     },
     "5cd785c6d951e119062caa2f": {
       "availability": "in_stock",
@@ -659,6 +689,21 @@
       "updated_at": "2026-09-11T04:43:31.933022+00:00",
       "url": "https://www.deporvillage.pt/bicicleta-estrada-orbea-orca-m30-branco",
       "year": 2024
+    },
+    "7232c99e2f3909a97f4b470a": {
+      "availability": "in_stock",
+      "domain": "bike-discount.de",
+      "last_alerted": null,
+      "model": "Cannondale Synapse Carbon",
+      "price": 2799.0,
+      "seller_type": "store",
+      "size": "58",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Cannondale Synapse Carbon 4 Chalk Road Bike Carbon | Bike ...",
+      "updated_at": "2026-09-24T17:16:44.988813+00:00",
+      "url": "https://www.bike-discount.de/en/index.php/detail/019c093a5b3b7164baf6ea192d62a5fc",
+      "year": 2025
     },
     "8188e4784c4873af21143e49": {
       "availability": "in_stock",
