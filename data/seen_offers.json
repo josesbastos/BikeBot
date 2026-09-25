@@ -948,15 +948,15 @@
       "domain": "lisbonbike.pt",
       "last_alerted": null,
       "model": "Orbea Orca M30",
-      "price": 2279.99,
+      "price": 2599.0,
       "seller_type": "store",
       "size": "57",
       "source": "structured_data",
       "target_size_match": true,
-      "title": "Bicicleta Orbea ORCA M30 Cobalt Blue - LisbonBike Shop",
-      "updated_at": "2026-09-19T23:12:19.830691+00:00",
+      "title": "Bicicleta Orbea ORCA M30 Cobalt Blue | LisbonBike Shop",
+      "updated_at": "2026-09-25T11:58:45.390917+00:00",
       "url": "https://lisbonbike.pt/produto/bicicleta-orbea-orca-m30-cobalt-blue/",
-      "year": 2026
+      "year": 2027
     },
     "a50ee132ee4bb82c0a818e75": {
       "availability": "unknown",
