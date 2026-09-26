@@ -616,9 +616,10 @@
       "year": 2026
     },
     "6bb9c0f889dc49282e013153": {
-      "availability": "out_of_stock",
+      "availability": "unknown",
       "domain": "biciescapa.com",
-      "last_alerted": null,
+      "last_alerted": "2026-09-26T11:37:24.564578+00:00",
+      "last_alerted_price": 1699.0,
       "model": "CUBE Attain C:62",
       "price": 1699.0,
       "seller_type": "store",
@@ -626,7 +627,7 @@
       "source": "structured_data",
       "target_size_match": true,
       "title": "Comprar Bicicleta Cube Attain C:62 Race 2027 | Carretera",
-      "updated_at": "2026-09-08T18:57:23.436276+00:00",
+      "updated_at": "2026-09-26T11:37:24.564578+00:00",
       "url": "https://www.biciescapa.com/es/bicicletas/carretera/bicicleta-cube-cube-attain-c-62-race-2027-93156",
       "year": 2027
     },
