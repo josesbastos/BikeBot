@@ -75,6 +75,21 @@
       "url": "https://ibkbike.pt/products/bikes-road-orbea-orca-m30-2026-diamond-carbon-view-matt-titan-grey-gloss",
       "year": 2026
     },
+    "0c64b800dd0f1c1c4aaf1e26": {
+      "availability": "out_of_stock",
+      "domain": "biciescapa.com",
+      "last_alerted": null,
+      "model": "Giant Defy Advanced",
+      "price": 6499.0,
+      "seller_type": "store",
+      "size": "XL",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Comprar Bicicleta Giant Defy Advanced Pro 2026 | Carretera",
+      "updated_at": "2026-09-27T21:27:02.237877+00:00",
+      "url": "https://www.biciescapa.com/es/bicicletas/carretera/bicicleta-giant-defy-advanced-pro-2026-90404",
+      "year": 2026
+    },
     "0ce6d1b8692df240c5de97aa": {
       "availability": "in_stock",
       "domain": "lisbonbike.pt",
@@ -632,7 +647,7 @@
       "year": 2026
     },
     "6bb9c0f889dc49282e013153": {
-      "availability": "unknown",
+      "availability": "out_of_stock",
       "domain": "biciescapa.com",
       "last_alerted": "2026-09-26T11:37:24.564578+00:00",
       "last_alerted_price": 1699.0,
@@ -643,7 +658,7 @@
       "source": "structured_data",
       "target_size_match": true,
       "title": "Comprar Bicicleta Cube Attain C:62 Race 2027 | Carretera",
-      "updated_at": "2026-09-26T11:37:24.564578+00:00",
+      "updated_at": "2026-09-27T21:27:02.237465+00:00",
       "url": "https://www.biciescapa.com/es/bicicletas/carretera/bicicleta-cube-cube-attain-c-62-race-2027-93156",
       "year": 2027
     },
@@ -960,6 +975,21 @@
       "url": "https://www.biciescapa.com/fr/velos/route/cube-attain-c-62-slx-2027-93157",
       "year": 2027
     },
+    "9f5c30c5be77c4dce567241d": {
+      "availability": "out_of_stock",
+      "domain": "biciescapa.com",
+      "last_alerted": null,
+      "model": "Giant Defy Advanced",
+      "price": 6499.0,
+      "seller_type": "store",
+      "size": "L",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Comprar Bicicleta Giant Defy Advanced Pro 2026 | Carretera",
+      "updated_at": "2026-09-27T21:27:02.237864+00:00",
+      "url": "https://www.biciescapa.com/es/bicicletas/carretera/bicicleta-giant-defy-advanced-pro-2026-90404",
+      "year": 2026
+    },
     "9ff210c13c3efa5e7b36ace4": {
       "availability": "unknown",
       "domain": "onvelo.pt",
@@ -1257,8 +1287,8 @@
       "size": "L",
       "source": "structured_data",
       "target_size_match": true,
-      "title": "Bicicleta Carretera Merida Scultura Endurance 4000 2024 ...Bicicleta Carretera Merida Scultura 4000 | DeporvillageMERIDA | Compra Online las Últimas Novedades - deporvillage",
-      "updated_at": "2026-09-18T20:59:20.271367+00:00",
+      "title": "Bicicleta Carretera Merida Scultura Endurance 4000 2024 ...",
+      "updated_at": "2026-09-27T21:27:02.237688+00:00",
       "url": "https://www.deporvillage.com/bicicleta-carretera-merida-scultura-endurance-4000-2024-verde",
       "year": 2024
     },
@@ -1272,8 +1302,8 @@
       "size": "XL",
       "source": "structured_data",
       "target_size_match": true,
-      "title": "Bicicleta Carretera Merida Scultura Endurance 4000 2024 ...Bicicleta Carretera Merida Scultura 4000 | DeporvillageMERIDA | Compra Online las Últimas Novedades - deporvillage",
-      "updated_at": "2026-09-18T20:59:20.271378+00:00",
+      "title": "Bicicleta Carretera Merida Scultura Endurance 4000 2024 ...",
+      "updated_at": "2026-09-27T21:27:02.237710+00:00",
       "url": "https://www.deporvillage.com/bicicleta-carretera-merida-scultura-endurance-4000-2024-verde",
       "year": 2024
     },
