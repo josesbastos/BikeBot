@@ -691,6 +691,21 @@
       "url": "https://www.biciescapa.com/fr/velos/route/cube-attain-c-62-race-2027-93156",
       "year": 2027
     },
+    "67435a1d5ec07ebd83cda20d": {
+      "availability": "out_of_stock",
+      "domain": "alltricks.pt",
+      "last_alerted": null,
+      "model": "CUBE Attain C:62",
+      "price": 1799.0,
+      "seller_type": "store",
+      "size": "60",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Cube Attain C:62 Race Road Bike with Shimano 105 12-Speed ...",
+      "updated_at": "2026-10-03T23:57:00.620721+00:00",
+      "url": "https://www.alltricks.pt/F-41505-velos-route-_-cyclocross-_-triathlon/P-3358172-cube_attain_c_62_race_road_bike_with_shimano_105_12_speed_drivetrain__700_mm__frostymint_green__2027",
+      "year": 2027
+    },
     "693e318be552f2fd12ea22f2": {
       "availability": "out_of_stock",
       "domain": "biciescapa.com",
@@ -1110,6 +1125,21 @@
       "updated_at": "2026-10-03T21:19:56.853819+00:00",
       "url": "https://www.onvelo.pt/bicicleta-de-estrada-trek-domane-al-4-b17eab/",
       "year": 2025
+    },
+    "a0d39fb3c6710173bb112f24": {
+      "availability": "out_of_stock",
+      "domain": "alltricks.pt",
+      "last_alerted": null,
+      "model": "CUBE Attain C:62",
+      "price": 3199.0,
+      "seller_type": "store",
+      "size": "60",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Cube Attain C:62 SLT Road Bike with Shimano Ultegra Di2 12 ...",
+      "updated_at": "2026-10-03T23:57:00.620899+00:00",
+      "url": "https://www.alltricks.pt/F-41505-velos-route-_-cyclocross-_-triathlon/P-3358171-cube_attain_c_62_slt_road_bike_with_shimano_ultegra_di2_12_speed__700_mm__cosmic_purple_2027",
+      "year": 2027
     },
     "a374b53ff7e80914aa4742e8": {
       "availability": "in_stock",
