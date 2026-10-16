@@ -706,6 +706,21 @@
       "url": "https://www.biciescapa.com/fr/velos/route/cube-attain-c-62-race-2027-93156",
       "year": 2027
     },
+    "63c4264a2242da49d496e80b": {
+      "availability": "out_of_stock",
+      "domain": "alltricks.pt",
+      "last_alerted": null,
+      "model": "Cannondale Synapse Carbon",
+      "price": 3000.99,
+      "seller_type": "store",
+      "size": "58",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Cannondale Synapse Carbon 2 RL Shimano Ultegra 11V 700 mm ...Cannondale Synapse Carbon 5 Shimano 105 12V 700 mm Road Bike ...CANNONDALE Synapse Carbon 2 SmartSense 2025 BicycleCANNONDALE Synapse Carbon 2 2025 Bicycle - sanferbike.com",
+      "updated_at": "2026-10-16T23:40:20.786094+00:00",
+      "url": "https://www.alltricks.pt/F-41505-velos-route-_-cyclocross-_-triathlon/P-2057704-cannondale_synapse_carbon_2_rl_shimano_ultegra_11v_700_mm_black_pearl_2023_road_bike",
+      "year": 2023
+    },
     "67435a1d5ec07ebd83cda20d": {
       "availability": "out_of_stock",
       "domain": "alltricks.pt",
@@ -1667,6 +1682,21 @@
       "updated_at": "2026-09-09T19:49:03.456719+00:00",
       "url": "https://www.biciescapa.com/es/bicicletas/carretera/bicicleta-cube-cube-attain-c-62-slx-2027-93157",
       "year": 2027
+    },
+    "e5407dbd789177ff7d56af39": {
+      "availability": "out_of_stock",
+      "domain": "alltricks.pt",
+      "last_alerted": null,
+      "model": "Cannondale Synapse Carbon",
+      "price": 3000.99,
+      "seller_type": "store",
+      "size": "61",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Cannondale Synapse Carbon 2 RL Shimano Ultegra 11V 700 mm ...Cannondale Synapse Carbon 5 Shimano 105 12V 700 mm Road Bike ...CANNONDALE Synapse Carbon 2 SmartSense 2025 BicycleCANNONDALE Synapse Carbon 2 2025 Bicycle - sanferbike.com",
+      "updated_at": "2026-10-16T23:40:20.786107+00:00",
+      "url": "https://www.alltricks.pt/F-41505-velos-route-_-cyclocross-_-triathlon/P-2057704-cannondale_synapse_carbon_2_rl_shimano_ultegra_11v_700_mm_black_pearl_2023_road_bike",
+      "year": 2023
     },
     "e780003ff2f2b7389357a0d3": {
       "availability": "out_of_stock",
