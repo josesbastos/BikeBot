@@ -1547,6 +1547,21 @@
       "url": "https://www.deporvillage.com/bicicleta-carretera-merida-scultura-endurance-4000-2024-verde",
       "year": 2024
     },
+    "d0c71d521d28d08a66428445": {
+      "availability": "out_of_stock",
+      "domain": "deporvillage.net",
+      "last_alerted": null,
+      "model": "Orbea Orca M30",
+      "price": 2312.0,
+      "seller_type": "store",
+      "size": "57",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Orbea Orca M30 Road Bike | Deporvillage",
+      "updated_at": "2026-10-18T15:59:26.697634+00:00",
+      "url": "https://www.deporvillage.net/orbea-orca-m30-road-bike-white-grey",
+      "year": 2026
+    },
     "d1df9780d89d43f1ad0dea43": {
       "availability": "in_stock",
       "domain": "bike-discount.de",
