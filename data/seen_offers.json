@@ -902,6 +902,21 @@
       "url": "https://www.bike-discount.de/en/index.php/detail/019c093a5b3b7164baf6ea192d62a5fc",
       "year": 2025
     },
+    "7622f4c8f8b73b1ebd4b5a15": {
+      "availability": "in_stock",
+      "domain": "bike-discount.de",
+      "last_alerted": null,
+      "model": "Cannondale Synapse Carbon",
+      "price": 2799.0,
+      "seller_type": "store",
+      "size": "58",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Cannondale Synapse Carbon 4 Chalk - Bike-Discount",
+      "updated_at": "2026-10-21T04:47:40.426540+00:00",
+      "url": "https://www.bike-discount.de/en/cannondale-synapse-carbon-4-chalk",
+      "year": 2025
+    },
     "8188e4784c4873af21143e49": {
       "availability": "in_stock",
       "domain": "bike-discount.de",
@@ -991,6 +1006,21 @@
       "updated_at": "2026-09-14T12:47:20.045600+00:00",
       "url": "https://ibkbike.pt/products/bikes-road-orbea-orca-m30-2026-cobalt-blue-carbon-raw-matt",
       "year": 2026
+    },
+    "8722382612ac20125b581d32": {
+      "availability": "in_stock",
+      "domain": "bike-discount.de",
+      "last_alerted": null,
+      "model": "Cannondale Synapse Carbon",
+      "price": 2799.0,
+      "seller_type": "store",
+      "size": "61",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Cannondale Synapse Carbon 4 Chalk - Bike-Discount",
+      "updated_at": "2026-10-21T04:47:40.426619+00:00",
+      "url": "https://www.bike-discount.de/en/cannondale-synapse-carbon-4-chalk",
+      "year": 2025
     },
     "87fcb58db195a19036397e73": {
       "availability": "in_stock",
