@@ -286,6 +286,21 @@
       "url": "https://www.biciescapa.com/it/biciclette/corsa-strada/bicicletta-cube-attain-c-62-slt-2026-90196",
       "year": 2026
     },
+    "2b56ad760536f3088cadc439": {
+      "availability": "in_stock",
+      "domain": "bikeplanet.pt",
+      "last_alerted": null,
+      "model": "Scott Addict",
+      "price": 3059.0,
+      "seller_type": "store",
+      "size": "XL",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "SCOTT ADDICT GRAVEL 20 – BikePlanet",
+      "updated_at": "2026-10-22T21:40:33.655154+00:00",
+      "url": "https://www.bikeplanet.pt/products/scott-addict-gravel-20",
+      "year": 2026
+    },
     "2c3d706f1aea6b0e4be515d4": {
       "availability": "in_stock",
       "domain": "lisbonbike.pt",
@@ -510,7 +525,7 @@
       "year": 2025
     },
     "48b0499018710f057f07ed03": {
-      "availability": "in_stock",
+      "availability": "out_of_stock",
       "domain": "alltricks.pt",
       "last_alerted": null,
       "model": "CUBE Attain C:62",
@@ -520,7 +535,7 @@
       "source": "structured_data",
       "target_size_match": true,
       "title": "Cube Attain C:62 SLT Road Bike with Shimano Ultegra Di2 12 ...",
-      "updated_at": "2026-10-20T14:26:17.280716+00:00",
+      "updated_at": "2026-10-22T21:40:33.655165+00:00",
       "url": "https://www.alltricks.pt/F-41505-velos-route-_-cyclocross-_-triathlon/P-3358170-cube_attain_c_62_slt_road_bike_with_shimano_ultegra_di2_12_speed__700_mm__black_carbon__2027",
       "year": 2027
     },
@@ -1231,7 +1246,7 @@
       "year": 2025
     },
     "9f3b50620f4105a103660c07": {
-      "availability": "in_stock",
+      "availability": "out_of_stock",
       "domain": "biciescapa.com",
       "last_alerted": null,
       "model": "CUBE Attain C:62",
@@ -1241,7 +1256,7 @@
       "source": "structured_data",
       "target_size_match": true,
       "title": "Achetez le vélo de route Cube Attain C:62 SLX 2027",
-      "updated_at": "2026-10-15T21:28:01.849353+00:00",
+      "updated_at": "2026-10-22T21:40:33.655127+00:00",
       "url": "https://www.biciescapa.com/fr/velos/route/cube-attain-c-62-slx-2027-93157",
       "year": 2027
     },
