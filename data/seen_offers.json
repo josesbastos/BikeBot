@@ -525,7 +525,7 @@
       "year": 2025
     },
     "48b0499018710f057f07ed03": {
-      "availability": "out_of_stock",
+      "availability": "in_stock",
       "domain": "alltricks.pt",
       "last_alerted": null,
       "model": "CUBE Attain C:62",
@@ -535,7 +535,7 @@
       "source": "structured_data",
       "target_size_match": true,
       "title": "Cube Attain C:62 SLT Road Bike with Shimano Ultegra Di2 12 ...",
-      "updated_at": "2026-10-22T21:40:33.655165+00:00",
+      "updated_at": "2026-10-23T11:41:17.612905+00:00",
       "url": "https://www.alltricks.pt/F-41505-velos-route-_-cyclocross-_-triathlon/P-3358170-cube_attain_c_62_slt_road_bike_with_shimano_ultegra_di2_12_speed__700_mm__black_carbon__2027",
       "year": 2027
     },
@@ -669,8 +669,8 @@
       "size": "57",
       "source": "structured_data",
       "target_size_match": true,
-      "title": "Bicicleta Orbea ORCA M30 Iris White | LisbonBike Shop",
-      "updated_at": "2026-10-22T11:49:40.982637+00:00",
+      "title": "Bicicleta Orbea ORCA M30 Iris White - LisbonBike Shop",
+      "updated_at": "2026-10-23T11:41:17.612701+00:00",
       "url": "https://lisbonbike.pt/produto/bicicleta-orbea-orca-m30-iris-white/",
       "year": 2027
     },
@@ -975,6 +975,21 @@
       "title": "Cube Attain C:62 SLX bali´n´blue | Bike-Discount",
       "updated_at": "2026-09-17T17:06:30.282018+00:00",
       "url": "https://www.bike-discount.de/en/cube-attain-c-62-slx-bali-n-blue",
+      "year": 2027
+    },
+    "829287ca46c9045c49f520af": {
+      "availability": "out_of_stock",
+      "domain": "alltricks.pt",
+      "last_alerted": null,
+      "model": "CUBE Attain C:62",
+      "price": 2649.0,
+      "seller_type": "store",
+      "size": "60",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Cube Attain C:62 SLX Road Bike with Shimano 105 Di2 12-speed ...",
+      "updated_at": "2026-10-23T11:41:17.612816+00:00",
+      "url": "https://www.alltricks.pt/F-41505-velos-route-_-cyclocross-_-triathlon/P-3354828-cube_attain_c_62_slx_road_bike_with_shimano_105_di2_12_speed_drivetrain__700_mm__bali_blue_2027",
       "year": 2027
     },
     "83c0189dd60feb7ec50671a4": {
