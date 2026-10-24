@@ -674,6 +674,21 @@
       "url": "https://www.biciescapa.com/it/biciclette/corsa-strada/bicicletta-cube-attain-c-62-slx-2026-90195",
       "year": 2026
     },
+    "524c7d933bfd66c45e2d16bc": {
+      "availability": "in_stock",
+      "domain": "bikeplanet.pt",
+      "last_alerted": null,
+      "model": "Scott Addict",
+      "price": 7225.0,
+      "seller_type": "store",
+      "size": "XL",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "SCOTT ADDICT GRAVEL RC - 2026 – BikePlanet",
+      "updated_at": "2026-10-24T16:02:17.763793+00:00",
+      "url": "https://www.bikeplanet.pt/products/scott-addict-gravel-rc-2026",
+      "year": 2026
+    },
     "52b319a152ebacbaaac991ba": {
       "availability": "in_stock",
       "domain": "lisbonbike.pt",
