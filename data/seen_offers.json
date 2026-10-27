@@ -463,6 +463,21 @@
       "url": "https://www.biciescapa.com/es/bicicletas/carretera/bicicleta-giant-defy-advanced-pro-1-2026-90405",
       "year": 2026
     },
+    "415515f5deb330d9ce3ec95f": {
+      "availability": "in_stock",
+      "domain": "ibkbike.pt",
+      "last_alerted": null,
+      "model": "Scott Addict",
+      "price": 4933.95,
+      "seller_type": "store",
+      "size": "XL",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Scott Addict RC 10 2026 Sunbeam Black - ibkbike.pt",
+      "updated_at": "2026-10-27T22:15:48.518489+00:00",
+      "url": "https://ibkbike.pt/en/products/scott-addict-rc-10-2026-sunbeam-black",
+      "year": 2026
+    },
     "42296ba34b8633ac0c4e3d18": {
       "availability": "in_stock",
       "domain": "lisbonbike.pt",
@@ -946,6 +961,21 @@
       "updated_at": "2026-09-09T23:20:07.184843+00:00",
       "url": "https://www.alltricks.pt/F-41505-velos-route-_-cyclocross-_-triathlon/P-3146776-cube_attain_c_62_race_road_bike_shimano_105_12s_700_mm_sky_light_blue_2026",
       "year": 2026
+    },
+    "6dd29fad10861f8fbb416660": {
+      "availability": "unknown",
+      "domain": "ibkbike.pt",
+      "last_alerted": null,
+      "model": "Scott Addict",
+      "price": 2599.0,
+      "seller_type": "store",
+      "size": "XL",
+      "source": "page_text",
+      "target_size_match": true,
+      "title": "Scott Addict RC – IBKBike | Online Bike Shop & Cycling Equipment",
+      "updated_at": "2026-10-27T22:15:48.518405+00:00",
+      "url": "https://ibkbike.pt/collections/scott-addict-rc",
+      "year": 2025
     },
     "6fc01f4bd4c72b0c207fefa3": {
       "availability": "out_of_stock",
