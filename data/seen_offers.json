@@ -714,8 +714,8 @@
       "size": "57",
       "source": "structured_data",
       "target_size_match": true,
-      "title": "Bicicleta Orbea ORCA M30 Iris White | LisbonBike Shop",
-      "updated_at": "2026-10-26T20:34:43.233650+00:00",
+      "title": "Bicicleta Orbea ORCA M30 Iris White - LisbonBike Shop",
+      "updated_at": "2026-10-27T09:02:48.871989+00:00",
       "url": "https://lisbonbike.pt/produto/bicicleta-orbea-orca-m30-iris-white/",
       "year": 2027
     },
@@ -977,6 +977,21 @@
       "url": "https://www.bike-discount.de/en/cube-attain-c-62-slt-cosmicpurple-n-black",
       "year": 2027
     },
+    "711c491220ae0ef2cf57faf6": {
+      "availability": "in_stock",
+      "domain": "lisbonbike.pt",
+      "last_alerted": null,
+      "model": "Scott Addict",
+      "price": 3599.99,
+      "seller_type": "store",
+      "size": "XL",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Bicicleta SCOTT Addict Gravel 30 Agate Grey | LisbonBike",
+      "updated_at": "2026-10-27T09:02:48.872081+00:00",
+      "url": "https://lisbonbike.pt/produto/bicicleta-scott-addict-gravel-30-agate-grey-2027/",
+      "year": 2027
+    },
     "7153b67ae79b134903eec436": {
       "availability": "out_of_stock",
       "domain": "deporvillage.pt",
@@ -1182,8 +1197,8 @@
       "size": "57",
       "source": "structured_data",
       "target_size_match": true,
-      "title": "Bicicleta Orbea ORCA M30 White - Lilac - LisbonBike",
-      "updated_at": "2026-10-26T20:34:43.233668+00:00",
+      "title": "Orbea ORCA M30 White - Lilac | LisbonBike",
+      "updated_at": "2026-10-27T09:02:48.871949+00:00",
       "url": "https://lisbonbike.pt/produto/bicicleta-orbea-orca-m30-white-lilac/",
       "year": 2027
     },
@@ -1258,6 +1273,21 @@
       "title": "Giant Defy Advanced 2 Pearl White - Bike-Discount",
       "updated_at": "2026-10-07T00:44:27.078382+00:00",
       "url": "https://www.bike-discount.de/en/giant-defy-advanced-2-pearl-white",
+      "year": 2027
+    },
+    "953f5a76f8e36c03989b2704": {
+      "availability": "in_stock",
+      "domain": "lisbonbike.pt",
+      "last_alerted": null,
+      "model": "Scott Addict",
+      "price": 3599.99,
+      "seller_type": "store",
+      "size": "58",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Bicicleta SCOTT Addict Gravel 30 Agate Grey | LisbonBike",
+      "updated_at": "2026-10-27T09:02:48.872069+00:00",
+      "url": "https://lisbonbike.pt/produto/bicicleta-scott-addict-gravel-30-agate-grey-2027/",
       "year": 2027
     },
     "96656f95506d97b20e0fcdbf": {
