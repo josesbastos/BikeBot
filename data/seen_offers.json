@@ -180,6 +180,21 @@
       "url": "https://www.bikeplanet.pt/products/scott-addict-gravel-30-2026",
       "year": 2026
     },
+    "1a14aac3cb272dcd792858d3": {
+      "availability": "in_stock",
+      "domain": "ibkbike.pt",
+      "last_alerted": null,
+      "model": "Scott Addict",
+      "price": 7299.0,
+      "seller_type": "store",
+      "size": "XL",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Scott Addict RC Team 2027 Watery Blue/Carbon Black",
+      "updated_at": "2026-11-07T10:12:25.769605+00:00",
+      "url": "https://ibkbike.pt/products/scott-addict-rc-team-2027-watery-blue-carbon-black",
+      "year": 2027
+    },
     "1e1bb1406dacb7384ec90c47": {
       "availability": "unknown",
       "domain": "biciescapa.com",
