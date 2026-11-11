@@ -463,6 +463,21 @@
       "url": "https://lisbonbike.pt/produto/bicicleta-orbea-orca-m30-diamond-carbon-view/",
       "year": 2027
     },
+    "3d2570c656f1684f1f7c9f9e": {
+      "availability": "out_of_stock",
+      "domain": "deporvillage.com",
+      "last_alerted": null,
+      "model": "Orbea Orca M30",
+      "price": 3399.0,
+      "seller_type": "store",
+      "size": "57",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Bicicleta Carretera Orbea Orca M30i - Shimano 105 Di2 R7150 ...",
+      "updated_at": "2026-11-11T14:19:28.093866+00:00",
+      "url": "https://www.deporvillage.com/bicicleta-carretera-orbea-orca-m30i-shimano-105-di2-r7150",
+      "year": 2026
+    },
     "4132cd9bf982724985d46e65": {
       "availability": "out_of_stock",
       "domain": "biciescapa.com",
@@ -1847,6 +1862,21 @@
       "url": "https://lisbonbike.pt/produto/bicicleta-scott-addict-gravel-40-iron-grey-2027/",
       "year": 2027
     },
+    "c025e16edfa7bd0e2fa74df6": {
+      "availability": "out_of_stock",
+      "domain": "deporvillage.net",
+      "last_alerted": null,
+      "model": "Orbea Orca M30",
+      "price": 1975.0,
+      "seller_type": "store",
+      "size": "57",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Orbea Orca M30 Road Bike | Deporvillage",
+      "updated_at": "2026-11-11T14:19:28.093680+00:00",
+      "url": "https://www.deporvillage.net/orbea-orca-m30-road-bike-black-grey",
+      "year": 2026
+    },
     "c031415346a4c1670255ad4c": {
       "availability": "in_stock",
       "domain": "bike-discount.de",
@@ -1932,8 +1962,8 @@
       "size": "L",
       "source": "structured_data",
       "target_size_match": true,
-      "title": "Bicicleta Carretera Merida Scultura Endurance 4000 2024 ...Bicicleta Carretera Merida Scultura Endurance 4000 azulMerida Scultura Endurance 4000 Road Bike | DeporvillageBicicleta de estrada Merida Scultura Endurance 4000 2024 ...",
-      "updated_at": "2026-11-10T23:20:28.986715+00:00",
+      "title": "Bicicleta Carretera Merida Scultura Endurance 4000 2024 ...Bicicleta Carretera Merida Scultura 4000 | DeporvillageBicicletas de carretera Merida - deporvillageBicicletas Merida - deporvillageMERIDA | Compra Online las Últimas Novedades - deporvillage",
+      "updated_at": "2026-11-11T14:19:28.093819+00:00",
       "url": "https://www.deporvillage.com/bicicleta-carretera-merida-scultura-endurance-4000-2024-verde",
       "year": 2024
     },
@@ -1977,8 +2007,8 @@
       "size": "XL",
       "source": "structured_data",
       "target_size_match": true,
-      "title": "Bicicleta Carretera Merida Scultura Endurance 4000 2024 ...Bicicleta Carretera Merida Scultura Endurance 4000 azulMerida Scultura Endurance 4000 Road Bike | DeporvillageBicicleta de estrada Merida Scultura Endurance 4000 2024 ...",
-      "updated_at": "2026-11-10T23:20:28.986731+00:00",
+      "title": "Bicicleta Carretera Merida Scultura Endurance 4000 2024 ...Bicicleta Carretera Merida Scultura 4000 | DeporvillageBicicletas de carretera Merida - deporvillageBicicletas Merida - deporvillageMERIDA | Compra Online las Últimas Novedades - deporvillage",
+      "updated_at": "2026-11-11T14:19:28.093829+00:00",
       "url": "https://www.deporvillage.com/bicicleta-carretera-merida-scultura-endurance-4000-2024-verde",
       "year": 2024
     },
