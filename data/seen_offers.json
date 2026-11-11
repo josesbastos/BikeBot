@@ -809,6 +809,21 @@
       "url": "https://www.bikeplanet.pt/products/bicicleta-scott-addict-rc-10-2026",
       "year": 2026
     },
+    "5a2b63b1116ed3ce44ec0463": {
+      "availability": "in_stock",
+      "domain": "ibkbike.pt",
+      "last_alerted": null,
+      "model": "Scott Addict",
+      "price": 6899.0,
+      "seller_type": "store",
+      "size": "XL",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Scott Addict RC 10 2027 Tungsten Grey - ibkbike.pt",
+      "updated_at": "2026-11-11T06:12:59.578562+00:00",
+      "url": "https://ibkbike.pt/en/products/scott-addict-rc-10-2027-tungsten-grey",
+      "year": 2027
+    },
     "5a67ae648519e0cabb79b5dc": {
       "availability": "in_stock",
       "domain": "lisbonbike.pt",
