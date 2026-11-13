@@ -1982,6 +1982,21 @@
       "url": "https://lisbonbike.pt/produto/bicicleta-scott-addict-30-cumulus-white/",
       "year": 2026
     },
+    "cc4d3db6065f97c06d395d3b": {
+      "availability": "out_of_stock",
+      "domain": "alltricks.pt",
+      "last_alerted": null,
+      "model": "Orbea Orca M30",
+      "price": 2632.0,
+      "seller_type": "store",
+      "size": "57",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Orbea Orca M30 Road Bike Shimano 105 12S 700 mm Slate Blue ...",
+      "updated_at": "2026-11-13T06:42:31.870700+00:00",
+      "url": "https://www.alltricks.pt/F-41505-velos-route-_-cyclocross-_-triathlon/P-2756037-orbea_orca_m30_road_bike_shimano_105_12s_700_mm_slate_blue_2024",
+      "year": 2024
+    },
     "ce73e1765e80f86696e3d62d": {
       "availability": "out_of_stock",
       "domain": "deporvillage.com",
