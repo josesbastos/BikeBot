@@ -301,6 +301,21 @@
       "url": "https://www.biciescapa.com/es/bicicletas/carretera/bicicleta-orbea-orca-m30-26-89051",
       "year": 2026
     },
+    "2744162ed895f89ca21f80e3": {
+      "availability": "in_stock",
+      "domain": "lisbonbike.pt",
+      "last_alerted": null,
+      "model": "Scott Addict",
+      "price": 2499.99,
+      "seller_type": "store",
+      "size": "58",
+      "source": "structured_data",
+      "target_size_match": true,
+      "title": "Bicicleta SCOTT Addict Gravel 40 Iron Grey 2027 | LisbonBike",
+      "updated_at": "2026-11-20T20:14:15.599232+00:00",
+      "url": "https://lisbonbike.pt/produto/bicicleta-scott-addict-gravel-40-iron-grey-2027/",
+      "year": 2027
+    },
     "281865e48ff38b61b3f2c24b": {
       "availability": "out_of_stock",
       "domain": "biciescapa.com",
@@ -609,8 +624,8 @@
       "size": "58",
       "source": "page_text",
       "target_size_match": true,
-      "title": "Bicicleta de estrada em alumínio, Mara Trek, modelo 2025 ...Bicicleta elétrica de estrada, marca Trek, modelo 2025 ...onVeló cyclingCover Trek Domane MKIV IsoSpeed Grommet V2 — onVeló cycling",
-      "updated_at": "2026-11-20T11:34:03.683160+00:00",
+      "title": "Bicicleta de estrada em alumínio, Mara Trek, modelo 2025 ...Bicicleta de estrada Trek Domane AL 2, azul/pretoonVeló cyclingCover Trek Domane MKIV IsoSpeed Grommet V2 — onVeló cycling",
+      "updated_at": "2026-11-20T20:14:15.599093+00:00",
       "url": "https://www.onvelo.pt/bicicleta-de-estrada-trek-domane-al-4-b17eab/",
       "year": 2025
     },
@@ -1631,8 +1646,8 @@
       "size": "60",
       "source": "page_text",
       "target_size_match": true,
-      "title": "Bicicleta de estrada em alumínio, Mara Trek, modelo 2025 ...Bicicleta elétrica de estrada, marca Trek, modelo 2025 ...onVeló cyclingCover Trek Domane MKIV IsoSpeed Grommet V2 — onVeló cycling",
-      "updated_at": "2026-11-20T11:34:03.683235+00:00",
+      "title": "Bicicleta de estrada em alumínio, Mara Trek, modelo 2025 ...Bicicleta de estrada Trek Domane AL 2, azul/pretoonVeló cyclingCover Trek Domane MKIV IsoSpeed Grommet V2 — onVeló cycling",
+      "updated_at": "2026-11-20T20:14:15.599155+00:00",
       "url": "https://www.onvelo.pt/bicicleta-de-estrada-trek-domane-al-4-b17eab/",
       "year": 2025
     },
@@ -1676,8 +1691,8 @@
       "size": "L",
       "source": "page_text",
       "target_size_match": true,
-      "title": "Bicicleta de estrada Merida Scultura Endurance 4000 2024 ...merida scultura 4000 - Bicicletas | OLX PortugalBicicleta MERIDA Scultura Endurance 4000 2025 - sanferbike.comMERIDA SCULTURA ENDURANCE - MeV - Mobilidade ElétricaCompre Merida 2025 Scultura Endurance 4000 - Bicicleta de ...Comprar 2025 Merida Scultura Endurance 4000 - Bicicleta de ...",
-      "updated_at": "2026-11-19T02:37:10.876154+00:00",
+      "title": "Bicicleta de estrada Merida Scultura Endurance 4000 2024 ...Bicicleta de Estrada Merida Scultura Endurance 4000 ...merida scultura 4000 - Bicicletas | OLX PortugalMERIDA SCULTURA ENDURANCE - MeV - Mobilidade ElétricaCompre Merida 2025 Scultura Endurance 4000 - Bicicleta de ...Bicicleta MERIDA Scultura Endurance 4000 2025 - sanferbike.comComprar 2025 Merida Scultura Endurance 4000 - Bicicleta de ...",
+      "updated_at": "2026-11-20T20:14:15.599214+00:00",
       "url": "https://www.deporvillage.pt/bicicleta-de-estrada-merida-scultura-4000-2024-cinzento",
       "year": 2024
     },
@@ -1842,8 +1857,8 @@
       "size": "XL",
       "source": "page_text",
       "target_size_match": true,
-      "title": "Bicicleta de estrada Merida Scultura Endurance 4000 2024 ...merida scultura 4000 - Bicicletas | OLX PortugalBicicleta MERIDA Scultura Endurance 4000 2025 - sanferbike.comMERIDA SCULTURA ENDURANCE - MeV - Mobilidade ElétricaCompre Merida 2025 Scultura Endurance 4000 - Bicicleta de ...Comprar 2025 Merida Scultura Endurance 4000 - Bicicleta de ...",
-      "updated_at": "2026-11-19T02:37:10.876169+00:00",
+      "title": "Bicicleta de estrada Merida Scultura Endurance 4000 2024 ...Bicicleta de Estrada Merida Scultura Endurance 4000 ...merida scultura 4000 - Bicicletas | OLX PortugalMERIDA SCULTURA ENDURANCE - MeV - Mobilidade ElétricaCompre Merida 2025 Scultura Endurance 4000 - Bicicleta de ...Bicicleta MERIDA Scultura Endurance 4000 2025 - sanferbike.comComprar 2025 Merida Scultura Endurance 4000 - Bicicleta de ...",
+      "updated_at": "2026-11-20T20:14:15.599224+00:00",
       "url": "https://www.deporvillage.pt/bicicleta-de-estrada-merida-scultura-4000-2024-cinzento",
       "year": 2024
     },
